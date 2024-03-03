@@ -9,9 +9,7 @@ import {
 } from "fastify-type-provider-zod";
 import { z } from "zod";
 
-const app = Fastify({
-  logger: true,
-});
+const app = Fastify({ logger: true });
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
