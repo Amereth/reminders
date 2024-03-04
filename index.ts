@@ -1,18 +1,17 @@
-import { pgTable } from "drizzle-orm/pg-core";
-import { db } from "./src/lib/db";
-import Fastify from "fastify";
 import "dotenv/config";
+import { eventsRoutes } from "./src/features/events/routes";
+import Fastify from "fastify";
 import {
   serializerCompiler,
   validatorCompiler,
-  ZodTypeProvider,
 } from "fastify-type-provider-zod";
-import { z } from "zod";
 
-const app = Fastify({ logger: true });
+export const app = Fastify({ logger: true });
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
+
+app.withTypeProvider().register(eventsRoutes);
 
 app.listen({ port: 3000, host: "localhost" }, (err, address) => {
   if (err) {
