@@ -1,4 +1,3 @@
-import "dotenv/config";
 import { eventsRoutes } from "./src/features/events/routes";
 import Fastify from "fastify";
 import {
