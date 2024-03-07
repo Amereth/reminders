@@ -8,7 +8,7 @@ import z from "zod";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { db } from "../../lib/db";
 import { pick } from "remeda";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 
 export const eventsRoutes: FastifyPluginCallback<
   FastifyPluginOptions,
@@ -17,71 +17,86 @@ export const eventsRoutes: FastifyPluginCallback<
 > = (fastify, options, done) => {
   fastify.get("/events", {
     schema: {
+      querystring: z.object({ userId: z.coerce.number() }),
       response: { 200: z.array(selectEventsSchema) },
     },
-    handler: (req, res) => db.query.events.findMany(),
+
+    handler: ({ query }, res) => {
+      return db.query.events.findMany({
+        where: (event) => eq(event.userId, query.userId),
+      });
+    },
   });
 
   fastify.get("/events/:id", {
     schema: {
       params: z.object({ id: z.coerce.number() }),
+      querystring: z.object({ userId: z.coerce.number() }),
       response: { 200: z.array(selectEventsSchema) },
     },
-    handler: ({ params }, res) =>
-      db.query.events.findMany({
-        where: (event) => eq(event.id, params.id),
-      }),
+
+    handler: ({ params, query }, res) => {
+      return db.query.events.findMany({
+        where: and(eq(events.id, params.id), eq(events.userId, query.userId)),
+      });
+    },
   });
 
   fastify.post("/events", {
     schema: {
       body: insertEventsSchema.pick({ description: true, dueDate: true }),
+      querystring: z.object({ userId: z.coerce.number() }),
       response: { 201: z.array(selectEventsSchema) },
     },
-    handler: ({ body }, res) =>
-      db
+
+    handler: async ({ body, query }, res) => {
+      const data = await db
         .insert(events)
         .values({
           ...body,
+          userId: query.userId,
           dueDate: body.dueDate ? new Date(body.dueDate) : null,
         })
-        .returning(pick(events, selectEventsSchema.keyof().options)),
+        .returning(pick(events, selectEventsSchema.keyof().options));
+
+      res.status(201);
+      return data;
+    },
   });
 
   fastify.patch("/events/:id", {
     schema: {
       params: z.object({ id: z.coerce.number() }),
+      querystring: z.object({ userId: z.coerce.number() }),
       body: insertEventsSchema
         .pick({ description: true, dueDate: true })
         .partial(),
-      response: { 201: z.array(selectEventsSchema) },
+      response: { 200: z.array(selectEventsSchema) },
     },
-    handler: async ({ body, params }, res) => {
-      const response = await db
+
+    handler: ({ body, params, query }, res) => {
+      return db
         .update(events)
         .set({
           ...body,
           dueDate: body.dueDate ? new Date(body.dueDate) : null,
         })
-        .where(eq(events.id, params.id))
+        .where(and(eq(events.id, params.id), eq(events.userId, query.userId)))
         .returning(pick(events, selectEventsSchema.keyof().options));
-
-      res.status(201);
-      return response;
-    },
-    errorHandler(error, request, reply) {
-      reply.status(500);
-      return error;
     },
   });
 
   fastify.delete("/events/:id", {
     schema: {
       params: z.object({ id: z.coerce.number() }),
+      querystring: z.object({ userId: z.coerce.number() }),
       response: { 200: z.array(selectEventsSchema) },
     },
-    handler: ({ params }, res) =>
-      db.delete(events).where(eq(events.id, params.id)),
+
+    handler: ({ params, query }, res) =>
+      db
+        .delete(events)
+        .where(and(eq(events.id, params.id), eq(events.userId, query.userId))),
   });
 
   done();
