@@ -1,11 +1,12 @@
 import { timestamp } from "drizzle-orm/pg-core";
 import { text } from "drizzle-orm/pg-core";
-import { pgTable, serial } from "drizzle-orm/pg-core";
+import { pgTable, serial, integer } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import z from "zod";
 
 export const events = pgTable("events", {
   id: serial("id").primaryKey().notNull(),
+  userId: integer("user_id").notNull(),
   description: text("description").notNull(),
   dueDate: timestamp("due_date"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
