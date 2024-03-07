@@ -4,6 +4,7 @@ import {
   serializerCompiler,
   validatorCompiler,
 } from "fastify-type-provider-zod";
+import eventsBot from "./src/features/events/bot";
 
 export const app = Fastify({ logger: true });
 
@@ -18,4 +19,8 @@ app.listen({ port: 3000, host: "localhost" }, (err, address) => {
     process.exit(1);
   }
   app.log.info(`server listening on ${address}`);
+});
+
+eventsBot.launch(() => {
+  console.log("Bot is running");
 });
