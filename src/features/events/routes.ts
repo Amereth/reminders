@@ -8,6 +8,7 @@ import z from "zod";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { db } from "../../lib/db";
 import { pick } from "remeda";
+import { eq } from "drizzle-orm";
 
 export const eventsRoutes: FastifyPluginCallback<
   FastifyPluginOptions,
@@ -18,9 +19,18 @@ export const eventsRoutes: FastifyPluginCallback<
     schema: {
       response: { 200: z.array(selectEventsSchema) },
     },
-    handler: (req, res) => {
-      return db.query.events.findMany();
+    handler: (req, res) => db.query.events.findMany(),
+  });
+
+  fastify.get("/events/:id", {
+    schema: {
+      params: z.object({ id: z.coerce.number() }),
+      response: { 200: z.array(selectEventsSchema) },
     },
+    handler: ({ params }, res) =>
+      db.query.events.findMany({
+        where: (event) => eq(event.id, params.id),
+      }),
   });
 
   fastify.post("/events", {
@@ -28,17 +38,50 @@ export const eventsRoutes: FastifyPluginCallback<
       body: insertEventsSchema.pick({ description: true, dueDate: true }),
       response: { 201: z.array(selectEventsSchema) },
     },
-    handler: (req, res) => {
-      const { description, dueDate } = req.body;
-      return db
+    handler: ({ body }, res) =>
+      db
         .insert(events)
         .values({
-          description,
-          dueDate: dueDate ? new Date(dueDate) : null,
-          createdAt: new Date(),
+          ...body,
+          dueDate: body.dueDate ? new Date(body.dueDate) : null,
         })
-        .returning(pick(events, selectEventsSchema.keyof().options));
+        .returning(pick(events, selectEventsSchema.keyof().options)),
+  });
+
+  fastify.patch("/events/:id", {
+    schema: {
+      params: z.object({ id: z.coerce.number() }),
+      body: insertEventsSchema
+        .pick({ description: true, dueDate: true })
+        .partial(),
+      response: { 201: z.array(selectEventsSchema) },
     },
+    handler: async ({ body, params }, res) => {
+      const response = await db
+        .update(events)
+        .set({
+          ...body,
+          dueDate: body.dueDate ? new Date(body.dueDate) : null,
+        })
+        .where(eq(events.id, params.id))
+        .returning(pick(events, selectEventsSchema.keyof().options));
+
+      res.status(201);
+      return response;
+    },
+    errorHandler(error, request, reply) {
+      reply.status(500);
+      return error;
+    },
+  });
+
+  fastify.delete("/events/:id", {
+    schema: {
+      params: z.object({ id: z.coerce.number() }),
+      response: { 200: z.array(selectEventsSchema) },
+    },
+    handler: ({ params }, res) =>
+      db.delete(events).where(eq(events.id, params.id)),
   });
 
   done();

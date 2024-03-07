@@ -13,9 +13,12 @@ export const events = pgTable("events", {
 
 // Schema for inserting a user - can be used to validate API requests
 export const insertEventsSchema = createInsertSchema(events, {
-  dueDate: z.string().datetime(),
-  createdAt: z.string().datetime(),
-});
+  dueDate: z.string().datetime().nullable(),
+  createdAt: z.string().datetime().nullable(),
+}).required();
 
 // Schema for selecting a user - can be used to validate API responses
-export const selectEventsSchema = createSelectSchema(events);
+export const selectEventsSchema = createSelectSchema(events, {
+  dueDate: z.date().nullable(),
+  createdAt: z.date().nullable(),
+}).required();

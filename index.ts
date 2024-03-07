@@ -1,4 +1,4 @@
-import { eventsRoutes } from "./src/features/events/routes";
+import { routes } from "./src/features/index";
 import Fastify from "fastify";
 import {
   serializerCompiler,
@@ -10,8 +10,9 @@ export const app = Fastify({ logger: true });
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
+app.withTypeProvider();
 
-app.withTypeProvider().register(eventsRoutes);
+routes.forEach(app.register);
 
 app.listen({ port: 3000, host: "localhost" }, (err, address) => {
   if (err) {
