@@ -23,3 +23,5 @@ export const selectEventsSchema = createSelectSchema(events, {
   dueDate: z.date().nullable(),
   createdAt: z.date().nullable(),
 }).required()
+
+export type Event = z.infer<typeof selectEventsSchema>
