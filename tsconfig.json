@@ -87,7 +87,5 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "allowUnreachableCode": true,
     "strictNullChecks": true
-  },
-  "include": ["src", "scripts"],
-  "exclude": ["node_modules", "dist"]
+  }
 }

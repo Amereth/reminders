@@ -1,0 +1,13 @@
+{
+  "extends": "./../../tsconfig.json",
+  "include": ["src", "scripts"],
+  "exclude": ["node_modules", "dist"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/src/*": ["src/*"],
+      "@migrations/*": ["migrations/*"],
+      "@scripts/*": ["scripts/*"]
+    }
+  }
+}
