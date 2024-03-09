@@ -5,8 +5,10 @@ importers:
   .:
     specifiers:
       '@tsconfig/node20': ^20.1.2
+      concurrently: ^8.2.2
     devDependencies:
       '@tsconfig/node20': 20.1.2
+      concurrently: 8.2.2
 
   apps/client:
     specifiers:
