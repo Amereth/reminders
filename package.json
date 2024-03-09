@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "concurrently -k -n server,client \"pnpm dev:server\" \"pnpm dev:client\"",
     "dev:server": "pnpm --filter ./apps/server dev",
-    "dev:client": "pnpm --filter ./apps/client dev"
+    "dev:client": "pnpm --filter ./apps/client dev",
+    "format": "pnpm prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,9 @@
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.2",
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.12"
   },
   "homepage": "https://github.com/Amereth/fastify-app#readme",
   "packageManager": "pnpm@8.15.4+sha256.cea6d0bdf2de3a0549582da3983c70c92ffc577ff4410cbf190817ddc35137c2"

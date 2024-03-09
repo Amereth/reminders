@@ -1,1 +1,1 @@
-export { events } from "./features/events/schema";
+export { events } from './features/events/schema'

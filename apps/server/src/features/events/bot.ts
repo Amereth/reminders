@@ -1,30 +1,27 @@
-import { Telegraf } from "telegraf";
-import { message } from "telegraf/filters";
-import { env } from "../../utils/env";
+import { Telegraf } from 'telegraf'
+import { message } from 'telegraf/filters'
+import { env } from '../../utils/env'
 
-const bot = new Telegraf(env.TELEGRAM_BOT_TOKEN);
-export default bot;
+const bot = new Telegraf(env.TELEGRAM_BOT_TOKEN)
+export default bot
 
-bot.start((ctx) => ctx.reply("Welcome"));
-bot.help((ctx) => ctx.reply("Send me a sticker"));
+bot.start((ctx) => ctx.reply('Welcome'))
+bot.help((ctx) => ctx.reply('Send me a sticker'))
 
-bot.command("add_event", async (ctx) => {
-  console.log(ctx);
+bot.command('add_event', async (ctx) => {
+  console.log(ctx)
 
-  ctx.reply("Please enter the event info");
+  ctx.reply('Please enter the event info')
 
-  console.log("command add event", ctx.message);
-});
+  console.log('command add event', ctx.message)
+})
 
-bot.on(message("text"), async (ctx) => {
+bot.on(message('text'), async (ctx) => {
   // Explicit usage
-  await ctx.telegram.sendMessage(
-    ctx.message.chat.id,
-    `Hello ${ctx.state.role}`
-  );
+  await ctx.telegram.sendMessage(ctx.message.chat.id, `Hello ${ctx.state.role}`)
 
   // Using context shortcut
-  await ctx.reply(`Hello ${ctx.state.role}`);
-});
+  await ctx.reply(`Hello ${ctx.state.role}`)
+})
 
-bot.hears("hi", (ctx) => ctx.reply("Hey there"));
+bot.hears('hi', (ctx) => ctx.reply('Hey there'))
