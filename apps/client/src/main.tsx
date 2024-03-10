@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import '../app/globals.css'
 import { validateEnv } from './lib/validateEnv.ts'
 import { api } from './lib/api.ts'
+import { ClerkProvider } from '@clerk/clerk-react'
 
 validateEnv()
 
@@ -38,8 +39,10 @@ declare module '@tanstack/react-router' {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <ClerkProvider publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY}>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </ClerkProvider>
   </React.StrictMode>,
 )
