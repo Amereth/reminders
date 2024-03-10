@@ -2,28 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { routeTree } from './routeTree.gen.ts'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import '../app/globals.css'
 import { validateEnv } from './lib/validateEnv.ts'
-import { api } from './lib/api.ts'
 import { ClerkProvider } from '@clerk/clerk-react'
+import { Toaster } from './components/ui/sonner.tsx'
+import { TanstackQueryProvider } from './lib/providers/TanstackQueryProvider.tsx'
 
 validateEnv()
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 60 * 5, // 5 minutes
-      retry: false,
-      queryFn: async ({ queryKey }) => {
-        const response = await fetch(api(queryKey[0] as string))
-        const data = await response.json()
-        if (response.ok) return data
-        throw new Error(data.message)
-      },
-    },
-  },
-})
 
 const router = createRouter({
   routeTree,
@@ -40,9 +25,10 @@ declare module '@tanstack/react-router' {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ClerkProvider publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY}>
-      <QueryClientProvider client={queryClient}>
+      <TanstackQueryProvider>
+        <Toaster richColors />
         <RouterProvider router={router} />
-      </QueryClientProvider>
+      </TanstackQueryProvider>
     </ClerkProvider>
   </React.StrictMode>,
 )
