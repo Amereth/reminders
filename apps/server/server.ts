@@ -17,6 +17,11 @@ app.withTypeProvider()
 
 routes.forEach(app.register)
 
+app.setErrorHandler((error, request, reply) => {
+  reply.status(error.statusCode ?? 500)
+  return error
+})
+
 app.listen({ port: 8080, host: 'localhost' }, (err, address) => {
   if (err) {
     app.log.error(err)
