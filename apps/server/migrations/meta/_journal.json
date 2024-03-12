@@ -57,6 +57,13 @@
       "when": 1710276344055,
       "tag": "0007_glossy_silvermane",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1710277581070,
+      "tag": "0008_shiny_smiling_tiger",
+      "breakpoints": true
     }
   ]
 }
