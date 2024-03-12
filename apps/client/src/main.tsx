@@ -5,7 +5,7 @@ import { RouterProvider, createRouter } from '@tanstack/react-router'
 import '../app/globals.css'
 import { validateEnv } from './lib/validateEnv.ts'
 import { Toaster } from './components/ui/sonner.tsx'
-import { TanstackQueryProvider } from './lib/providers/TanstackQueryProvider.tsx'
+import { Providers } from './lib/providers/index.tsx'
 
 validateEnv()
 
@@ -23,9 +23,9 @@ declare module '@tanstack/react-router' {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <TanstackQueryProvider>
+    <Providers>
       <Toaster richColors />
       <RouterProvider router={router} />
-    </TanstackQueryProvider>
+    </Providers>
   </React.StrictMode>,
 )
