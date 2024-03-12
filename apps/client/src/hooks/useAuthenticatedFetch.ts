@@ -1,5 +1,5 @@
 import { getApiUrl } from '@/lib/getApiUrl'
-import { useAuth } from '@clerk/clerk-react'
+
 import { toast } from 'sonner'
 
 const methodsWithBody = ['POST', 'PUT', 'PATCH']
@@ -9,7 +9,7 @@ type ErrorResponse = {
 }
 
 export const useAuthenticatedFetch = <TData>() => {
-  const { getToken } = useAuth()
+  // const { getToken } = useAuth()
 
   return async (input: string, request: RequestInit | undefined = {}) => {
     const contentType =
@@ -22,7 +22,7 @@ export const useAuthenticatedFetch = <TData>() => {
     const modifiedRequest: RequestInit = {
       ...request,
       headers: {
-        authorization: `Bearer ${await getToken()}`,
+        // authorization: `Bearer ${await getToken()}`,
         ...(isFormData ? {} : { 'content-type': contentType }),
         ...request.headers,
       },
