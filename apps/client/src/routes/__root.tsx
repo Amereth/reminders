@@ -6,11 +6,11 @@ import {
   CardContent,
   CardFooter,
 } from '@/components/ui/card'
-import { useEventsApi } from '@/hooks/api/useEventsApi'
+import { useEventsQuery } from '@/hooks/api/useEventsQuery'
 import { createRootRoute } from '@tanstack/react-router'
 
 const RootComponent = () => {
-  const { data } = useEventsApi()
+  const { data } = useEventsQuery()
 
   return (
     <>
