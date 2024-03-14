@@ -1,9 +1,9 @@
 import { PropsWithChildren } from 'react'
 import { TanstackQueryProvider } from './TanstackQueryProvider'
-import { UserSessionProvider } from './UserSessionProvider'
+import { SupabaseProvider } from './SupabaseProvider'
 
 export const Providers = ({ children }: PropsWithChildren) => (
-  <TanstackQueryProvider>
-    <UserSessionProvider>{children}</UserSessionProvider>
-  </TanstackQueryProvider>
+  <SupabaseProvider>
+    <TanstackQueryProvider>{children}</TanstackQueryProvider>
+  </SupabaseProvider>
 )

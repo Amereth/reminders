@@ -1,10 +1,13 @@
-import { DefaultError, useQuery } from '@tanstack/react-query'
+import { DefaultError } from '@tanstack/react-query'
 import { Event } from '@schemas'
+import { useAuthenticatedQuery } from '../useAuthenticatedQuery'
+
+export const eventsQueryKey = ['/events'] as const
 
 export const useEventsQuery = <TData = Event[]>(
   select?: (data: Event[]) => TData,
 ) =>
-  useQuery<Event[], DefaultError, TData>({
-    queryKey: ['/events?userId=1'],
+  useAuthenticatedQuery<Event[], DefaultError, TData>({
+    queryKey: eventsQueryKey,
     select,
   })
