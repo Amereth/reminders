@@ -6,10 +6,13 @@ import {
 } from 'fastify-type-provider-zod'
 import eventsBot from './src/features/events/bot'
 import cors from '@fastify/cors'
+import cookie, { FastifyCookieOptions } from '@fastify/cookie'
 
 export const app = Fastify({ logger: true })
 
 app.register(cors, { origin: 'http://localhost:5173' })
+
+app.register(cookie, { hook: 'onRequest' })
 
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
@@ -18,6 +21,7 @@ app.withTypeProvider()
 routes.forEach(app.register)
 
 app.setErrorHandler((error, request, reply) => {
+  console.error('ERROR', error)
   reply.status(error.statusCode ?? 500)
   return error
 })

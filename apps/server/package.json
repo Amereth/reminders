@@ -9,6 +9,7 @@
     "dev": "nodemon server.ts",
     "studio": "drizzle-kit studio & open https://local.drizzle.studio",
     "migration:generate": "drizzle-kit generate:pg",
+    "migration:generate-custom": "drizzle-kit generate:pg --custom",
     "migration:run": "tsx scripts/migrate.ts"
   },
   "repository": {
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/Amereth/fastify-app#readme",
   "dependencies": {
+    "@fastify/cookie": "^9.3.1",
     "@fastify/cors": "^9.0.1",
     "@supabase/supabase-js": "^2.39.8",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
