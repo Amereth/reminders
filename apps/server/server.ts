@@ -6,7 +6,10 @@ import {
 } from 'fastify-type-provider-zod'
 import eventsBot from './src/features/events/bot'
 import cors from '@fastify/cors'
-import cookie, { FastifyCookieOptions } from '@fastify/cookie'
+import cookie from '@fastify/cookie'
+import { supabasePlugin } from './src/plugins/supabase'
+import { ctxPlugin } from './src/plugins/ctx'
+import { userPlugin } from './src/plugins/user'
 
 export const app = Fastify({ logger: true })
 
@@ -17,6 +20,10 @@ app.register(cookie, { hook: 'onRequest' })
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 app.withTypeProvider()
+
+app.register(ctxPlugin)
+app.register(supabasePlugin)
+app.register(userPlugin)
 
 routes.forEach(app.register)
 

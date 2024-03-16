@@ -9,6 +9,7 @@ import { ZodTypeProvider } from 'fastify-type-provider-zod'
 import { db } from '../../lib/db'
 import { pick } from 'remeda'
 import { and, eq } from 'drizzle-orm'
+import crypto from 'crypto'
 
 export const eventsRoutes: FastifyPluginCallback<
   FastifyPluginOptions,
@@ -17,27 +18,28 @@ export const eventsRoutes: FastifyPluginCallback<
 > = (fastify, options, done) => {
   fastify.get('/events', {
     schema: {
-      querystring: z.object({ userId: z.coerce.number() }),
       response: { 200: z.array(selectEventsSchema) },
     },
 
-    handler: ({ query }, res) => {
-      return db.query.events.findMany({
-        where: (event) => eq(event.userId, query.userId),
-      })
+    handler: async (req, res) => {
+      const user = req.ctx.user
+
+      return db.query.events.findMany()
     },
   })
 
   fastify.get('/events/:id', {
     schema: {
-      params: z.object({ id: z.coerce.number() }),
-      querystring: z.object({ userId: z.coerce.number() }),
+      params: z.object({ id: z.string() }),
       response: { 200: z.array(selectEventsSchema) },
     },
 
     handler: ({ params, query }, res) => {
       return db.query.events.findMany({
-        where: and(eq(events.id, params.id), eq(events.userId, query.userId)),
+        where: and(
+          eq(events.id, params.id),
+          // eq(events.userId, query.userId)
+        ),
       })
     },
   })
@@ -45,29 +47,28 @@ export const eventsRoutes: FastifyPluginCallback<
   fastify.post('/events', {
     schema: {
       body: insertEventsSchema.pick({ description: true, dueDate: true }),
-      querystring: z.object({ userId: z.coerce.number() }),
       response: { 201: z.array(selectEventsSchema) },
     },
 
-    handler: async ({ body, query }, res) => {
-      const data = await db
+    handler: async (req, res) => {
+      const d = await db
         .insert(events)
         .values({
-          ...body,
-          userId: query.userId,
-          dueDate: body.dueDate ? new Date(body.dueDate) : null,
+          ...req.body,
+          id: crypto.randomUUID(),
+          userId: req.ctx.user.id,
+          dueDate: req.body.dueDate ? new Date(req.body.dueDate) : null,
         })
         .returning(pick(events, selectEventsSchema.keyof().options))
 
       res.status(201)
-      return data
+      return d
     },
   })
 
   fastify.patch('/events/:id', {
     schema: {
-      params: z.object({ id: z.coerce.number() }),
-      querystring: z.object({ userId: z.coerce.number() }),
+      params: z.object({ id: z.string() }),
       body: insertEventsSchema
         .pick({ description: true, dueDate: true })
         .partial(),
@@ -81,22 +82,29 @@ export const eventsRoutes: FastifyPluginCallback<
           ...body,
           dueDate: body.dueDate ? new Date(body.dueDate) : null,
         })
-        .where(and(eq(events.id, params.id), eq(events.userId, query.userId)))
+        .where(
+          and(
+            eq(events.id, params.id),
+            // eq(events.userId, query.userId)
+          ),
+        )
         .returning(pick(events, selectEventsSchema.keyof().options))
     },
   })
 
   fastify.delete('/events/:id', {
     schema: {
-      params: z.object({ id: z.coerce.number() }),
-      querystring: z.object({ userId: z.coerce.number() }),
+      params: z.object({ id: z.string() }),
       response: { 200: z.array(selectEventsSchema) },
     },
 
     handler: ({ params, query }, res) =>
-      db
-        .delete(events)
-        .where(and(eq(events.id, params.id), eq(events.userId, query.userId))),
+      db.delete(events).where(
+        and(
+          eq(events.id, params.id),
+          // eq(events.userId, query.userId)
+        ),
+      ),
   })
 
   done()

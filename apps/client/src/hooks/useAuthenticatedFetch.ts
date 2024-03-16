@@ -27,8 +27,6 @@ export const useAuthenticatedFetch = <TData, TError = Error>() => {
 
       request.headers = headers
 
-      console.log(new Map(request.headers))
-
       return fetch(getApiUrl(input), request)
         .then(async (response) => {
           const data = (await response.json()) as TData | ErrorResponse
