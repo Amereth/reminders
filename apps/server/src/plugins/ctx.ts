@@ -2,17 +2,19 @@ import { FastifyPluginCallback } from 'fastify'
 import fastifyPlugin from 'fastify-plugin'
 import { User } from '@supabase/supabase-js'
 
-type Ctx = {
+export type Ctx = {
   user: User
 }
 
-export const ctxPlugin: FastifyPluginCallback = fastifyPlugin(
-  (fastify, opts, done) => {
-    fastify.decorateRequest('ctx', {} as Ctx)
+const callback: FastifyPluginCallback = (fastify, opts, done) => {
+  fastify.decorateRequest('ctx', {} as Ctx)
 
-    done()
-  },
-)
+  done()
+}
+
+export const ctxPlugin = fastifyPlugin(callback, {
+  name: 'ctx',
+})
 
 declare module 'fastify' {
   interface FastifyRequest {
