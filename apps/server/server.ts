@@ -7,24 +7,18 @@ import {
 import eventsBot from './src/features/events/bot'
 import cors from '@fastify/cors'
 import cookie from '@fastify/cookie'
-import { supabasePlugin } from './src/plugins/supabase'
-import { ctxPlugin } from './src/plugins/ctx'
-import { userPlugin } from './src/plugins/user'
+import { plugins } from './src/plugins/index'
 
 export const app = Fastify({ logger: true })
 
 app.register(cors, { origin: 'http://localhost:5173' })
-
 app.register(cookie, { hook: 'onRequest' })
 
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 app.withTypeProvider()
 
-app.register(ctxPlugin)
-app.register(supabasePlugin)
-app.register(userPlugin)
-
+plugins.forEach(app.register)
 routes.forEach(app.register)
 
 app.setErrorHandler((error, request, reply) => {

@@ -6,10 +6,10 @@ import {
 import { events, insertEventsSchema, selectEventsSchema } from './schema'
 import z from 'zod'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
-import { db } from '../../lib/db'
 import { pick } from 'remeda'
 import { and, eq } from 'drizzle-orm'
 import crypto from 'crypto'
+import { db } from '@/src/lib/db'
 
 export const eventsRoutes: FastifyPluginCallback<
   FastifyPluginOptions,
