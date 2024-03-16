@@ -7,9 +7,9 @@ import {
 import eventsBot from './src/features/events/bot'
 import cors from '@fastify/cors'
 import cookie from '@fastify/cookie'
-import { supabasePlugin } from './src/plugins/supabase'
-import { ctxPlugin } from './src/plugins/ctx'
-import { userPlugin } from './src/plugins/user'
+import ctxPlugin, { Ctx } from './src/plugins/ctx'
+import supabasePlugin from './src/plugins/supabase'
+import userPlugin from './src/plugins/user'
 
 export const app = Fastify({ logger: true })
 
