@@ -2,7 +2,7 @@ import { FastifyPluginCallback } from 'fastify'
 import fastifyPlugin from 'fastify-plugin'
 import createHttpError from 'http-errors'
 
-const userPlugin: FastifyPluginCallback = (fastify, opts, done) => {
+const callback: FastifyPluginCallback = (fastify, opts, done) => {
   fastify.addHook('preHandler', async (req, reply) => {
     const token = req.headers.authorization?.split(' ')[1]
     if (!token) throw createHttpError(401, 'Unauthorized')
@@ -19,7 +19,7 @@ const userPlugin: FastifyPluginCallback = (fastify, opts, done) => {
   done()
 }
 
-export default fastifyPlugin(userPlugin, {
+export const userPlugin = fastifyPlugin(callback, {
   name: 'user',
   dependencies: ['supabase'],
 })

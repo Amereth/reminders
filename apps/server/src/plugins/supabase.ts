@@ -9,7 +9,7 @@ declare module 'fastify' {
   }
 }
 
-const supabasePlugin: FastifyPluginCallback = (fastify, opts, done) => {
+const callback: FastifyPluginCallback = (fastify, opts, done) => {
   const supabase = createClient(
     env.SUPABASE_PROJECT_URL,
     env.SUPABASE_PUBLIC_KEY,
@@ -20,7 +20,7 @@ const supabasePlugin: FastifyPluginCallback = (fastify, opts, done) => {
   done()
 }
 
-export default fastifyPlugin(supabasePlugin, {
+export const supabasePlugin = fastifyPlugin(callback, {
   name: 'supabase',
   dependencies: ['ctx'],
 })

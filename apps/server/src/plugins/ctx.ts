@@ -6,13 +6,13 @@ export type Ctx = {
   user: User
 }
 
-const ctxPlugin: FastifyPluginCallback = (fastify, opts, done) => {
+const callback: FastifyPluginCallback = (fastify, opts, done) => {
   fastify.decorateRequest('ctx', {} as Ctx)
 
   done()
 }
 
-export default fastifyPlugin(ctxPlugin, {
+export const ctxPlugin = fastifyPlugin(callback, {
   name: 'ctx',
 })
 
