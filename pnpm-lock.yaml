@@ -81,8 +81,8 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1(react@18.2.0)
       remeda:
-        specifier: ^1.47.0
-        version: 1.47.0
+        specifier: ^1.50.1
+        version: 1.50.1
       sonner:
         specifier: ^1.4.3
         version: 1.4.3(react-dom@18.2.0)(react@18.2.0)
@@ -196,8 +196,8 @@ importers:
         specifier: ^3.4.3
         version: 3.4.3
       remeda:
-        specifier: ^1.47.0
-        version: 1.47.0
+        specifier: ^1.50.1
+        version: 1.50.1
       telegraf:
         specifier: ^4.16.3
         version: 4.16.3
@@ -3969,8 +3969,8 @@ packages:
   /regenerator-runtime@0.14.1:
     resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
 
-  /remeda@1.47.0:
-    resolution: {integrity: sha512-NhB81y1itYfqF4AYnZW5nq/ukkVtuWrEmmowkkF6MSjSdjiQpYo0khK/h4mNSWjZX50WZHOU5sX80Bd2mw2RRQ==}
+  /remeda@1.50.1:
+    resolution: {integrity: sha512-FmzxjJ3uD/N3ZF9HLpQDwe7OK9nC1XqrxKnKOlv131dEOfKouyIVJ7/DfXWy0TpKEUWKeCoOLJyoxFCIIQievA==}
     dev: false
 
   /require-directory@2.1.1:
