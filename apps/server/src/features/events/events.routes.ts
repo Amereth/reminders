@@ -3,7 +3,7 @@ import {
   FastifyPluginOptions,
   RawServerDefault,
 } from 'fastify'
-import { events, insertEventsSchema, selectEventsSchema } from './schema'
+import { events, insertEventsSchema, selectEventsSchema } from './events.schema'
 import z from 'zod'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
 import { pick } from 'remeda'
