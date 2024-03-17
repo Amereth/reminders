@@ -22,6 +22,8 @@ export const insertEventsSchema = createInsertSchema(events, {
   createdAt: z.string().datetime().nullable(),
 }).required()
 
+export type InsertEvent = z.infer<typeof insertEventsSchema>
+
 // Schema for selecting a user - can be used to validate API responses
 export const selectEventsSchema = createSelectSchema(events, {
   dueDate: z.date().nullable(),
