@@ -2,14 +2,14 @@ import { relations } from 'drizzle-orm'
 import { pgSchema } from 'drizzle-orm/pg-core'
 import { uuid } from 'drizzle-orm/pg-core'
 import { text } from 'drizzle-orm/pg-core'
-import { pgTable, serial } from 'drizzle-orm/pg-core'
+import { pgTable } from 'drizzle-orm/pg-core'
 import { createSelectSchema } from 'drizzle-zod'
 import z from 'zod'
 
 // references auth schema managed by supabase
 const auth = pgSchema('auth')
 
-const authUsers = auth.table('users', {
+export const authUsers = auth.table('users', {
   id: uuid('id').primaryKey().notNull(),
   email: text('email').notNull(),
 })

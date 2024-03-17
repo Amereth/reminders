@@ -4,10 +4,13 @@ import { pgTable } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import z from 'zod'
 import { uuid } from 'drizzle-orm/pg-core'
+import { authUsers } from '../users/users.schema'
 
 export const events = pgTable('events', {
   id: uuid('id').primaryKey().notNull(),
-  userId: uuid('user_id').notNull(),
+  userId: uuid('user_id')
+    .notNull()
+    .references(() => authUsers.id, { onDelete: 'cascade' }),
   description: text('description').notNull(),
   dueDate: timestamp('due_date'),
   createdAt: timestamp('created_at').notNull().defaultNow(),
