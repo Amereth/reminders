@@ -2,29 +2,16 @@ import { db } from '@/src/lib/db'
 import { and, eq } from 'drizzle-orm'
 import { events, Event, selectEventsSchema, InsertEvent } from './events.schema'
 import { pick } from 'remeda'
+import { Repository } from '@/src/lib/repository'
 
-type EventsRepository = {
-  findAll: (args: { userId: Event['userId'] }) => Promise<Event[]>
+type CreateSchema = Omit<InsertEvent, 'id' | 'createdAt'>
 
-  findById: (args: {
-    userId: Event['userId']
-    id: Event['id']
-  }) => Promise<Event | undefined>
+type UpdateSchema = {
+  id: Event['id']
+  userId: Event['userId']
+} & Partial<Pick<InsertEvent, 'description' | 'dueDate'>>
 
-  create: (args: Omit<InsertEvent, 'id' | 'createdAt'>) => Promise<Event[]>
-
-  update: (
-    args: {
-      id: Event['id']
-      userId: Event['userId']
-    } & Partial<Pick<InsertEvent, 'description' | 'dueDate'>>,
-  ) => Promise<Event[]>
-
-  delete: (args: {
-    userId: Event['userId']
-    id: Event['id']
-  }) => Promise<{ deletedId: string }[]>
-}
+type EventsRepository = Repository<Event, CreateSchema, UpdateSchema>
 
 export const eventsRepository: EventsRepository = {
   async findAll({ userId }) {

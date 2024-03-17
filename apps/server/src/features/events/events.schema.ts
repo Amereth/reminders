@@ -16,6 +16,8 @@ export const events = pgTable('events', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
 })
 
+export type EventsTable = typeof events
+
 // Schema for inserting a user - can be used to validate API requests
 export const insertEventsSchema = createInsertSchema(events, {
   dueDate: z.string().datetime().nullable(),
