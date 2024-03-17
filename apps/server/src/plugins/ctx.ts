@@ -1,9 +1,10 @@
 import { FastifyPluginCallback } from 'fastify'
 import fastifyPlugin from 'fastify-plugin'
-import { User } from '@supabase/supabase-js'
+import { SupabaseClient, User } from '@supabase/supabase-js'
 
 export type Ctx = {
   user: User
+  supabase: SupabaseClient
 }
 
 const callback: FastifyPluginCallback = (fastify, opts, done) => {
