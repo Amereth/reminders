@@ -22,8 +22,6 @@ export const users = pgTable('users', {
   nickname: text('nickname'),
 })
 
-export type UsersTable = typeof users
-
 // Schema for selecting a user - can be used to validate API responses
 export const selectUserSchema = createSelectSchema(users).required()
 
