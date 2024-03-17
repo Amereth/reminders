@@ -10,7 +10,7 @@ export const PageHeader = () => {
   const signOut = () => supabaseClient.auth.signOut()
 
   return (
-    <header className='flex items-center py-2 shadow-md shadow-slate-400 md:py-4'>
+    <header className='flex items-center py-2 md:py-4'>
       {session ? (
         <Button onClick={signOut}>log out</Button>
       ) : (
