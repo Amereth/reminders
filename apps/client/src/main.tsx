@@ -6,6 +6,10 @@ import '../app/globals.css'
 import { validateEnv } from './lib/validateEnv.ts'
 import { Toaster } from './components/ui/sonner.tsx'
 import { Providers } from './lib/providers/index.tsx'
+import dayjs from 'dayjs'
+import localizedFormat from 'dayjs/plugin/localizedFormat'
+
+dayjs.extend(localizedFormat)
 
 validateEnv()
 
