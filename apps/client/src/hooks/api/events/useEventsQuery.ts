@@ -1,6 +1,6 @@
 import { DefaultError } from '@tanstack/react-query'
 import { Event } from '@schemas'
-import { useAuthenticatedQuery } from '../useAuthenticatedQuery'
+import { useAuthenticatedQuery } from '../../useAuthenticatedQuery'
 
 export const eventsQueryKey = ['/events'] as const
 

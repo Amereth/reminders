@@ -6,9 +6,10 @@ import dayjs from 'dayjs'
 
 type EventCardProps = {
   event: Event
+  onDelete: () => void
 }
 
-export const EventCard = ({ event }: EventCardProps) => (
+export const EventCard = ({ event, onDelete }: EventCardProps) => (
   <Card className='bg-slate-800 text-slate-300 max-sm:p-2' key={event.id}>
     <CardHeader className='flex-row'>
       {event.dueDate && (
@@ -21,7 +22,12 @@ export const EventCard = ({ event }: EventCardProps) => (
         <PenIcon />
       </Button>
 
-      <Button size='icon' variant='ghost' className='text-slate-300'>
+      <Button
+        size='icon'
+        variant='ghost'
+        className='text-slate-300'
+        onClick={onDelete}
+      >
         <TrashIcon />
       </Button>
     </CardHeader>
