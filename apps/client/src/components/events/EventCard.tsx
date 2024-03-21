@@ -10,7 +10,7 @@ type EventCardProps = {
 }
 
 export const EventCard = ({ event, onDelete }: EventCardProps) => (
-  <Card className='bg-slate-800 text-slate-300 max-sm:p-2' key={event.id}>
+  <Card className='bg-slate-700 text-slate-300 max-sm:p-2' key={event.id}>
     <CardHeader className='flex-row'>
       {event.dueDate && (
         <div className='text-sm tracking-wider'>

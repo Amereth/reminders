@@ -71,7 +71,11 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground min-h-[100vh] bg-slate-600 text-lg text-slate-300;
+    @apply bg-background text-foreground bg-slate-700 text-lg text-slate-300;
+  }
+
+  #root {
+    @apply flex h-screen flex-col;
   }
 
   main,

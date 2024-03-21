@@ -1,30 +1,83 @@
 import { PageHeader } from '@/components/page-header/PageHeader'
-import { useEventsQuery } from '@/hooks/api/events/useEventsQuery'
-import { createRootRoute } from '@tanstack/react-router'
-import { EventCard } from '@/components/events/EventCard'
-import { useDeleteEventMutation } from '@/hooks/api/events/useDeleteEventMutation'
+import {
+  Link,
+  Outlet,
+  createRootRouteWithContext,
+  redirect,
+} from '@tanstack/react-router'
+import { RouterContext } from '@/App'
+import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+import { Button } from '@/components/ui/button'
+import { QueryErrorResetBoundary } from '@tanstack/react-query'
+import { ErrorBoundary } from 'react-error-boundary'
+import { isNull } from '@/utils/isNull'
+import { useSupabase } from '@/hooks/useSupabase'
+import { isUndefined } from '@/utils/isUndefined'
+import { LoaderCircleIcon } from 'lucide-react'
 
 const RootComponent = () => {
-  const { data } = useEventsQuery()
-  const { mutate } = useDeleteEventMutation()
+  const { session } = useSupabase()
+
+  if (isUndefined(session))
+    return (
+      <div className='grid h-full place-content-center'>
+        <LoaderCircleIcon size={50} className='animate-spin' />
+      </div>
+    )
 
   return (
     <>
-      <PageHeader />
+      <QueryErrorResetBoundary>
+        {({ reset }) => (
+          <ErrorBoundary
+            fallbackRender={({ error, resetErrorBoundary }) => (
+              <div>
+                There was an error!{' '}
+                <Button onClick={() => resetErrorBoundary()}>Try again</Button>
+                <pre style={{ whiteSpace: 'normal' }}>{error.message}</pre>
+              </div>
+            )}
+            onReset={reset}
+          >
+            <PageHeader />
 
-      <main className='grid grid-cols-1 gap-4 py-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-        {data?.map((event) => (
-          <EventCard
-            key={event.id}
-            event={event}
-            onDelete={() => mutate(event.id)}
-          />
-        ))}
-      </main>
+            <main className='flex h-full gap-4'>
+              <nav className='flex flex-col border-r-[1px]'>
+                <ul>
+                  <li>
+                    <Button variant='link' className='text-slate-300'>
+                      <Link to='/events'>events</Link>
+                    </Button>
+                  </li>
+                </ul>
+              </nav>
+
+              <div className='grow'>
+                <Outlet />
+              </div>
+            </main>
+          </ErrorBoundary>
+        )}
+      </QueryErrorResetBoundary>
+
+      <TanStackRouterDevtools position='bottom-left' />
     </>
   )
 }
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext<RouterContext>()({
   component: RootComponent,
+  notFoundComponent() {
+    return <div>Not found on root</div>
+  },
+  beforeLoad: ({ context, location }) => {
+    if (isNull(context.session)) {
+      throw redirect({
+        to: '/login',
+        search: {
+          redirect: location.href,
+        },
+      })
+    }
+  },
 })
