@@ -1,22 +1,21 @@
 import { Session, SupabaseClient, createClient } from '@supabase/supabase-js'
 import {
-  Dispatch,
   PropsWithChildren,
-  SetStateAction,
   createContext,
+  useCallback,
   useEffect,
   useState,
 } from 'react'
 
 type SupabaseContext = {
   supabaseClient: SupabaseClient
-  session: Session | null
-  setSession: Dispatch<SetStateAction<Session | null>>
+  session: Session | null | undefined
+  setSession: (arg: Session | null | undefined) => void
 }
 
 const defaultValue: SupabaseContext = {
   supabaseClient: {} as SupabaseClient,
-  session: null,
+  session: undefined,
   setSession: () => null,
 }
 
@@ -30,7 +29,12 @@ export const SupabaseProvider = ({ children }: PropsWithChildren) => {
     ),
   )
 
-  const [session, setSession] = useState<Session | null>(null)
+  const [session, _setSession] = useState<Session | null | undefined>(undefined)
+
+  const setSession = useCallback(
+    (v: Session | null | undefined) => _setSession(v ? v : null),
+    [_setSession],
+  )
 
   // set session on mount
   useEffect(() => {
