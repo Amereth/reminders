@@ -4,7 +4,7 @@ import { pgTable } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import z from 'zod'
 import { uuid } from 'drizzle-orm/pg-core'
-import { authUsers } from '../users/users.schema'
+import { authUsers } from './users.schema'
 
 export const events = pgTable('events', {
   id: uuid('id').primaryKey().notNull(),
@@ -18,7 +18,15 @@ export const events = pgTable('events', {
 
 // Schema for inserting a user - can be used to validate API requests
 export const insertEventsSchema = createInsertSchema(events, {
-  dueDate: z.string().datetime().nullable(),
+  description: z.string().min(1).max(1000),
+  dueDate: z
+    .string()
+    .datetime()
+    .nullable()
+    .refine((value) => {
+      if (value === null) return true
+      return new Date(value).getTime() > Date.now()
+    }),
   createdAt: z.string().datetime().nullable(),
 }).required()
 

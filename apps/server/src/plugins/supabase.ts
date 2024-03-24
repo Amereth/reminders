@@ -4,8 +4,8 @@ import { env } from '../utils/env'
 import { createClient } from '@supabase/supabase-js'
 import createHttpError from 'http-errors'
 
-const callback: FastifyPluginCallback = (fastify, opts, done) => {
-  fastify.addHook('preHandler', async (req, reply) => {
+const callback: FastifyPluginCallback = (fastify, _opts, done) => {
+  fastify.addHook('preHandler', async (req) => {
     const Authorization = req.headers.authorization
 
     if (!Authorization) throw createHttpError(401, 'Unauthorized')

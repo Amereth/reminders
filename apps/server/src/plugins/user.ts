@@ -2,7 +2,7 @@ import { FastifyPluginCallback } from 'fastify'
 import fastifyPlugin from 'fastify-plugin'
 import createHttpError from 'http-errors'
 
-const callback: FastifyPluginCallback = (fastify, opts, done) => {
+const callback: FastifyPluginCallback = (fastify, _opts, done) => {
   fastify.addHook('preHandler', async (req) => {
     const { data, error } = await req.ctx.supabase.auth.getUser()
 

@@ -24,7 +24,7 @@ export const useAuthenticatedQuery = <
     ? Boolean(session?.access_token && options.enabled)
     : Boolean(session?.access_token)
 
-  return useQuery(
+  return useQuery<TQueryFnData, TError, TData, TQueryKey>(
     {
       ...options,
       enabled,

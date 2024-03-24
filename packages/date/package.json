@@ -1,0 +1,5 @@
+{
+  "name": "@reminders/date",
+  "description": "date constants and utilities",
+  "main": "index.ts"
+}

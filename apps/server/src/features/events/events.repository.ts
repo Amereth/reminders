@@ -1,8 +1,13 @@
-import { db } from '@/src/lib/db'
+import { db } from '@/lib/db'
 import { and, eq } from 'drizzle-orm'
-import { events, Event, selectEventsSchema, InsertEvent } from './events.schema'
+import {
+  events,
+  Event,
+  selectEventsSchema,
+  InsertEvent,
+} from '@reminders/schemas'
 import { pick } from 'remeda'
-import { Repository } from '@/src/lib/repository'
+import { Repository } from '@/lib/repository'
 
 type CreateSchema = Omit<InsertEvent, 'id' | 'createdAt'>
 

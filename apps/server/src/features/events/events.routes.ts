@@ -3,7 +3,7 @@ import {
   FastifyPluginOptions,
   RawServerDefault,
 } from 'fastify'
-import { insertEventsSchema, selectEventsSchema } from './events.schema'
+import { insertEventsSchema, selectEventsSchema } from '@reminders/schemas'
 import z from 'zod'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
 import { eventsRepository } from './events.repository'
@@ -12,7 +12,7 @@ export const eventsRoutes: FastifyPluginCallback<
   FastifyPluginOptions,
   RawServerDefault,
   ZodTypeProvider
-> = (fastify, options, done) => {
+> = (fastify, _options, done) => {
   fastify.get('/events', {
     schema: {
       response: { 200: z.array(selectEventsSchema) },

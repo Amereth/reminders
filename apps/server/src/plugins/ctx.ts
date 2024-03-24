@@ -7,7 +7,7 @@ export type Ctx = {
   supabase: SupabaseClient
 }
 
-const callback: FastifyPluginCallback = (fastify, opts, done) => {
+const callback: FastifyPluginCallback = (fastify, _opts, done) => {
   fastify.decorateRequest('ctx', {} as Ctx)
 
   done()

@@ -1,6 +1,6 @@
 import { useAuthenticatedMutation } from '@/hooks/useAuthenticatedMutation'
 import { useQueryClient } from '@tanstack/react-query'
-import { Event } from '@schemas'
+import { Event } from '@reminders/schemas'
 import { eventsQueryKey } from './useEventsQuery'
 import { toast } from 'sonner'
 
