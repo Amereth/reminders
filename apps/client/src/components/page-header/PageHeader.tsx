@@ -1,8 +1,8 @@
-import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog'
+import { Dialog, DialogContent, DialogTrigger } from '@ui/dialog'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
-import { Button } from '../ui/button'
-import { useSupabase } from '@/hooks/useSupabase'
+import { Button } from '@ui/button'
+import { useSupabase } from '@hooks/useSupabase'
 
 export const PageHeader = () => {
   const { supabaseClient, session } = useSupabase()

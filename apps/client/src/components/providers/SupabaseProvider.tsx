@@ -51,6 +51,8 @@ export const SupabaseProvider = ({ children }: PropsWithChildren) => {
     return () => subscription.unsubscribe()
   }, [supabaseClient.auth, setSession])
 
+  if (!supabaseClient) return null
+
   return (
     <SupabaseContext.Provider
       value={{
