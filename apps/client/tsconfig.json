@@ -7,9 +7,10 @@
       "@/*": ["src/*"],
       "@lib/*": ["src/lib/*"],
       "@utils/*": ["src/utils/*"],
+      "@ui/*": ["src/components/ui/*"],
+      "@api/*": ["src/hooks/api/*"],
       "@components/*": ["src/components/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@ui/*": ["src/components/ui/*"]
+      "@hooks/*": ["src/hooks/*"]
     }
   },
   "include": ["src", "vite.config.ts"]

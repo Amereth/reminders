@@ -1,19 +1,19 @@
-import { PageHeader } from '@/components/page-header/PageHeader'
+import { PageHeader } from '@components/page-header/PageHeader'
+import { useSupabase } from '@hooks/useSupabase'
+import { QueryErrorResetBoundary } from '@tanstack/react-query'
 import {
   Link,
   Outlet,
   createRootRouteWithContext,
   redirect,
 } from '@tanstack/react-router'
-import { RouterContext } from '@/App'
-import { TanStackRouterDevtools } from '@tanstack/router-devtools'
-import { Button } from '@/components/ui/button'
-import { QueryErrorResetBoundary } from '@tanstack/react-query'
-import { ErrorBoundary } from 'react-error-boundary'
-import { isNull } from '@/utils/isNull'
-import { useSupabase } from '@/hooks/useSupabase'
-import { isUndefined } from '@/utils/isUndefined'
+import { isNull } from '@utils/isNull'
+import { isUndefined } from '@utils/isUndefined'
 import { LoaderCircleIcon } from 'lucide-react'
+import { RouterContext } from 'src/App'
+import { ErrorBoundary } from 'react-error-boundary'
+import { Button } from '@ui/button'
+import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 
 const RootComponent = () => {
   const { session } = useSupabase()

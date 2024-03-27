@@ -1,1 +1,1 @@
-export const weekday_date_time = 'ddd, MMM D, YYYY HH:mm'
+export const weekday_date_time = 'EEE, d LLL yyyy, HH:mm'

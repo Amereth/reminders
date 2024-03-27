@@ -1,7 +1,7 @@
 import { RouterProvider, createRouter } from '@tanstack/react-router'
-import { useSupabase } from './hooks/useSupabase'
 import { routeTree } from './routeTree.gen'
 import { Session } from '@supabase/supabase-js'
+import { useSupabase } from '@hooks/useSupabase'
 
 const router = createRouter({
   routeTree,

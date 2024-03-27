@@ -1,6 +1,6 @@
-import { useSupabase } from '@/hooks/useSupabase'
-import { isNull } from '@/utils/isNull'
+import { useSupabase } from '@hooks/useSupabase'
 import { createFileRoute, redirect } from '@tanstack/react-router'
+import { isNull } from '@utils/isNull'
 
 const LoginComponent = () => {
   const { session } = useSupabase()

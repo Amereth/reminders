@@ -26,6 +26,9 @@ importers:
 
   apps/client:
     dependencies:
+      '@formkit/auto-animate':
+        specifier: ^0.8.1
+        version: 0.8.1
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.3.4(react-hook-form@7.51.2)
@@ -77,9 +80,6 @@ importers:
       date-fns:
         specifier: ^3.6.0
         version: 3.6.0
-      dayjs:
-        specifier: ^1.11.10
-        version: 1.11.10
       input-otp:
         specifier: ^1.2.3
         version: 1.2.3(react-dom@18.2.0)(react@18.2.0)
@@ -1002,6 +1002,10 @@ packages:
 
   /@floating-ui/utils@0.2.1:
     resolution: {integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==}
+    dev: false
+
+  /@formkit/auto-animate@0.8.1:
+    resolution: {integrity: sha512-0/Z2cuNXWVVIG/l0SpcHAWFhGdvLJ8DRvEfRWvmojtmRWfEy+LWNwgDazbZqY0qQYtkHcoEK3jBLkhiZaB/4Ig==}
     dev: false
 
   /@hookform/resolvers@3.3.4(react-hook-form@7.51.1):
@@ -2532,10 +2536,6 @@ packages:
 
   /date-fns@3.6.0:
     resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
-    dev: false
-
-  /dayjs@1.11.10:
-    resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
     dev: false
 
   /debug@4.3.4:

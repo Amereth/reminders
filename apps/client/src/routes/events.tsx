@@ -1,21 +1,51 @@
-import { useEventsQuery } from '@/hooks/api/events/useEventsQuery'
+import { EventCard } from '@components/events/EventCard'
+import { EventForm } from '@components/events/EventForm'
+import { useDeleteEventMutation } from '@api/events/useDeleteEventMutation'
+import { useEventsQuery } from '@api/events/useEventsQuery'
 import { createFileRoute } from '@tanstack/react-router'
-import { EventCard } from '@/components/events/EventCard'
-import { useDeleteEventMutation } from '@/hooks/api/events/useDeleteEventMutation'
+import { Button } from '@ui/button'
+import { PlusIcon } from 'lucide-react'
+import { useState } from 'react'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { useCreateEventMutation } from '@api/events/useCreateEventMutation'
 
 const EventsList = () => {
   const { data } = useEventsQuery()
-  const { mutate } = useDeleteEventMutation()
+  const { mutate: createEvent } = useCreateEventMutation()
+  const { mutate: deleteEvent } = useDeleteEventMutation()
+
+  const [formVisible, setFormVisible] = useState(false)
+
+  const [parent] = useAutoAnimate()
 
   return (
-    <div className='grid auto-rows-min grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-      {data?.map((event) => (
-        <EventCard
-          key={event.id}
-          event={event}
-          onDelete={() => mutate(event.id)}
-        />
-      ))}
+    <div ref={parent}>
+      <Button
+        size='icon'
+        className='rounded-full'
+        onClick={() => setFormVisible((v) => !v)}
+      >
+        <PlusIcon />
+      </Button>
+
+      <EventForm
+        formVisible={formVisible}
+        className='mt-4'
+        onSubmit={(data) => {
+          createEvent(data)
+          setFormVisible(false)
+        }}
+      />
+
+      <div className='mt-4 grid auto-rows-min grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3'>
+        {data?.map((event) => (
+          <EventCard
+            key={event.id}
+            event={event}
+            onDelete={() => deleteEvent(event.id)}
+          />
+        ))}
+      </div>
     </div>
   )
 }

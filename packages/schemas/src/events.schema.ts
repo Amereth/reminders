@@ -26,7 +26,8 @@ export const insertEventsSchema = createInsertSchema(events, {
     .refine((value) => {
       if (value === null) return true
       return new Date(value).getTime() > Date.now()
-    }),
+    })
+    .optional(),
   createdAt: z.string().datetime().nullable(),
 }).required()
 
