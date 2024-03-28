@@ -3,7 +3,7 @@
   "description": "database schemas",
   "main": "index.ts",
   "dependencies": {
-    "drizzle-orm": "^0.30.4",
+    "drizzle-orm": "^0.30.5",
     "drizzle-zod": "^0.5.1",
     "zod": "^3.22.4"
   }
