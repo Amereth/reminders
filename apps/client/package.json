@@ -45,9 +45,9 @@
   },
   "devDependencies": {
     "@tanstack/react-query-devtools": "^5.28.10",
-    "@tanstack/router-devtools": "^1.23.1",
-    "@tanstack/router-vite-plugin": "^1.24.1",
-    "@types/react": "^18.2.70",
+    "@tanstack/router-devtools": "^1.24.0",
+    "@tanstack/router-vite-plugin": "^1.23.0",
+    "@types/react": "^18.2.73",
     "@types/react-dom": "^18.2.23",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
@@ -57,7 +57,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.3",
     "vite": "^5.2.7"
   }
 }
