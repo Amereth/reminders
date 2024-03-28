@@ -50,6 +50,6 @@ const EventsList = () => {
   )
 }
 
-export const Route = createFileRoute('/events')({
+export const Route = createFileRoute('/_layout/events')({
   component: EventsList,
 })

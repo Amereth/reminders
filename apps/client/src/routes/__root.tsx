@@ -1,13 +1,6 @@
-import { PageHeader } from '@components/page-header/PageHeader'
 import { useSupabase } from '@hooks/useSupabase'
 import { QueryErrorResetBoundary } from '@tanstack/react-query'
-import {
-  Link,
-  Outlet,
-  createRootRouteWithContext,
-  redirect,
-} from '@tanstack/react-router'
-import { isNull } from '@utils/isNull'
+import { Outlet, createRootRouteWithContext } from '@tanstack/react-router'
 import { isUndefined } from '@utils/isUndefined'
 import { LoaderCircleIcon } from 'lucide-react'
 import { RouterContext } from 'src/App'
@@ -39,23 +32,7 @@ const RootComponent = () => {
             )}
             onReset={reset}
           >
-            <PageHeader />
-
-            <main className='flex h-full gap-4'>
-              <nav className='flex flex-col border-r-[1px]'>
-                <ul>
-                  <li>
-                    <Button variant='link' className='text-slate-300'>
-                      <Link to='/events'>events</Link>
-                    </Button>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className='grow'>
-                <Outlet />
-              </div>
-            </main>
+            <Outlet />
           </ErrorBoundary>
         )}
       </QueryErrorResetBoundary>
@@ -69,15 +46,5 @@ export const Route = createRootRouteWithContext<RouterContext>()({
   component: RootComponent,
   notFoundComponent() {
     return <div>Not found on root</div>
-  },
-  beforeLoad: ({ context, location }) => {
-    if (isNull(context.session)) {
-      throw redirect({
-        to: '/login',
-        search: {
-          redirect: location.href,
-        },
-      })
-    }
   },
 })

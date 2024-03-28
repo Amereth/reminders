@@ -3,11 +3,16 @@ import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { Button } from '@ui/button'
 import { useSupabase } from '@hooks/useSupabase'
+import { useNavigate } from '@tanstack/react-router'
 
 export const PageHeader = () => {
+  const navigate = useNavigate()
   const { supabaseClient, session } = useSupabase()
 
-  const signOut = () => supabaseClient.auth.signOut()
+  const signOut = () => {
+    supabaseClient.auth.signOut()
+    navigate({ to: '/login' })
+  }
 
   return (
     <header className='flex items-center py-2 md:py-4'>

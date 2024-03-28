@@ -1,4 +1,6 @@
+import { isUndefined } from '@/utils/isUndefined'
 import { Session, SupabaseClient, createClient } from '@supabase/supabase-js'
+import { LoaderIcon } from 'lucide-react'
 import {
   PropsWithChildren,
   createContext,
@@ -32,7 +34,7 @@ export const SupabaseProvider = ({ children }: PropsWithChildren) => {
   const [session, _setSession] = useState<Session | null | undefined>(undefined)
 
   const setSession = useCallback(
-    (v: Session | null | undefined) => _setSession(v ? v : null),
+    (s: Session | null | undefined) => _setSession(s ?? null),
     [_setSession],
   )
 
@@ -52,6 +54,12 @@ export const SupabaseProvider = ({ children }: PropsWithChildren) => {
   }, [supabaseClient.auth, setSession])
 
   if (!supabaseClient) return null
+  if (isUndefined(session))
+    return (
+      <div className='grid h-full place-content-center'>
+        <LoaderIcon className='animate-spin' />
+      </div>
+    )
 
   return (
     <SupabaseContext.Provider

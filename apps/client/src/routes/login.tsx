@@ -1,17 +1,28 @@
 import { useSupabase } from '@hooks/useSupabase'
-import { createFileRoute, redirect } from '@tanstack/react-router'
-import { isNull } from '@utils/isNull'
+import { Auth } from '@supabase/auth-ui-react'
+import { ThemeSupa } from '@supabase/auth-ui-shared'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { useEffect } from 'react'
 
 const LoginComponent = () => {
-  const { session } = useSupabase()
+  const navigate = useNavigate()
+  const { supabaseClient, session } = useSupabase()
 
-  console.log('login page')
+  useEffect(() => {
+    if (session) navigate({ to: '/' })
+  }, [navigate, session])
 
-  if (isNull(session)) {
-    redirect({ to: '/' })
-  }
-
-  return <div>Hello /login!</div>
+  return (
+    <div className='flex h-full items-center justify-center'>
+      <div className='max-w-[400px] grow'>
+        <Auth
+          supabaseClient={supabaseClient}
+          appearance={{ theme: ThemeSupa }}
+          providers={[]}
+        />
+      </div>
+    </div>
+  )
 }
 
 export const Route = createFileRoute('/login')({
