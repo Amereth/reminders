@@ -1,6 +1,18 @@
 import { PageHeader } from '@/components/page-header/PageHeader'
 import { Button } from '@/components/ui/button'
 import { Link, Outlet, createFileRoute, redirect } from '@tanstack/react-router'
+import { HomeIcon, ScrollIcon } from 'lucide-react'
+
+const links = [
+  {
+    Icon: HomeIcon,
+    to: '/',
+  },
+  {
+    Icon: ScrollIcon,
+    to: '/events',
+  },
+]
 
 export const LayoutComponent = () => {
   return (
@@ -10,11 +22,18 @@ export const LayoutComponent = () => {
       <main className='flex h-full gap-4'>
         <nav className='flex flex-col border-r-[1px]'>
           <ul>
-            <li>
-              <Button variant='link' className='text-slate-300'>
-                <Link to='/events'>events</Link>
-              </Button>
-            </li>
+            {links.map(({ to, Icon }) => (
+              <li>
+                <Button
+                  variant='link'
+                  className='hover:text-primary text-slate-300'
+                >
+                  <Link to={to}>
+                    <Icon />
+                  </Link>
+                </Button>
+              </li>
+            ))}
           </ul>
         </nav>
 

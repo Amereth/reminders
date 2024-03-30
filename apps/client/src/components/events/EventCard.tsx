@@ -19,15 +19,18 @@ export const EventCard = ({ event, onDelete }: EventCardProps) => (
         </div>
       )}
 
-      <Button size='icon' variant='ghost' className='ml-auto text-slate-300'>
+      <Button
+        size='icon'
+        variant='link'
+        className='hover:text-primary ml-auto text-slate-300'
+      >
         <PenIcon />
       </Button>
 
       <Button
         size='icon'
-        variant='ghost'
-        color=''
-        className='text-slate-300'
+        variant='link'
+        className='hover:text-primary text-slate-300'
         onClick={onDelete}
       >
         <TrashIcon />

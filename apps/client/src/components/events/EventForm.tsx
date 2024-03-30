@@ -136,7 +136,7 @@ export const EventForm = ({
 
         <div className='mt-4 flex gap-4'>
           <Button type='submit'>submit</Button>
-          <Button type='reset' variant='destructive'>
+          <Button type='reset' variant='secondary'>
             cancel
           </Button>
         </div>
