@@ -8,7 +8,7 @@ export const useCreateEventMutation = () => {
   const queryClient = useQueryClient()
 
   return useAuthenticatedMutation<
-    Event,
+    Event[],
     Pick<InsertEvent, 'description' | 'dueDate'>,
     Event[]
   >(
@@ -34,7 +34,7 @@ export const useCreateEventMutation = () => {
       onSuccess(data, _variables, context) {
         toast.success('event created')
 
-        queryClient.setQueryData(eventsQueryKey, [data, ...context])
+        queryClient.setQueryData(eventsQueryKey, [...data, ...context])
       },
 
       onError: (error, _, context) => {

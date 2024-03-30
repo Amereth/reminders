@@ -1,4 +1,4 @@
-import { User } from '../schema'
+import { User } from '@reminders/schemas'
 
 interface WithUserId {
   userId: User['id']
