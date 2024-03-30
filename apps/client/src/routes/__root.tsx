@@ -2,21 +2,16 @@ import { useSupabase } from '@hooks/useSupabase'
 import { QueryErrorResetBoundary } from '@tanstack/react-query'
 import { Outlet, createRootRouteWithContext } from '@tanstack/react-router'
 import { isUndefined } from '@utils/isUndefined'
-import { LoaderCircleIcon } from 'lucide-react'
 import { RouterContext } from 'src/App'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Button } from '@ui/button'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+import { Loader } from '@/components/Loader'
 
 const RootComponent = () => {
   const { session } = useSupabase()
 
-  if (isUndefined(session))
-    return (
-      <div className='grid h-full place-content-center'>
-        <LoaderCircleIcon size={50} className='animate-spin' />
-      </div>
-    )
+  if (isUndefined(session)) return <Loader />
 
   return (
     <>

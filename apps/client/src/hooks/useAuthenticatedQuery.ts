@@ -3,14 +3,11 @@ import {
   QueryClient,
   QueryKey,
   UndefinedInitialDataOptions,
+  UseSuspenseQueryOptions,
   queryOptions,
-  useQuery,
+  useSuspenseQuery,
 } from '@tanstack/react-query'
-import { useSupabase } from './useSupabase'
-import {
-  authenticatedFetch,
-  useAuthenticatedFetch,
-} from './useAuthenticatedFetch'
+import { authenticatedFetch } from '@lib/authenticatedFetch'
 
 export const authQueryOptions = <
   TQueryFnData = unknown,
@@ -22,7 +19,8 @@ export const authQueryOptions = <
 ) =>
   queryOptions<TQueryFnData, TError, TData, TQueryKey>({
     ...options,
-    queryFn: () => authenticatedFetch(options.queryKey[0] as string),
+    queryFn: () =>
+      authenticatedFetch<TQueryFnData, TError>(options.queryKey[0] as string),
   })
 
 export const useAuthenticatedQuery = <
@@ -31,23 +29,17 @@ export const useAuthenticatedQuery = <
   TData = TQueryFnData,
   TQueryKey extends QueryKey = QueryKey,
 >(
-  options: UndefinedInitialDataOptions<TQueryFnData, TError, TData, TQueryKey>,
+  options: UseSuspenseQueryOptions<TQueryFnData, TError, TData, TQueryKey>,
   queryClient?: QueryClient,
-) => {
-  const fetch = useAuthenticatedFetch<TQueryFnData, TError>()
-  const { session } = useSupabase()
-
-  const enabled = options.enabled
-    ? Boolean(session?.access_token && options.enabled)
-    : Boolean(session?.access_token)
-
-  return useQuery<TQueryFnData, TError, TData, TQueryKey>(
+) =>
+  useSuspenseQuery<TQueryFnData, TError, TData, TQueryKey>(
     {
       ...options,
-      enabled,
       queryFn: (request?: RequestInit) =>
-        fetch(options.queryKey[0] as string, request),
+        authenticatedFetch<TQueryFnData, TError>(
+          options.queryKey[0] as string,
+          request,
+        ),
     },
     queryClient,
   )
-}

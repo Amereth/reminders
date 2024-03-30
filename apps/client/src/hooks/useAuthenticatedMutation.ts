@@ -5,7 +5,7 @@ import {
   useMutation,
 } from '@tanstack/react-query'
 import { useSupabase } from './useSupabase'
-import { useAuthenticatedFetch } from './useAuthenticatedFetch'
+import { authenticatedFetch } from '../lib/authenticatedFetch'
 
 export const useAuthenticatedMutation = <
   TData = unknown,
@@ -16,7 +16,6 @@ export const useAuthenticatedMutation = <
   request?: RequestInit,
   queryClient?: QueryClient,
 ) => {
-  const fetch = useAuthenticatedFetch<TData, DefaultError>()
   const { session } = useSupabase()
 
   return useMutation<TData, DefaultError, TVariables, TContext>(
@@ -25,10 +24,13 @@ export const useAuthenticatedMutation = <
       mutationFn: (variables) => {
         if (!session) throw new Error('No session found')
 
-        return fetch(options.mutationKey?.[0] as string, {
-          ...request,
-          body: JSON.stringify(variables),
-        })
+        return authenticatedFetch<TData, DefaultError>(
+          options.mutationKey?.[0] as string,
+          {
+            ...request,
+            body: JSON.stringify(variables),
+          },
+        )
       },
     },
     queryClient,

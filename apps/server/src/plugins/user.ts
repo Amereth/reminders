@@ -6,7 +6,8 @@ const callback: FastifyPluginCallback = (fastify, _opts, done) => {
   fastify.addHook('preHandler', async (req) => {
     const { data, error } = await req.ctx.supabase.auth.getUser()
 
-    if (error) throw createHttpError(error.status ?? 401, error.message)
+    if (error)
+      throw createHttpError(error.code ? +error.code : 401, error.message)
 
     req.ctx.user = data.user
   })

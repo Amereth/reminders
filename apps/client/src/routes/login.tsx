@@ -1,4 +1,4 @@
-import { supabaseClient } from '@/lib/supabase'
+import { supabaseClient } from '@lib/supabase'
 import { useSupabase } from '@hooks/useSupabase'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
