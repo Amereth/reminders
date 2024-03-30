@@ -1,3 +1,4 @@
+import { supabaseClient } from '@/lib/supabase'
 import { useSupabase } from '@hooks/useSupabase'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
@@ -6,7 +7,7 @@ import { useEffect } from 'react'
 
 const LoginComponent = () => {
   const navigate = useNavigate()
-  const { supabaseClient, session } = useSupabase()
+  const { session } = useSupabase()
 
   useEffect(() => {
     if (session) navigate({ to: '/' })

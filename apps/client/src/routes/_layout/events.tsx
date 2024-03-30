@@ -1,13 +1,14 @@
 import { EventCard } from '@components/events/EventCard'
 import { EventForm } from '@components/events/EventForm'
 import { useDeleteEventMutation } from '@api/events/useDeleteEventMutation'
-import { useEventsQuery } from '@api/events/useEventsQuery'
+import { eventsQueryOptions, useEventsQuery } from '@api/events/useEventsQuery'
 import { createFileRoute } from '@tanstack/react-router'
 import { Button } from '@ui/button'
 import { PlusIcon } from 'lucide-react'
 import { useState } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { useCreateEventMutation } from '@api/events/useCreateEventMutation'
+import { queryClient } from '@/lib/query'
 
 const EventsList = () => {
   const { data } = useEventsQuery()
@@ -52,4 +53,5 @@ const EventsList = () => {
 
 export const Route = createFileRoute('/_layout/events')({
   component: EventsList,
+  loader: () => queryClient.ensureQueryData(eventsQueryOptions),
 })

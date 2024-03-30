@@ -4,10 +4,11 @@ import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { Button } from '@ui/button'
 import { useSupabase } from '@hooks/useSupabase'
 import { useNavigate } from '@tanstack/react-router'
+import { supabaseClient } from '@/lib/supabase'
 
 export const PageHeader = () => {
   const navigate = useNavigate()
-  const { supabaseClient, session } = useSupabase()
+  const { session } = useSupabase()
 
   const signOut = () => {
     supabaseClient.auth.signOut()
