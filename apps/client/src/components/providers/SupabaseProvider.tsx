@@ -23,6 +23,12 @@ const defaultValue: SupabaseContext = {
 export const SupabaseContext = createContext<SupabaseContext>(defaultValue)
 
 export const SupabaseProvider = ({ children }: PropsWithChildren) => {
+  const [loading, setLoading] = useState(true)
+  // show 0.3s loader instead of flickering
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 300)
+  }, [])
+
   const [session, _setSession] = useState<Session | null | undefined>(undefined)
 
   const setSession = useCallback(
@@ -45,7 +51,7 @@ export const SupabaseProvider = ({ children }: PropsWithChildren) => {
     return () => subscription.unsubscribe()
   }, [setSession])
 
-  if (isUndefined(session)) return <Loader />
+  if (loading || isUndefined(session)) return <Loader />
 
   return (
     <SupabaseContext.Provider
