@@ -85,7 +85,10 @@ export const EventForm = ({
                         {field.value && (
                           <span>{format(field.value, weekday_date_time)}</span>
                         )}
-                        <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+                        <CalendarIcon
+                          strokeWidth={1.5}
+                          className='ml-auto h-4 w-4'
+                        />
                       </Button>
                     </FormControl>
                   </PopoverTrigger>

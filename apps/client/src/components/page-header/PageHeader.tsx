@@ -18,11 +18,13 @@ export const PageHeader = () => {
   return (
     <header className='flex items-center py-2 md:py-4'>
       {session ? (
-        <Button onClick={signOut}>log out</Button>
+        <Button onClick={signOut} variant='outline'>
+          log out
+        </Button>
       ) : (
         <Dialog>
           <DialogTrigger asChild>
-            <Button>login</Button>
+            <Button variant='ghost'>login</Button>
           </DialogTrigger>
 
           <DialogContent className='sm:max-w-[425px]'>

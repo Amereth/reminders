@@ -26,10 +26,10 @@ const EventsList = () => {
     <div ref={parent}>
       <Button
         size='icon'
-        className='rounded-full'
+        variant='outline'
         onClick={() => setFormVisible((v) => !v)}
       >
-        <PlusIcon />
+        <PlusIcon strokeWidth={1.5} />
       </Button>
 
       <EventForm

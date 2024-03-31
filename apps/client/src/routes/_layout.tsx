@@ -6,10 +6,12 @@ import { HomeIcon, ScrollIcon } from 'lucide-react'
 const links = [
   {
     Icon: HomeIcon,
+    name: 'home',
     to: '/',
   },
   {
     Icon: ScrollIcon,
+    name: 'events',
     to: '/events',
   },
 ]
@@ -19,17 +21,15 @@ export const LayoutComponent = () => {
     <>
       <PageHeader />
 
-      <main className='flex h-full gap-4'>
-        <nav className='flex flex-col border-r-[1px]'>
+      <main className='flex h-full gap-4 pl-0'>
+        <nav className='flex max-w-[56px] flex-col overflow-hidden border-r-[1px] transition-all duration-500 hover:max-w-40'>
           <ul>
-            {links.map(({ to, Icon }) => (
-              <li>
-                <Button
-                  variant='link'
-                  className='hover:text-primary text-slate-300'
-                >
-                  <Link to={to}>
-                    <Icon />
+            {links.map(({ to, Icon, name }) => (
+              <li key={to}>
+                <Button variant='link'>
+                  <Link to={to} className='flex items-end gap-4'>
+                    <Icon strokeWidth={1.5} />
+                    <span>{name}</span>
                   </Link>
                 </Button>
               </li>

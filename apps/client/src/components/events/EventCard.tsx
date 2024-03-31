@@ -11,7 +11,7 @@ type EventCardProps = {
 }
 
 export const EventCard = ({ event, onDelete }: EventCardProps) => (
-  <Card className='bg-slate-700 text-slate-300 max-sm:p-2' key={event.id}>
+  <Card className='bg-slate-800 max-sm:p-2' key={event.id}>
     <CardHeader className='flex-row'>
       {event.dueDate && (
         <div className='text-sm tracking-wider'>
@@ -19,21 +19,17 @@ export const EventCard = ({ event, onDelete }: EventCardProps) => (
         </div>
       )}
 
-      <Button
-        size='icon'
-        variant='link'
-        className='hover:text-primary ml-auto text-slate-300'
-      >
-        <PenIcon />
+      <Button size='icon' variant='link' className='ml-auto'>
+        <PenIcon strokeWidth={1.5} />
       </Button>
 
       <Button
         size='icon'
         variant='link'
-        className='hover:text-primary text-slate-300'
+        className='hover:text-destructive'
         onClick={onDelete}
       >
-        <TrashIcon />
+        <TrashIcon strokeWidth={1.5} />
       </Button>
     </CardHeader>
 
