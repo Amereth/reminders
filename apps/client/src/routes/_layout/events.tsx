@@ -35,10 +35,8 @@ const EventsList = () => {
       <EventForm
         formVisible={formVisible}
         className='mt-4'
-        onSubmit={(data) => {
-          createEvent(data)
-          setFormVisible(false)
-        }}
+        onSubmit={createEvent}
+        onClose={() => setFormVisible(false)}
       />
 
       <div className='mt-2 grid auto-rows-min grid-cols-1 gap-2 md:mt-4 md:gap-4 lg:grid-cols-2 xl:grid-cols-3'>

@@ -30,12 +30,14 @@ type FormModel = z.infer<typeof formModel>
 type EventFormProps = {
   formVisible: boolean
   onSubmit: (data: Pick<InsertEvent, 'description' | 'dueDate'>) => void
+  onClose: () => void
   className?: string
 }
 
 export const EventForm = ({
   formVisible,
   onSubmit: _onSubmit,
+  onClose,
   className,
 }: EventFormProps) => {
   const form = useForm<FormModel>({ resolver: zodResolver(formModel) })
@@ -138,8 +140,17 @@ export const EventForm = ({
         />
 
         <div className='mt-4 flex gap-4'>
-          <Button type='submit'>submit</Button>
-          <Button type='reset' variant='secondary'>
+          <Button type='submit' variant='outline'>
+            submit
+          </Button>
+          <Button
+            type='reset'
+            variant='outline-destructive'
+            onClick={() => {
+              form.reset()
+              onClose()
+            }}
+          >
             cancel
           </Button>
         </div>
