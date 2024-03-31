@@ -21,7 +21,7 @@ export const LayoutComponent = () => {
     <>
       <PageHeader />
 
-      <main className='flex h-full gap-4 pl-0'>
+      <main className='mt-2 flex h-full gap-4 pl-0 md:mt-4'>
         <nav className='flex max-w-[56px] flex-col overflow-hidden border-r-[1px] transition-all duration-500 hover:max-w-40'>
           <ul>
             {links.map(({ to, Icon, name }) => (

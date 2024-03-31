@@ -16,26 +16,30 @@ export const PageHeader = () => {
   }
 
   return (
-    <header className='flex items-center py-2 md:py-4'>
-      {session ? (
-        <Button onClick={signOut} variant='outline'>
-          log out
-        </Button>
-      ) : (
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant='ghost'>login</Button>
-          </DialogTrigger>
+    <header className='flex flex-col'>
+      <div className='flex items-center py-2 md:py-4'>
+        {session ? (
+          <Button onClick={signOut} variant='outline'>
+            log out
+          </Button>
+        ) : (
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant='ghost'>login</Button>
+            </DialogTrigger>
 
-          <DialogContent className='sm:max-w-[425px]'>
-            <Auth
-              supabaseClient={supabaseClient}
-              appearance={{ theme: ThemeSupa }}
-              providers={[]}
-            />
-          </DialogContent>
-        </Dialog>
-      )}
+            <DialogContent className='sm:max-w-[425px]'>
+              <Auth
+                supabaseClient={supabaseClient}
+                appearance={{ theme: ThemeSupa }}
+                providers={[]}
+              />
+            </DialogContent>
+          </Dialog>
+        )}
+      </div>
+
+      <div className='bg-primary h-[1px]'></div>
     </header>
   )
 }
