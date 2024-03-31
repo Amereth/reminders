@@ -7,7 +7,7 @@ import {
 } from '@api/events'
 import { createFileRoute } from '@tanstack/react-router'
 import { Button } from '@ui/button'
-import { PlusIcon } from 'lucide-react'
+import { PlusIcon, MinusIcon } from 'lucide-react'
 import { useState } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { Loader } from '@/components/Loader'
@@ -29,7 +29,11 @@ const EventsList = () => {
         variant='outline'
         onClick={() => setFormVisible((v) => !v)}
       >
-        <PlusIcon strokeWidth={1.5} />
+        {formVisible ? (
+          <MinusIcon strokeWidth={1.5} />
+        ) : (
+          <PlusIcon strokeWidth={1.5} />
+        )}
       </Button>
 
       <EventForm
@@ -39,7 +43,7 @@ const EventsList = () => {
         onClose={() => setFormVisible(false)}
       />
 
-      <div className='mt-2 grid auto-rows-min grid-cols-1 gap-2 md:mt-4 md:gap-4 lg:grid-cols-2 xl:grid-cols-3'>
+      <div className='mt-4 grid auto-rows-min grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3'>
         {data.map((event) => (
           <EventCard
             key={event.id}

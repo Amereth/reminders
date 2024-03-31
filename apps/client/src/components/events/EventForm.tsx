@@ -61,10 +61,7 @@ export const EventForm = ({
   return (
     <Form {...form}>
       <form
-        className={cn(
-          className,
-          'rounded-xl border-[1px] border-slate-300 p-4',
-        )}
+        className={cn(className, 'rounded-md border-[1px] p-4')}
         onSubmit={onSubmit}
       >
         <div className='flex items-start gap-4'>

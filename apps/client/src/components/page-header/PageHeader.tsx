@@ -17,7 +17,7 @@ export const PageHeader = () => {
 
   return (
     <header className='flex flex-col'>
-      <div className='flex items-center py-2 md:py-4'>
+      <div className='flex items-center py-4'>
         {session ? (
           <Button onClick={signOut} variant='outline'>
             log out
