@@ -41,7 +41,7 @@ const EventsList = () => {
         }}
       />
 
-      <div className='mt-4 grid auto-rows-min grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3'>
+      <div className='mt-2 grid auto-rows-min grid-cols-1 gap-2 md:mt-4 md:gap-4 lg:grid-cols-2 xl:grid-cols-3'>
         {data.map((event) => (
           <EventCard
             key={event.id}
