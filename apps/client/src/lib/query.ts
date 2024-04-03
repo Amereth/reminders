@@ -11,21 +11,9 @@ export const queryClient = new QueryClient({
   },
 })
 
-const localStoragePersister = createSyncStoragePersister({
-  storage: window.localStorage,
-})
-
-persistQueryClient({
-  queryClient,
-  persister: localStoragePersister,
-})
-
 persistQueryClient({
   queryClient,
   persister: createSyncStoragePersister({
     storage: window.localStorage,
-    serialize: JSON.stringify,
-    deserialize: JSON.parse,
   }),
-  maxAge: Infinity,
 })
