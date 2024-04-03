@@ -39,7 +39,7 @@
     "fastify-type-provider-zod": "^1.1.9",
     "http-errors": "^2.0.0",
     "jsonwebtoken": "^9.0.2",
-    "pg": "^8.11.4",
+    "pg": "^8.11.5",
     "postgres": "^3.4.4",
     "remeda": "^1.56.0",
     "telegraf": "^4.16.3",
