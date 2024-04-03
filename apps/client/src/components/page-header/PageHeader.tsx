@@ -5,13 +5,20 @@ import { Button } from '@ui/button'
 import { useSupabase } from '@hooks/useSupabase'
 import { useNavigate } from '@tanstack/react-router'
 import { supabaseClient } from '@/lib/supabase'
+import { toast } from 'sonner'
 
 export const PageHeader = () => {
   const navigate = useNavigate()
   const { session } = useSupabase()
 
-  const signOut = () => {
-    supabaseClient.auth.signOut()
+  const signOut = async () => {
+    const { error } = await supabaseClient.auth.signOut()
+
+    if (error) {
+      toast.error(error.message)
+      return
+    }
+
     navigate({ to: '/login' })
   }
 
@@ -39,7 +46,7 @@ export const PageHeader = () => {
         )}
       </div>
 
-      <div className='bg-primary h-[1px]'></div>
+      <div className='bg-primary h-[1px]' />
     </header>
   )
 }
