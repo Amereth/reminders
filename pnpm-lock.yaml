@@ -56,6 +56,9 @@ importers:
       '@reminders/schemas':
         specifier: workspace:*
         version: link:../../packages/schemas
+      '@reminders/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       '@supabase/auth-ui-react':
         specifier: ^0.4.7
         version: 0.4.7(@supabase/supabase-js@2.41.1)
@@ -189,6 +192,9 @@ importers:
       '@reminders/schemas':
         specifier: workspace:*
         version: link:../../packages/schemas
+      '@reminders/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       '@supabase/supabase-js':
         specifier: ^2.41.1
         version: 2.41.1
@@ -285,6 +291,8 @@ importers:
       zod:
         specifier: ^3.22.4
         version: 3.22.4
+
+  packages/utils: {}
 
 packages:
 

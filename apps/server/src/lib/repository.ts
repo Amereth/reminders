@@ -1,25 +1,21 @@
 import { User } from '@reminders/schemas'
 
-interface WithUserId {
+export type WithUId = {
   userId: User['id']
 }
 
-interface WithId extends WithUserId {
+export type WithId = {
   id: string
 }
 
-export type Repository<
-  SelectSchema,
-  CreateSchema extends WithUserId,
-  UpdateSchema extends WithUserId,
-> = {
-  findAll: (args: WithUserId) => Promise<SelectSchema[]>
+export type WithIdAndUId = WithId & WithUId
 
-  findById: (args: WithId) => Promise<SelectSchema | undefined>
+export type FindAll<Return, Arg = WithUId> = (arg: Arg) => Promise<Return>
 
-  create: (args: CreateSchema) => Promise<SelectSchema[]>
+export type FindById<Return, Arg = WithId> = (arg: Arg) => Promise<Return>
 
-  update: (args: UpdateSchema) => Promise<SelectSchema[]>
+export type Create<Return, Arg = unknown> = (arg: Arg) => Promise<Return>
 
-  delete: (args: WithId) => Promise<{ deletedId: string }[]>
-}
+export type Update<Return, Arg = unknown> = (arg: Arg) => Promise<Return>
+
+export type Delete<Return, Arg = WithIdAndUId> = (arg: Arg) => Promise<Return>

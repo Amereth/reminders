@@ -7,7 +7,17 @@ import {
   InsertEvent,
 } from '@reminders/schemas'
 import { pick } from 'remeda'
-import { Repository } from '@/lib/repository'
+import {
+  Create,
+  Delete,
+  FindAll,
+  FindById,
+  WithId,
+  WithIdAndUId,
+  WithUId,
+  Update,
+} from '@/lib/repository'
+import { Maybe } from '@reminders/utils'
 
 type CreateSchema = Omit<InsertEvent, 'id' | 'createdAt'>
 
@@ -16,7 +26,13 @@ type UpdateSchema = {
   userId: Event['userId']
 } & Partial<Pick<InsertEvent, 'description' | 'dueDate'>>
 
-type EventsRepository = Repository<Event, CreateSchema, UpdateSchema>
+type EventsRepository = {
+  findAll: FindAll<Event[], WithUId>
+  findById: FindById<Maybe<Event>, WithIdAndUId>
+  create: Create<Event[], CreateSchema>
+  update: Update<Event[], UpdateSchema>
+  delete: Delete<WithId[], WithIdAndUId>
+}
 
 export const eventsRepository: EventsRepository = {
   async findAll({ userId }) {
@@ -58,6 +74,6 @@ export const eventsRepository: EventsRepository = {
     return db
       .delete(events)
       .where(and(eq(events.userId, userId), eq(events.id, id)))
-      .returning({ deletedId: events.id })
+      .returning({ id: events.id })
   },
 }

@@ -1,0 +1,5 @@
+{
+  "name": "@reminders/utils",
+  "description": "utilities",
+  "main": "index.ts"
+}

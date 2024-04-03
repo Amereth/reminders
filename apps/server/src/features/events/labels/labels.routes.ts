@@ -3,67 +3,67 @@ import {
   FastifyPluginOptions,
   RawServerDefault,
 } from 'fastify'
-import { insertEventsSchema, selectEventsSchema } from '@reminders/schemas'
+import { insertLabelsSchema, selectLabelsSchema } from '@reminders/schemas'
 import z from 'zod'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
-import { eventsRepository } from './events.repository'
+import { labelsRepository } from './labels.repository'
 
-export const eventsRoutes: FastifyPluginCallback<
+export const labelsRoutes: FastifyPluginCallback<
   FastifyPluginOptions,
   RawServerDefault,
   ZodTypeProvider
 > = (fastify, _options, done) => {
-  fastify.get('/events', {
+  fastify.get('/labels', {
     schema: {
-      response: { 200: z.array(selectEventsSchema) },
+      response: { 200: z.array(selectLabelsSchema) },
     },
 
     handler: async (req) => {
-      return eventsRepository.findAll({ userId: req.ctx.user.id })
+      return labelsRepository.findAll({ userId: req.ctx.user.id })
     },
   })
 
-  fastify.get('/events/:id', {
+  fastify.get('/labels/:id', {
     schema: {
       params: z.object({ id: z.string() }),
-      response: { 200: selectEventsSchema },
+      response: { 200: selectLabelsSchema },
     },
 
     handler: (req) => {
-      return eventsRepository.findById({
+      return labelsRepository.findById({
         userId: req.ctx.user.id,
         id: req.params.id,
       })
     },
   })
 
-  fastify.post('/events', {
+  fastify.post('/labels', {
     schema: {
-      body: insertEventsSchema.pick({ description: true, dueDate: true }),
-      response: { 201: z.array(selectEventsSchema) },
+      body: insertLabelsSchema.pick({ description: true, label: true }),
+      response: { 201: z.array(selectLabelsSchema) },
     },
 
     handler: async (req, res) => {
       res.status(201)
 
-      return eventsRepository.create({
+      return labelsRepository.create({
         ...req.body,
         userId: req.ctx.user.id,
       })
     },
   })
 
-  fastify.patch('/events/:id', {
+  fastify.patch('/labels/:id', {
     schema: {
       params: z.object({ id: z.string() }),
-      body: insertEventsSchema
+      body: insertLabelsSchema
         .pick({ description: true, dueDate: true })
         .partial(),
-      response: { 200: z.array(selectEventsSchema) },
+      response: { 200: z.array(selectLabelsSchema) },
     },
 
     handler: (req) => {
-      return eventsRepository.update({
+      return labelsRepository.update({
         userId: req.ctx.user.id,
         id: req.params.id,
         ...req.body,
@@ -71,7 +71,7 @@ export const eventsRoutes: FastifyPluginCallback<
     },
   })
 
-  fastify.delete('/events/:id', {
+  fastify.delete('/labels/:id', {
     schema: {
       params: z.object({ id: z.string() }),
       response: {
@@ -80,7 +80,7 @@ export const eventsRoutes: FastifyPluginCallback<
     },
 
     handler: (req) => {
-      return eventsRepository.delete({
+      return labelsRepository.delete({
         userId: req.ctx.user.id,
         id: req.params.id,
       })
