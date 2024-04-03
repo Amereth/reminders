@@ -66,8 +66,8 @@ importers:
         specifier: ^2.41.1
         version: 2.41.1
       '@tanstack/query-sync-storage-persister':
-        specifier: ^5.28.9
-        version: 5.28.9
+        specifier: ^5.28.13
+        version: 5.28.13
       '@tanstack/react-query':
         specifier: ^5.28.9
         version: 5.28.9(react@18.2.0)
@@ -2194,6 +2194,10 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
+  /@tanstack/query-core@5.28.13:
+    resolution: {integrity: sha512-C3+CCOcza+mrZ7LglQbjeYEOTEC3LV0VN0eYaIN6GvqAZ8Foegdgch7n6QYPtT4FuLae5ALy+m+ZMEKpD6tMCQ==}
+    dev: false
+
   /@tanstack/query-core@5.28.9:
     resolution: {integrity: sha512-hNlfCiqZevr3GRVPXS3MhaGW5hjcxvCsIQ4q6ff7EPlvFwYZaS+0d9EIIgofnegDaU2BbCDlyURoYfRl5rmzow==}
 
@@ -2201,17 +2205,23 @@ packages:
     resolution: {integrity: sha512-5UN629fKa5/1K/2Pd26gaU7epxRrYiT1gy+V+pW5K6hnf1DeUKK3pANSb2eHKlecjIKIhTwyF7k9XdyE2gREvQ==}
     dev: true
 
+  /@tanstack/query-persist-client-core@5.28.13:
+    resolution: {integrity: sha512-Vwxf/UMY+/WIcGYvKWI3g0c/gSrnTH39G9oceuUIxfp5DUqS4OJ8v9VJmxMiGQl9oq7E8YCq0k8ndt0fL86Mrw==}
+    dependencies:
+      '@tanstack/query-core': 5.28.13
+    dev: false
+
   /@tanstack/query-persist-client-core@5.28.9:
     resolution: {integrity: sha512-H2SSS0HdjBfVFdwjDkXJgVxfkx2PfSNgo2V6+GVqjNPGCj8YyshsUpVpM9ydFbEfU/2uXFKlGHn5HjWfmjOmxg==}
     dependencies:
       '@tanstack/query-core': 5.28.9
     dev: false
 
-  /@tanstack/query-sync-storage-persister@5.28.9:
-    resolution: {integrity: sha512-9igvkO5L0sUOsK5m+JIjJQ4nSPZGwNTZduSNx06GuzV4ukkalDU3FjlCnK/4ues4kJIozrQppdHXKSpwmscstw==}
+  /@tanstack/query-sync-storage-persister@5.28.13:
+    resolution: {integrity: sha512-7IRhhsvvvBTSqUwBviOz9Z4EN0VdT3YWBX/qs/gf2hU0wO4AWzmjKLIhqJMjzT15L/51mVO0Bf8h+n7mZXc9CA==}
     dependencies:
-      '@tanstack/query-core': 5.28.9
-      '@tanstack/query-persist-client-core': 5.28.9
+      '@tanstack/query-core': 5.28.13
+      '@tanstack/query-persist-client-core': 5.28.13
     dev: false
 
   /@tanstack/react-query-devtools@5.28.10(@tanstack/react-query@5.28.9)(react@18.2.0):
