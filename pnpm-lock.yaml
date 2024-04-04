@@ -61,13 +61,13 @@ importers:
         version: link:../../packages/utils
       '@supabase/auth-ui-react':
         specifier: ^0.4.7
-        version: 0.4.7(@supabase/supabase-js@2.41.1)
+        version: 0.4.7(@supabase/supabase-js@2.42.0)
       '@supabase/auth-ui-shared':
         specifier: ^0.1.8
-        version: 0.1.8(@supabase/supabase-js@2.41.1)
+        version: 0.1.8(@supabase/supabase-js@2.42.0)
       '@supabase/supabase-js':
-        specifier: ^2.41.1
-        version: 2.41.1
+        specifier: ^2.42.0
+        version: 2.42.0
       '@tanstack/query-sync-storage-persister':
         specifier: ^5.28.13
         version: 5.28.13
@@ -196,8 +196,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/utils
       '@supabase/supabase-js':
-        specifier: ^2.41.1
-        version: 2.41.1
+        specifier: ^2.42.0
+        version: 2.42.0
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.5.0
         version: 7.5.0(@typescript-eslint/parser@7.5.0)(eslint@8.57.0)(typescript@5.4.3)
@@ -1995,25 +1995,25 @@ packages:
       '@supabase/node-fetch': 2.6.15
     dev: false
 
-  /@supabase/auth-ui-react@0.4.7(@supabase/supabase-js@2.41.1):
+  /@supabase/auth-ui-react@0.4.7(@supabase/supabase-js@2.42.0):
     resolution: {integrity: sha512-Lp4FQGFh7BMX1Y/BFaUKidbryL7eskj1fl6Lby7BeHrTctbdvDbCMjVKS8wZ2rxuI8FtPS2iU900fSb70FHknQ==}
     peerDependencies:
       '@supabase/supabase-js': ^2.21.0
     dependencies:
       '@stitches/core': 1.2.8
-      '@supabase/auth-ui-shared': 0.1.8(@supabase/supabase-js@2.41.1)
-      '@supabase/supabase-js': 2.41.1
+      '@supabase/auth-ui-shared': 0.1.8(@supabase/supabase-js@2.42.0)
+      '@supabase/supabase-js': 2.42.0
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@supabase/auth-ui-shared@0.1.8(@supabase/supabase-js@2.41.1):
+  /@supabase/auth-ui-shared@0.1.8(@supabase/supabase-js@2.42.0):
     resolution: {integrity: sha512-ouQ0DjKcEFg+0gZigFIEgu01V3e6riGZPzgVD0MJsCBNsMsiDT74+GgCEIElMUpTGkwSja3xLwdFRFgMNFKcjg==}
     peerDependencies:
       '@supabase/supabase-js': ^2.21.0
     dependencies:
-      '@supabase/supabase-js': 2.41.1
+      '@supabase/supabase-js': 2.42.0
     dev: false
 
   /@supabase/functions-js@2.2.2:
@@ -2029,8 +2029,8 @@ packages:
       whatwg-url: 5.0.0
     dev: false
 
-  /@supabase/postgrest-js@1.9.2:
-    resolution: {integrity: sha512-I6yHo8CC9cxhOo6DouDMy9uOfW7hjdsnCxZiaJuIVZm1dBGTFiQPgfMa9zXCamEWzNyWRjZvupAUuX+tqcl5Sw==}
+  /@supabase/postgrest-js@1.15.0:
+    resolution: {integrity: sha512-U4bwBOrhsXWqDjZiYNbVqMBtRGgIIYE0kE5ZNSwsIbeBWfr/UxOMrnkIQUBGIZRhpYW/tw1WnTdRl1AGNyaxcw==}
     dependencies:
       '@supabase/node-fetch': 2.6.15
     dev: false
@@ -2053,13 +2053,13 @@ packages:
       '@supabase/node-fetch': 2.6.15
     dev: false
 
-  /@supabase/supabase-js@2.41.1:
-    resolution: {integrity: sha512-xmECLhYugMo/6SObpsOhu5xaxVfsk+JK/d4JSh055bpESmgmN3PLpzbfqejKCpaUeeUNF21+lrJp/U9HQzT9mA==}
+  /@supabase/supabase-js@2.42.0:
+    resolution: {integrity: sha512-1PDqJiA4iG45w3AAu6xkccJ3wPqlGJUoz9CPhScRLLTStxhewYhz0mjryTpXz1kgtNHdUAsirALreezn8UZMjA==}
     dependencies:
       '@supabase/auth-js': 2.63.0
       '@supabase/functions-js': 2.2.2
       '@supabase/node-fetch': 2.6.15
-      '@supabase/postgrest-js': 1.9.2
+      '@supabase/postgrest-js': 1.15.0
       '@supabase/realtime-js': 2.9.3
       '@supabase/storage-js': 2.5.5
     transitivePeerDependencies:
