@@ -1,8 +1,8 @@
 import { useAuthenticatedMutation } from '@/hooks/useAuthenticatedMutation'
 import { useQueryClient } from '@tanstack/react-query'
 import { Event, InsertEvent } from '@reminders/schemas'
-import { eventsQueryKey } from './useEventsQuery'
 import { toast } from 'sonner'
+import keys from '@keys'
 
 export const useCreateEventMutation = () => {
   const queryClient = useQueryClient()
@@ -13,13 +13,13 @@ export const useCreateEventMutation = () => {
     Event[]
   >(
     {
-      mutationKey: [`/events`],
+      mutationKey: keys.events,
       onMutate: async (event) => {
-        await queryClient.cancelQueries({ queryKey: eventsQueryKey })
+        await queryClient.cancelQueries({ queryKey: keys.events })
 
-        const previousEvents = queryClient.getQueryData<Event[]>(eventsQueryKey)
+        const previousEvents = queryClient.getQueryData<Event[]>(keys.events)
 
-        queryClient.setQueryData<Event[]>(eventsQueryKey, (old = []) => [
+        queryClient.setQueryData<Event[]>(keys.events, (old = []) => [
           ...old,
           {
             id: 'temporary',
@@ -34,12 +34,12 @@ export const useCreateEventMutation = () => {
       onSuccess(data, _variables, context) {
         toast.success('event created')
 
-        queryClient.setQueryData(eventsQueryKey, [...data, ...context])
+        queryClient.setQueryData(keys.events, [...data, ...context])
       },
 
       onError: (error, _, context) => {
         toast.error(error.message)
-        queryClient.setQueryData(eventsQueryKey, context)
+        queryClient.setQueryData(keys.events, context)
       },
     },
     { method: 'POST' },

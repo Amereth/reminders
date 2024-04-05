@@ -60,5 +60,5 @@ export const Route = createFileRoute('/_layout/events')({
   pendingComponent: Loader,
   component: EventsList,
   loader: ({ context: { queryClient } }) =>
-    queryClient.ensureQueryData(eventsQueryOptions),
+    queryClient.ensureQueryData(eventsQueryOptions()),
 })

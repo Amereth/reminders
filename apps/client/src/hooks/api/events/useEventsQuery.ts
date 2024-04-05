@@ -4,17 +4,17 @@ import {
   authQueryOptions,
   useAuthenticatedQuery,
 } from '../../useAuthenticatedQuery'
+import keys from '@keys'
 
-export const eventsQueryKey = ['/events'] as const
+type Select<TData> = (data: Event[]) => TData
 
-export const eventsQueryOptions = authQueryOptions<Event[]>({
-  queryKey: eventsQueryKey,
-})
-
-export const useEventsQuery = <TData = Event[]>(
-  select?: (data: Event[]) => TData,
-) =>
-  useAuthenticatedQuery<Event[], DefaultError, TData>({
-    queryKey: eventsQueryKey,
+export const eventsQueryOptions = <TData = Event[]>(select?: Select<TData>) =>
+  authQueryOptions<Event[], DefaultError, TData>({
+    queryKey: keys.events,
     select,
   })
+
+export const useEventsQuery = <TData = Event[]>(select?: Select<TData>) =>
+  useAuthenticatedQuery<Event[], DefaultError, TData>(
+    eventsQueryOptions(select),
+  )
