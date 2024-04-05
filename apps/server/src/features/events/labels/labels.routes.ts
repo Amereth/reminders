@@ -23,17 +23,13 @@ export const labelsRoutes: FastifyPluginCallback<
     },
   })
 
-  fastify.get('/labels/:id', {
+  fastify.get('/labels/user', {
     schema: {
-      params: z.object({ id: z.string() }),
-      response: { 200: selectLabelsSchema },
+      response: { 200: z.array(selectLabelsSchema) },
     },
 
-    handler: (req) => {
-      return labelsRepository.findById({
-        userId: req.ctx.user.id,
-        id: req.params.id,
-      })
+    handler: async (req) => {
+      return labelsRepository.findUsersLabels({ userId: req.ctx.user.id })
     },
   })
 

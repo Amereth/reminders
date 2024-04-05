@@ -14,6 +14,8 @@ export type FindAll<Return, Arg = WithUId> = (arg: Arg) => Promise<Return>
 
 export type FindById<Return, Arg = WithId> = (arg: Arg) => Promise<Return>
 
+export type FindByUserId<Return, Arg = WithUId> = (arg: Arg) => Promise<Return>
+
 export type Create<Return, Arg = unknown> = (arg: Arg) => Promise<Return>
 
 export type Update<Return, Arg = unknown> = (arg: Arg) => Promise<Return>

@@ -11,13 +11,12 @@ import {
   Create,
   Delete,
   FindAll,
-  FindById,
   WithId,
   WithIdAndUId,
   WithUId,
   Update,
+  FindByUserId,
 } from '@/lib/repository'
-import { Maybe } from '@reminders/utils'
 
 type CreateSchema = Omit<InsertLabel, 'id' | 'createdAt'>
 
@@ -28,7 +27,7 @@ type UpdateSchema = WithIdAndUId & {
 
 type LabelsRepository = {
   findAll: FindAll<Label[], WithUId>
-  findById: FindById<Maybe<Label>, WithIdAndUId>
+  findUsersLabels: FindByUserId<Label[], WithUId>
   create: Create<Label[], CreateSchema>
   update: Update<Label[], UpdateSchema>
   delete: Delete<WithId[], WithIdAndUId>
@@ -41,9 +40,9 @@ export const labelsRepository: LabelsRepository = {
     })
   },
 
-  async findById({ userId, id }) {
-    return db.query.labels.findFirst({
-      where: and(eq(labels.userId, userId), eq(labels.id, id)),
+  async findUsersLabels({ userId }) {
+    return db.query.labels.findMany({
+      where: and(eq(labels.userId, userId)),
     })
   },
 
