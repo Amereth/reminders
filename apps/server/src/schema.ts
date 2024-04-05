@@ -1,1 +1,1 @@
-export { events, users, labels } from '@reminders/schemas'
+export * from '@reminders/schemas'

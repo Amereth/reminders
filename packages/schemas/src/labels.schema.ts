@@ -4,7 +4,7 @@ import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
 export const labels = pgTable('labels', {
-  id: uuid('id').primaryKey().notNull(),
+  id: uuid('id').primaryKey(),
   label: text('label').notNull(),
   description: text('description'),
   userId: uuid('user_id').references(() => authUsers.id, {

@@ -7,7 +7,7 @@ import { uuid } from 'drizzle-orm/pg-core'
 import { authUsers } from './users.schema'
 
 export const events = pgTable('events', {
-  id: uuid('id').primaryKey().notNull(),
+  id: uuid('id').primaryKey(),
   userId: uuid('user_id')
     .notNull()
     .references(() => authUsers.id, { onDelete: 'cascade' }),

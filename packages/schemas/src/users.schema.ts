@@ -10,14 +10,13 @@ import z from 'zod'
 const auth = pgSchema('auth')
 
 export const authUsers = auth.table('users', {
-  id: uuid('id').primaryKey().notNull(),
+  id: uuid('id').primaryKey(),
   email: text('email').notNull(),
 })
 
 export const users = pgTable('users', {
   id: uuid('id')
     .primaryKey()
-    .notNull()
     .references(() => authUsers.id, { onDelete: 'cascade' }),
   nickname: text('nickname'),
 })
