@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@total-typescript/ts-reset':
+        specifier: ^0.5.1
+        version: 0.5.1
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
@@ -2343,6 +2346,10 @@ packages:
   /@telegraf/types@7.1.0:
     resolution: {integrity: sha512-kGevOIbpMcIlCDeorKGpwZmdH7kHbqlk/Yj6dEpJMKEQw5lk0KVQY0OLXaCswy8GqlIVLd5625OB+rAntP9xVw==}
     dev: false
+
+  /@total-typescript/ts-reset@0.5.1:
+    resolution: {integrity: sha512-AqlrT8YA1o7Ff5wPfMOL0pvL+1X+sw60NN6CcOCqs658emD6RfiXhF7Gu9QcfKBH7ELY2nInLhKSCWVoNL70MQ==}
+    dev: true
 
   /@tsconfig/node20@20.1.4:
     resolution: {integrity: sha512-sqgsT69YFeLWf5NtJ4Xq/xAF8p4ZQHlmGW74Nu2tD4+g5fAsposc4ZfaaPixVu4y01BEiDCWLRDCvDM5JOsRxg==}
