@@ -20,6 +20,12 @@ export const insertLabelsSchema = createInsertSchema(labels, {
 
 export type InsertLabel = z.infer<typeof insertLabelsSchema>
 
-export const selectLabelsSchema = createSelectSchema(labels)
+export const selectLabelsFullSchema = createSelectSchema(labels)
+
+export type LabelFull = z.infer<typeof selectLabelsSchema>
+
+export const selectLabelsSchema = selectLabelsFullSchema.omit({
+  userId: true,
+})
 
 export type Label = z.infer<typeof selectLabelsSchema>
