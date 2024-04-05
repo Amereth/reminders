@@ -19,7 +19,7 @@ app.setSerializerCompiler(serializerCompiler)
 app.withTypeProvider()
 
 plugins.forEach(app.register)
-routes.forEach(app.register)
+routes.forEach(([plugin, options]) => app.register(plugin, options))
 
 app.setErrorHandler((error, request, reply) => {
   console.error('ERROR', error)
