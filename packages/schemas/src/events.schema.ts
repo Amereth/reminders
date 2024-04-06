@@ -1,9 +1,9 @@
-import { timestamp } from 'drizzle-orm/pg-core'
-import { text } from 'drizzle-orm/pg-core'
-import { pgTable } from 'drizzle-orm/pg-core'
+import { relations } from 'drizzle-orm'
+import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import z from 'zod'
-import { uuid } from 'drizzle-orm/pg-core'
+import { eventsToLabels } from './events-labels.schema'
+import { selectLabelsSchema } from './labels.schema'
 import { authUsers } from './users.schema'
 
 export const events = pgTable('events', {
@@ -16,7 +16,6 @@ export const events = pgTable('events', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
 })
 
-// Schema for inserting a user - can be used to validate API requests
 export const insertEventsSchema = createInsertSchema(events, {
   description: z.string().min(1).max(1000),
   dueDate: z
@@ -33,10 +32,18 @@ export const insertEventsSchema = createInsertSchema(events, {
 
 export type InsertEvent = z.infer<typeof insertEventsSchema>
 
-// Schema for selecting a user - can be used to validate API responses
 export const selectEventsSchema = createSelectSchema(events, {
   dueDate: z.date().nullable(),
   createdAt: z.date().nullable(),
-}).required()
+})
+  .required()
+  .omit({ userId: true })
+  .extend({
+    labels: z.array(selectLabelsSchema),
+  })
 
 export type Event = z.infer<typeof selectEventsSchema>
+
+export const eventsRelations = relations(events, ({ many }) => ({
+  labels: many(eventsToLabels),
+}))

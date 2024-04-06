@@ -1,7 +1,9 @@
-import { pgTable, uuid, text } from 'drizzle-orm/pg-core'
-import { authUsers } from './users.schema'
+import { relations } from 'drizzle-orm'
+import { pgTable, text, uuid } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
+import { eventsToLabels } from './events-labels.schema'
+import { authUsers } from './users.schema'
 
 export const labels = pgTable('labels', {
   id: uuid('id').primaryKey(),
@@ -29,3 +31,7 @@ export const selectLabelsSchema = selectLabelsFullSchema.omit({
 })
 
 export type Label = z.infer<typeof selectLabelsSchema>
+
+export const labelsRelations = relations(labels, ({ many }) => ({
+  events: many(eventsToLabels),
+}))

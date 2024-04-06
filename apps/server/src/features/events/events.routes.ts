@@ -40,7 +40,7 @@ export const eventsRoutes: FastifyPluginCallback<
   fastify.post('/events', {
     schema: {
       body: insertEventsSchema.pick({ description: true, dueDate: true }),
-      response: { 201: z.array(selectEventsSchema) },
+      response: { 201: selectEventsSchema },
     },
 
     handler: async (req, res) => {
@@ -59,7 +59,7 @@ export const eventsRoutes: FastifyPluginCallback<
       body: insertEventsSchema
         .pick({ description: true, dueDate: true })
         .partial(),
-      response: { 200: z.array(selectEventsSchema) },
+      response: { 200: selectEventsSchema },
     },
 
     handler: (req) => {
@@ -75,7 +75,7 @@ export const eventsRoutes: FastifyPluginCallback<
     schema: {
       params: z.object({ id: z.string() }),
       response: {
-        200: z.array(z.object({ id: z.string() })),
+        200: z.object({ id: z.string() }),
       },
     },
 
