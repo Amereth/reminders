@@ -6,6 +6,7 @@ import { useSupabase } from '@hooks/useSupabase'
 import { useNavigate } from '@tanstack/react-router'
 import { supabaseClient } from '@/lib/supabase'
 import { toast } from 'sonner'
+import { Divider } from '../Divider'
 
 export const PageHeader = () => {
   const navigate = useNavigate()
@@ -46,7 +47,7 @@ export const PageHeader = () => {
         )}
       </div>
 
-      <div className='bg-primary h-[1px]' />
+      <Divider position='horizontal' />
     </header>
   )
 }
