@@ -7,6 +7,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { Button } from '@ui/button'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import { Loader } from '@/components/Loader'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 const RootComponent = () => {
   const { session } = useSupabase()
@@ -32,6 +33,7 @@ const RootComponent = () => {
         )}
       </QueryErrorResetBoundary>
 
+      <ReactQueryDevtools />
       <TanStackRouterDevtools position='bottom-left' />
     </>
   )
