@@ -4,8 +4,8 @@ import { Button } from '@ui/button'
 import { Card, CardHeader, CardContent, CardFooter } from '@ui/card'
 import { format } from 'date-fns'
 import { weekday_date_time } from '@reminders/date'
-import { EventLabel } from './EventLabel'
 import { Divider } from '../Divider'
+import { Badge } from '../ui/badge'
 
 type EventCardProps = {
   event: Event
@@ -16,11 +16,7 @@ export const EventCard = ({ event, onDelete }: EventCardProps) => (
   <Card className='bg-slate-800 max-sm:p-2' key={event.id}>
     <CardHeader>
       <div className='flex flex-row items-end'>
-        {event.dueDate && (
-          <div className='mb-2 text-sm tracking-wider'>
-            {format(event.dueDate, weekday_date_time)}
-          </div>
-        )}
+        <DueDate dueDate={event.dueDate} />
 
         <Button size='icon' variant='link' className='ml-auto'>
           <PenIcon strokeWidth={1.5} />
@@ -47,6 +43,16 @@ export const EventCard = ({ event, onDelete }: EventCardProps) => (
   </Card>
 )
 
+const DueDate = ({ dueDate }: { dueDate: Event['dueDate'] }) => {
+  if (!dueDate) return null
+
+  return (
+    <div className='mb-2 text-sm tracking-wider'>
+      {format(dueDate, weekday_date_time)}
+    </div>
+  )
+}
+
 const EventLabels = ({ labels }: { labels: Label[] }) => {
   if (labels.length === 0) return null
 
@@ -56,7 +62,9 @@ const EventLabels = ({ labels }: { labels: Label[] }) => {
 
       <div className='flex gap-2 md:gap-4'>
         {labels.map((label) => (
-          <EventLabel key={label.id} label={label} />
+          <Badge key={label.id} variant='outline'>
+            {label.label}
+          </Badge>
         ))}
       </div>
     </CardFooter>
