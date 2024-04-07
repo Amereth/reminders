@@ -4,7 +4,6 @@ import {
   serializerCompiler,
   validatorCompiler,
 } from 'fastify-type-provider-zod'
-import eventsBot from './src/features/events/bot'
 import cors from '@fastify/cors'
 import cookie from '@fastify/cookie'
 import { plugins } from './src/plugins/index'
@@ -35,6 +34,6 @@ app.listen({ port: 8080, host: 'localhost' }, (err, address) => {
   app.log.info(`server listening on ${address}`)
 })
 
-eventsBot.launch(() => {
-  console.log('Bot is running')
-})
+// eventsBot.launch(() => {
+//   console.log('Bot is running')
+// })
