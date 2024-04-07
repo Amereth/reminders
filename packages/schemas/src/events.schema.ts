@@ -28,7 +28,9 @@ export const insertEventsSchema = createInsertSchema(events, {
     })
     .optional(),
   createdAt: z.string().datetime().nullable(),
-}).required()
+})
+  .required()
+  .extend({ labels: z.array(z.string()) })
 
 export type InsertEvent = z.infer<typeof insertEventsSchema>
 

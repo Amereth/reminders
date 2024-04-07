@@ -6,7 +6,7 @@ import {
 import { insertEventsSchema, selectEventsSchema } from '@reminders/schemas'
 import z from 'zod'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
-import { eventsRepository } from './events.repository'
+import { eventsRepository, updateSchema } from './events.repository'
 
 export const eventsRoutes: FastifyPluginCallback<
   FastifyPluginOptions,
@@ -39,7 +39,11 @@ export const eventsRoutes: FastifyPluginCallback<
 
   fastify.post('/events', {
     schema: {
-      body: insertEventsSchema.pick({ description: true, dueDate: true }),
+      body: insertEventsSchema.pick({
+        description: true,
+        dueDate: true,
+        labels: true,
+      }),
       response: { 201: selectEventsSchema },
     },
 
@@ -56,9 +60,7 @@ export const eventsRoutes: FastifyPluginCallback<
   fastify.patch('/events/:id', {
     schema: {
       params: z.object({ id: z.string() }),
-      body: insertEventsSchema
-        .pick({ description: true, dueDate: true })
-        .partial(),
+      body: updateSchema,
       response: { 200: selectEventsSchema },
     },
 
