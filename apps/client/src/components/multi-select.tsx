@@ -349,7 +349,7 @@ const MultipleSelector = React.forwardRef<
           commandProps?.onKeyDown?.(e)
         }}
         className={cn(
-          'overflow-visible bg-transparent',
+          'h-auto overflow-visible bg-transparent',
           commandProps?.className,
         )}
         shouldFilter={
@@ -361,7 +361,7 @@ const MultipleSelector = React.forwardRef<
       >
         <div
           className={cn(
-            'border-border ring-offset-background focus-within:ring-ring group rounded-md border px-3 py-2 text-sm focus-within:ring-2 focus-within:ring-offset-2',
+            'border-primary ring-offset-background focus-within:ring-ring group rounded-md border px-3 py-2 text-sm focus-within:ring-2 focus-within:ring-offset-2',
             className,
           )}
         >
@@ -396,7 +396,7 @@ const MultipleSelector = React.forwardRef<
                     }}
                     onClick={() => handleUnselect(option)}
                   >
-                    <X className='text-muted-foreground hover:text-foreground h-3 w-3' />
+                    <X className='text-muted-foreground hover:text-destructive h-3 w-3' />
                   </button>
                 </Badge>
               )

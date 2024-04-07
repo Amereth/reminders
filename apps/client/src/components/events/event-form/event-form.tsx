@@ -1,4 +1,11 @@
-import { useForm } from 'react-hook-form'
+import { CreateEventBody } from '@/hooks/api/events'
+import { DevTool } from '@hookform/devtools'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { cn } from '@lib/utils'
+import { weekday_date_time } from '@reminders/date'
+import { insertEventsSchema } from '@reminders/schemas'
+import { Button } from '@ui/button'
+import { Calendar } from '@ui/calendar'
 import {
   Form,
   FormControl,
@@ -7,29 +14,32 @@ import {
   FormLabel,
   FormMessage,
 } from '@ui/form'
-import { z } from 'zod'
-import { InsertEvent, insertEventsSchema } from '@reminders/schemas'
-import { CalendarIcon } from 'lucide-react'
-import { Button } from '@ui/button'
-import { Popover, PopoverTrigger, PopoverContent } from '@ui/popover'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { cn } from '@lib/utils'
-import { add, format } from 'date-fns'
-import { weekday_date_time } from '@reminders/date'
-import { Calendar } from '@ui/calendar'
-import { Textarea } from '@ui/textarea'
 import { Input } from '@ui/input'
+import { Popover, PopoverContent, PopoverTrigger } from '@ui/popover'
+import { Textarea } from '@ui/textarea'
+import { format } from 'date-fns'
+import { CalendarIcon } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { LabelsSelector } from './labels-selector'
+import { sanitizeValues } from './utils/sanitize-values'
 
 const formModel = insertEventsSchema.pick({ description: true }).extend({
   date: z.date(),
   time: z.string(),
+  labels: z.array(
+    z.object({
+      value: z.string(),
+      label: z.string(),
+    }),
+  ),
 })
 
-type FormModel = z.infer<typeof formModel>
+export type FormModel = z.infer<typeof formModel>
 
-type EventFormProps = {
+export type EventFormProps = {
   formVisible: boolean
-  onSubmit: (data: Pick<InsertEvent, 'description' | 'dueDate'>) => void
+  onSubmit: (data: CreateEventBody) => void
   onClose: () => void
   className?: string
 }
@@ -43,15 +53,7 @@ export const EventForm = ({
   const form = useForm<FormModel>({ resolver: zodResolver(formModel) })
 
   const onSubmit = form.handleSubmit((formValues) => {
-    const hours = +formValues.time.split(':')[0]
-    const minutes = +formValues.time.split(':')[1]
-
-    const dueDate = add(formValues.date, {
-      hours,
-      minutes,
-    }).toISOString()
-
-    _onSubmit({ description: formValues.description, dueDate })
+    _onSubmit(sanitizeValues(formValues))
 
     form.reset()
   })
@@ -64,6 +66,8 @@ export const EventForm = ({
         className={cn(className, 'rounded-md border-[1px] p-4')}
         onSubmit={onSubmit}
       >
+        <DevTool control={form.control} />
+
         <div className='flex items-start gap-4'>
           <FormField
             control={form.control}
@@ -136,8 +140,12 @@ export const EventForm = ({
           )}
         />
 
+        <div className='mt-4'>
+          <LabelsSelector />
+        </div>
+
         <div className='mt-4 flex gap-4'>
-          <Button type='submit' variant='outline'>
+          <Button type='submit' variant='outline-success'>
             submit
           </Button>
           <Button

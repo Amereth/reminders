@@ -4,14 +4,15 @@ import { Event, InsertEvent } from '@reminders/schemas'
 import { toast } from 'sonner'
 import keys from '@keys'
 
+export type CreateEventBody = Pick<
+  InsertEvent,
+  'description' | 'dueDate' | 'labels'
+>
+
 export const useCreateEventMutation = () => {
   const queryClient = useQueryClient()
 
-  return useAuthenticatedMutation<
-    Event[],
-    Pick<InsertEvent, 'description' | 'dueDate'>,
-    Event[]
-  >(
+  return useAuthenticatedMutation<Event[], CreateEventBody, Event[]>(
     {
       mutationKey: keys.events,
       onMutate: async (event) => {
@@ -22,9 +23,10 @@ export const useCreateEventMutation = () => {
         queryClient.setQueryData<Event[]>(keys.events, (old = []) => [
           ...old,
           {
-            id: 'temporary',
             ...event,
+            id: 'temporary',
             createdAt: new Date(),
+            labels: event.labels.map((label) => ({ id: label, label })),
           } as Event,
         ])
 

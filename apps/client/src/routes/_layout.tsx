@@ -21,26 +21,26 @@ export const LayoutComponent = () => {
     <>
       <PageHeader />
 
-      <main className='mt-4 flex h-full gap-4 pl-0'>
-        <nav className='flex max-w-[56px] flex-col overflow-hidden border-r-[1px] transition-all duration-500 hover:max-w-40'>
-          <ul>
-            {links.map(({ to, Icon, name }) => (
-              <li key={to}>
-                <Button variant='link'>
-                  <Link to={to} className='flex items-end gap-4'>
-                    <Icon strokeWidth={1.5} />
-                    <span>{name}</span>
-                  </Link>
-                </Button>
-              </li>
-            ))}
-          </ul>
-        </nav>
+      <div className='mt-4 flex grow items-stretch overflow-hidden pl-0'>
+        <aside className='max-w-[56px] overflow-hidden border-r-[1px] transition-all duration-500 hover:max-w-40'>
+          <nav className='h-full'>
+            <ul>
+              {links.map(({ to, Icon, name }) => (
+                <li key={to}>
+                  <Button variant='link'>
+                    <Link to={to} className='flex items-end gap-4'>
+                      <Icon strokeWidth={1.5} />
+                      <span>{name}</span>
+                    </Link>
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
 
-        <div className='grow'>
-          <Outlet />
-        </div>
-      </main>
+        <Outlet />
+      </div>
     </>
   )
 }

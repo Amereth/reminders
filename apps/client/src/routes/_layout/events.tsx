@@ -23,18 +23,20 @@ const EventsList = () => {
   const [parent] = useAutoAnimate()
 
   return (
-    <div ref={parent}>
-      <Button
-        size='icon'
-        variant='outline'
-        onClick={() => setFormVisible((v) => !v)}
-      >
-        {formVisible ? (
-          <MinusIcon strokeWidth={1.5} />
-        ) : (
-          <PlusIcon strokeWidth={1.5} />
-        )}
-      </Button>
+    <main ref={parent} className='flex grow flex-col pr-0'>
+      <div className='shrink-0 pr-4'>
+        <Button
+          size='icon'
+          variant='outline'
+          onClick={() => setFormVisible((v) => !v)}
+        >
+          {formVisible ? (
+            <MinusIcon strokeWidth={1.5} />
+          ) : (
+            <PlusIcon strokeWidth={1.5} />
+          )}
+        </Button>
+      </div>
 
       <EventForm
         formVisible={formVisible}
@@ -43,7 +45,7 @@ const EventsList = () => {
         onClose={() => setFormVisible(false)}
       />
 
-      <div className='mt-4 grid auto-rows-min grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3'>
+      <div className='mt-4 grid min-h-0 grow auto-rows-min grid-cols-1 gap-4 overflow-auto pb-4 pr-4 lg:grid-cols-2 xl:grid-cols-3'>
         {data.map((event) => (
           <EventCard
             key={event.id}
@@ -52,7 +54,7 @@ const EventsList = () => {
           />
         ))}
       </div>
-    </div>
+    </main>
   )
 }
 

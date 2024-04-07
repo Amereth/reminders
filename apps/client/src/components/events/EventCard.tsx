@@ -13,7 +13,7 @@ type EventCardProps = {
 }
 
 export const EventCard = ({ event, onDelete }: EventCardProps) => (
-  <Card className='bg-slate-800 max-sm:p-2' key={event.id}>
+  <Card className='max-sm:p-2' key={event.id}>
     <CardHeader>
       <div className='flex flex-row items-end'>
         <DueDate dueDate={event.dueDate} />

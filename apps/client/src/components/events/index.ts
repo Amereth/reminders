@@ -1,2 +1,2 @@
 export * from './EventCard'
-export * from './EventForm'
+export * from './event-form/event-form'
