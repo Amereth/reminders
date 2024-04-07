@@ -1,5 +1,3 @@
-'use client'
-
 import * as React from 'react'
 import { X } from 'lucide-react'
 
@@ -363,7 +361,7 @@ const MultipleSelector = React.forwardRef<
       >
         <div
           className={cn(
-            'border-input ring-offset-background focus-within:ring-ring group rounded-md border px-3 py-2 text-sm focus-within:ring-2 focus-within:ring-offset-2',
+            'border-border ring-offset-background focus-within:ring-ring group rounded-md border px-3 py-2 text-sm focus-within:ring-2 focus-within:ring-offset-2',
             className,
           )}
         >
@@ -371,6 +369,7 @@ const MultipleSelector = React.forwardRef<
             {selected.map((option) => {
               return (
                 <Badge
+                  variant='outline'
                   key={option.value}
                   className={cn(
                     'data-[disabled]:bg-muted-foreground data-[disabled]:text-muted data-[disabled]:hover:bg-muted-foreground',
