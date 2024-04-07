@@ -7,7 +7,7 @@ type LoaderProps = {
 }
 
 export const Loader = ({ size = 36, className }: LoaderProps) => (
-  <div className={cn('grid h-full place-content-center', className)}>
+  <div className={cn('grid h-full w-full place-content-center', className)}>
     <LoaderCircleIcon size={size} className='animate-spin' />
   </div>
 )
