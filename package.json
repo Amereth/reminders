@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "concurrently -k -n server,client \"pnpm dev:server\" \"pnpm dev:client\"",
+    "dev:host": "concurrently -k -n server,client \"pnpm dev:server\" \"pnpm dev:client:host\"",
     "dev:server": "pnpm --filter ./apps/server dev",
     "dev:client": "pnpm --filter ./apps/client dev",
+    "dev:client:host": "pnpm --filter ./apps/client dev:host",
     "format": "pnpm prettier --write ."
   },
   "repository": {
