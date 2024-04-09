@@ -1,5 +1,5 @@
 {
-  "name": "fastify-app",
+  "name": "reminders",
   "version": "1.0.0",
   "scripts": {
     "dev": "concurrently -k -n server,client \"pnpm dev:server\" \"pnpm dev:client\"",
