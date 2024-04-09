@@ -8,7 +8,7 @@ type ErrorResponse = {
   message: string
 }
 
-export const authenticatedFetch = async <TData = unknown, TError = Error>(
+export const authFetch = async <TData = unknown, TError = Error>(
   input: string,
   request: RequestInit | undefined = {},
 ) => {

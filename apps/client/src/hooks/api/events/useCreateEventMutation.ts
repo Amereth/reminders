@@ -1,4 +1,4 @@
-import { useAuthenticatedMutation } from '@/hooks/useAuthenticatedMutation'
+import { useAuthMutation } from '@/hooks/use-auth-mutation'
 import { useQueryClient } from '@tanstack/react-query'
 import { Event, InsertEvent } from '@reminders/schemas'
 import { toast } from 'sonner'
@@ -12,7 +12,7 @@ export type CreateEventBody = Pick<
 export const useCreateEventMutation = () => {
   const queryClient = useQueryClient()
 
-  return useAuthenticatedMutation<Event[], CreateEventBody, Event[]>(
+  return useAuthMutation<Event[], CreateEventBody, Event[]>(
     {
       mutationKey: keys.events,
       onMutate: async (event) => {

@@ -7,7 +7,7 @@ import {
   queryOptions,
   useSuspenseQuery,
 } from '@tanstack/react-query'
-import { authenticatedFetch } from '@lib/authenticatedFetch'
+import { authFetch } from '@/lib/auth-fetch'
 
 export const authQueryOptions = <
   TQueryFnData = unknown,
@@ -20,10 +20,10 @@ export const authQueryOptions = <
   queryOptions<TQueryFnData, TError, TData, TQueryKey>({
     ...options,
     queryFn: () =>
-      authenticatedFetch<TQueryFnData, TError>(options.queryKey[0] as string),
+      authFetch<TQueryFnData, TError>(options.queryKey[0] as string),
   })
 
-export const useAuthenticatedQuery = <
+export const useAuthQuery = <
   TQueryFnData = unknown,
   TError = DefaultError,
   TData = TQueryFnData,
@@ -36,10 +36,7 @@ export const useAuthenticatedQuery = <
     {
       ...options,
       queryFn: (request?: RequestInit) =>
-        authenticatedFetch<TQueryFnData, TError>(
-          options.queryKey[0] as string,
-          request,
-        ),
+        authFetch<TQueryFnData, TError>(options.queryKey[0] as string, request),
     },
     queryClient,
   )

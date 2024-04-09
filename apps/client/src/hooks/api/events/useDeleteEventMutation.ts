@@ -1,4 +1,4 @@
-import { useAuthenticatedMutation } from '@/hooks/useAuthenticatedMutation'
+import { useAuthMutation } from '@/hooks/use-auth-mutation'
 import { useQueryClient } from '@tanstack/react-query'
 import { Event } from '@reminders/schemas'
 import { toast } from 'sonner'
@@ -7,7 +7,7 @@ import keys from '@keys'
 export const useDeleteEventMutation = () => {
   const queryClient = useQueryClient()
 
-  return useAuthenticatedMutation<Event, Event['id'], Event[]>(
+  return useAuthMutation<Event, Event['id'], Event[]>(
     {
       mutationKey: keys.events,
       onMutate: async (eventId) => {

@@ -5,9 +5,9 @@ import {
   useMutation,
 } from '@tanstack/react-query'
 import { useSupabase } from './useSupabase'
-import { authenticatedFetch } from '../lib/authenticatedFetch'
+import { authFetch } from '../lib/auth-fetch'
 
-export const useAuthenticatedMutation = <
+export const useAuthMutation = <
   TData = unknown,
   TVariables = void,
   TContext = unknown,
@@ -24,7 +24,7 @@ export const useAuthenticatedMutation = <
       mutationFn: (variables) => {
         if (!session) throw new Error('No session found')
 
-        return authenticatedFetch<TData, DefaultError>(
+        return authFetch<TData, DefaultError>(
           options.mutationKey?.[0] as string,
           {
             ...request,

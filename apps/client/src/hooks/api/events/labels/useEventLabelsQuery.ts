@@ -1,9 +1,6 @@
 import { DefaultError } from '@tanstack/react-query'
 import { Label } from '@reminders/schemas'
-import {
-  authQueryOptions,
-  useAuthenticatedQuery,
-} from '../../../useAuthenticatedQuery'
+import { authQueryOptions, useAuthQuery } from '../../../use-auth-query'
 import keys from '@keys'
 
 type Select<TData> = (data: Label[]) => TData
@@ -17,6 +14,4 @@ export const eventLabelsQueryOptions = <TData = Label[]>(
   })
 
 export const useEventLabelsQuery = <TData = Label[]>(select?: Select<TData>) =>
-  useAuthenticatedQuery<Label[], DefaultError, TData>(
-    eventLabelsQueryOptions(select),
-  )
+  useAuthQuery<Label[], DefaultError, TData>(eventLabelsQueryOptions(select))
