@@ -55,7 +55,7 @@
     "@tanstack/router-vite-plugin": "^1.26.14",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
-    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
     "@typescript-eslint/parser": "^7.5.0",
     "@vitejs/plugin-react-swc": "^3.6.0",
     "autoprefixer": "^10.4.19",
