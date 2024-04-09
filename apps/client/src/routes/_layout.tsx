@@ -1,3 +1,4 @@
+import { GlobalLoadingIndicator } from '@/components/global-loading-indicator'
 import { PageHeader } from '@/components/page-header/PageHeader'
 import { Button } from '@/components/ui/button'
 import { Link, Outlet, createFileRoute, redirect } from '@tanstack/react-router'
@@ -22,8 +23,8 @@ export const LayoutComponent = () => {
       <PageHeader />
 
       <div className='mt-4 flex grow items-stretch overflow-hidden pl-0'>
-        <aside className='max-w-[56px] overflow-hidden border-r-[1px] transition-all duration-500 hover:max-w-40'>
-          <nav className='h-full'>
+        <aside className='flex max-w-[56px] flex-col overflow-hidden border-r-[1px] pb-2 transition-all duration-500 hover:max-w-40'>
+          <nav>
             <ul>
               {links.map(({ to, Icon, name }) => (
                 <li key={to}>
@@ -37,6 +38,10 @@ export const LayoutComponent = () => {
               ))}
             </ul>
           </nav>
+
+          <div className='mt-auto'>
+            <GlobalLoadingIndicator />
+          </div>
         </aside>
 
         <Outlet />
