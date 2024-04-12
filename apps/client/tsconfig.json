@@ -11,7 +11,7 @@
       "@api/*": ["src/hooks/api/*"],
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@keys": ["src/hooks/api/keys.ts"]
+      "@query-keys": ["src/hooks/api/query-keys.ts"]
     }
   },
   "include": ["src", "vite.config.ts"]

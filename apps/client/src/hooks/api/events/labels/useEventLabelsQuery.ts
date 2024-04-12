@@ -1,7 +1,7 @@
 import { DefaultError } from '@tanstack/react-query'
 import { Label } from '@reminders/schemas'
-import { authQueryOptions, useAuthQuery } from '../../../use-auth-query'
-import keys from '@keys'
+import { authQueryOptions, useAuthQuery } from '@/hooks/use-auth-query'
+import keys from '@query-keys'
 
 type Select<TData> = (data: Label[]) => TData
 

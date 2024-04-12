@@ -2,7 +2,7 @@ import { useAuthMutation } from '@/hooks/use-auth-mutation'
 import { useQueryClient } from '@tanstack/react-query'
 import { Event, InsertEvent } from '@reminders/schemas'
 import { toast } from 'sonner'
-import keys from '@keys'
+import keys from '@query-keys'
 
 export type CreateEventBody = Pick<
   InsertEvent,
