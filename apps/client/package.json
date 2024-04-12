@@ -54,7 +54,7 @@
     "@tanstack/router-devtools": "^1.26.20",
     "@tanstack/router-vite-plugin": "^1.26.16",
     "@types/react": "^18.2.77",
-    "@types/react-dom": "^18.2.24",
+    "@types/react-dom": "^18.2.25",
     "@typescript-eslint/eslint-plugin": "^7.6.0",
     "@typescript-eslint/parser": "^7.6.0",
     "@vitejs/plugin-react-swc": "^3.6.0",
