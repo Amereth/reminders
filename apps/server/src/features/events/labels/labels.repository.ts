@@ -10,12 +10,11 @@ import { pick } from 'remeda'
 import {
   Create,
   Delete,
-  FindAll,
+  FindMany,
   WithId,
   WithIdAndUId,
   WithUId,
   Update,
-  FindByUserId,
 } from '@/lib/repository'
 
 type CreateSchema = Omit<InsertLabel, 'id' | 'createdAt'>
@@ -26,8 +25,8 @@ type UpdateSchema = WithIdAndUId & {
 }
 
 type LabelsRepository = {
-  findAll: FindAll<Label[], WithUId>
-  findUsersLabels: FindByUserId<Label[], WithUId>
+  findAll: FindMany<Label, WithUId>
+  findUsersLabels: FindMany<Label, WithUId>
   create: Create<Label[], CreateSchema>
   update: Update<Label[], UpdateSchema>
   delete: Delete<WithId[], WithIdAndUId>

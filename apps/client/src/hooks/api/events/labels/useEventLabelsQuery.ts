@@ -14,4 +14,4 @@ export const eventLabelsQueryOptions = <TData = Label[]>(
   })
 
 export const useEventLabelsQuery = <TData = Label[]>(select?: Select<TData>) =>
-  useAuthQuery<Label[], DefaultError, TData>(eventLabelsQueryOptions(select))
+  useAuthQuery(eventLabelsQueryOptions(select))

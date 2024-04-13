@@ -1,5 +1,5 @@
 import { db } from '@/lib/db'
-import { and, eq } from 'drizzle-orm'
+import { and, count, eq } from 'drizzle-orm'
 import {
   events,
   Event,
@@ -12,14 +12,13 @@ import {
 import {
   Create,
   Delete,
-  FindAll,
   FindById,
   WithId,
   WithIdAndUId,
   WithUId,
   Update,
+  FindPaginated,
 } from '@/lib/repository'
-import { Maybe } from '@reminders/utils'
 import { differenceWith, isDeepEqual } from 'remeda'
 import z from 'zod'
 
@@ -44,31 +43,46 @@ type UpdateSchema = {
 } & z.infer<typeof updateSchema>
 
 type EventsRepository = {
-  findAll: FindAll<Event[], WithUId>
-  findById: FindById<Maybe<Event>, WithIdAndUId>
+  findPaginated: FindPaginated<Event, WithUId>
+  findById: FindById<Event, WithIdAndUId>
   create: Create<Event, CreateSchema>
   update: Update<Event, UpdateSchema>
   delete: Delete<WithId, WithIdAndUId>
 }
 
 export const eventsRepository: EventsRepository = {
-  async findAll({ userId }) {
+  async findPaginated({ userId, offset, limit }) {
     const dbResponse = await db.query.events.findMany({
       where: eq(events.userId, userId),
       with: {
         labels: {
-          with: {
-            label: true,
-          },
-          columns: {
-            eventId: false,
-            labelId: false,
-          },
+          with: { label: true },
+          columns: { eventId: false, labelId: false },
         },
       },
+      limit,
+      offset,
     })
 
-    return dbResponse.map(mapToEvent)
+    const { total } = (
+      await db
+        .select({
+          total: count(),
+        })
+        .from(events)
+        .where(eq(events.userId, userId))
+    )[0]
+
+    const res = {
+      data: dbResponse.map(mapToEvent),
+      total,
+      offset,
+      nextOffset: offset + limit >= total ? null : offset + limit,
+      limit,
+    }
+    console.log('findPaginated ~ res:', res)
+
+    return res
   },
 
   async findById({ userId, id: eventId }) {
@@ -76,13 +90,8 @@ export const eventsRepository: EventsRepository = {
       where: and(eq(events.id, eventId), eq(events.userId, userId)),
       with: {
         labels: {
-          with: {
-            label: true,
-          },
-          columns: {
-            eventId: false,
-            labelId: false,
-          },
+          with: { label: true },
+          columns: { eventId: false, labelId: false },
         },
       },
     })

@@ -14,13 +14,15 @@ export const useCreateEventMutation = () => {
 
   return useAuthMutation<Event[], CreateEventBody, Event[]>(
     {
-      mutationKey: keys.events,
+      mutationKey: keys.events.base(),
       onMutate: async (event) => {
-        await queryClient.cancelQueries({ queryKey: keys.events })
+        await queryClient.cancelQueries({ queryKey: keys.events.base() })
 
-        const previousEvents = queryClient.getQueryData<Event[]>(keys.events)
+        const previousEvents = queryClient.getQueryData<Event[]>(
+          keys.events.base(),
+        )
 
-        queryClient.setQueryData<Event[]>(keys.events, (old = []) => [
+        queryClient.setQueryData<Event[]>(keys.events.base(), (old = []) => [
           ...old,
           {
             ...event,
@@ -36,12 +38,12 @@ export const useCreateEventMutation = () => {
       onSuccess(data, _variables, context) {
         toast.success('event created')
 
-        queryClient.setQueryData(keys.events, [...data, ...context])
+        queryClient.setQueryData(keys.events.base(), [...data, ...context])
       },
 
       onError: (error, _, context) => {
         toast.error(error.message)
-        queryClient.setQueryData(keys.events, context)
+        queryClient.setQueryData(keys.events.base(), context)
       },
     },
     { method: 'POST' },

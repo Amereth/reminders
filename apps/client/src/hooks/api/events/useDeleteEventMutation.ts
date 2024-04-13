@@ -9,13 +9,15 @@ export const useDeleteEventMutation = () => {
 
   return useAuthMutation<Event, Event['id'], Event[]>(
     {
-      mutationKey: keys.events,
+      mutationKey: keys.events.base(),
       onMutate: async (eventId) => {
-        await queryClient.cancelQueries({ queryKey: keys.events })
+        await queryClient.cancelQueries({ queryKey: keys.events.base() })
 
-        const previousEvents = queryClient.getQueryData<Event[]>(keys.events)
+        const previousEvents = queryClient.getQueryData<Event[]>(
+          keys.events.base(),
+        )
 
-        queryClient.setQueryData<Event[]>(keys.events, (old = []) => {
+        queryClient.setQueryData<Event[]>(keys.events.base(), (old = []) => {
           const index = old.findIndex((event) => event.id === eventId)
 
           if (index === -1) return old
@@ -28,7 +30,7 @@ export const useDeleteEventMutation = () => {
 
       onError: (error, _, context) => {
         toast.error(error.message)
-        queryClient.setQueryData(keys.events, context)
+        queryClient.setQueryData(keys.events.base(), context)
       },
     },
     { method: 'DELETE' },

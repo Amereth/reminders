@@ -10,6 +10,11 @@ import {
   useSuspenseInfiniteQuery,
 } from '@tanstack/react-query'
 
+export type PaginatedQueryOpts = {
+  offset: number
+  limit: number
+}
+
 export const authInifiniteQueryOptions = <
   TQueryFnData,
   TError = DefaultError,
@@ -48,9 +53,9 @@ export const useAuthInfiniteQuery = <
 ) =>
   useSuspenseInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(
     {
-      ...options,
       queryFn: (request?: RequestInit) =>
         authFetch<TQueryFnData, TError>(options.queryKey[0] as string, request),
+      ...options,
     },
     queryClient,
   )

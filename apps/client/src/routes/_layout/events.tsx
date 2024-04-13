@@ -13,7 +13,9 @@ import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { Loader } from '@/components/Loader'
 
 const EventsList = () => {
-  const { data } = useEventsQuery()
+  const {
+    data: { pages },
+  } = useEventsQuery()
 
   const { mutate: createEvent } = useCreateEventMutation()
   const { mutate: deleteEvent } = useDeleteEventMutation()
@@ -46,13 +48,15 @@ const EventsList = () => {
       />
 
       <div className='mt-4 grid min-h-0 grow auto-rows-min grid-cols-1 gap-4 overflow-auto pb-4 pr-4 lg:grid-cols-2 xl:grid-cols-3'>
-        {data.map((event) => (
-          <EventCard
-            key={event.id}
-            event={event}
-            onDelete={() => deleteEvent(event.id)}
-          />
-        ))}
+        {pages.map((page) =>
+          page.data.map((event) => (
+            <EventCard
+              key={event.id}
+              event={event}
+              onDelete={() => deleteEvent(event.id)}
+            />
+          )),
+        )}
       </div>
     </main>
   )
@@ -61,6 +65,13 @@ const EventsList = () => {
 export const Route = createFileRoute('/_layout/events')({
   pendingComponent: Loader,
   component: EventsList,
-  loader: ({ context: { queryClient } }) =>
-    queryClient.ensureQueryData(eventsQueryOptions()),
+  loader: async ({ context }) => {
+    const { queryClient } = context
+
+    const data =
+      queryClient.getQueryData(eventsQueryOptions().queryKey) ??
+      (await queryClient.fetchInfiniteQuery(eventsQueryOptions()))
+
+    return { data }
+  },
 })

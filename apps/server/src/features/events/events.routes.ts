@@ -7,19 +7,28 @@ import { insertEventsSchema, selectEventsSchema } from '@reminders/schemas'
 import z from 'zod'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
 import { eventsRepository, updateSchema } from './events.repository'
+import { paginatedArgsSchema, paginatedResponseSchema } from '@/lib/repository'
 
 export const eventsRoutes: FastifyPluginCallback<
   FastifyPluginOptions,
   RawServerDefault,
   ZodTypeProvider
 > = (fastify, _options, done) => {
-  fastify.get('/events', {
+  fastify.get('/events/paginated', {
     schema: {
-      response: { 200: z.array(selectEventsSchema) },
+      querystring: paginatedArgsSchema,
+      response: {
+        200: paginatedResponseSchema.extend({
+          data: z.array(selectEventsSchema),
+        }),
+      },
     },
 
     handler: async (req) => {
-      return eventsRepository.findAll({ userId: req.ctx.user.id })
+      return eventsRepository.findPaginated({
+        userId: req.ctx.user.id,
+        ...req.query,
+      })
     },
   })
 
