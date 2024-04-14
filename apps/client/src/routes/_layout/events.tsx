@@ -1,63 +1,22 @@
-import { EventCard, EventForm } from '@components/events'
-import {
-  eventsQueryOptions,
-  useEventsQuery,
-  useDeleteEventMutation,
-  useCreateEventMutation,
-} from '@api/events'
+import { eventsQueryOptions, useEventsQuery } from '@api/events'
 import { createFileRoute } from '@tanstack/react-router'
-import { Button } from '@ui/button'
-import { PlusIcon, MinusIcon } from 'lucide-react'
-import { useState } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { Loader } from '@/components/Loader'
+import { CreateEventForm } from '@/components/events/event-form/create-event-form'
+import { EventList } from '@/components/events/event-list'
 
 const EventsList = () => {
+  const [parent] = useAutoAnimate()
+
   const {
     data: { pages },
   } = useEventsQuery()
 
-  const { mutate: createEvent } = useCreateEventMutation()
-  const { mutate: deleteEvent } = useDeleteEventMutation()
-
-  const [formVisible, setFormVisible] = useState(false)
-
-  const [parent] = useAutoAnimate()
-
   return (
     <main ref={parent} className='flex grow flex-col pr-0'>
-      <div className='shrink-0 pr-4'>
-        <Button
-          size='icon'
-          variant='outline'
-          onClick={() => setFormVisible((v) => !v)}
-        >
-          {formVisible ? (
-            <MinusIcon strokeWidth={1.5} />
-          ) : (
-            <PlusIcon strokeWidth={1.5} />
-          )}
-        </Button>
-      </div>
+      <CreateEventForm />
 
-      <EventForm
-        formVisible={formVisible}
-        className='mt-4'
-        onSubmit={createEvent}
-        onClose={() => setFormVisible(false)}
-      />
-
-      <div className='mt-4 grid min-h-0 grow auto-rows-min grid-cols-1 gap-4 overflow-auto pb-4 pr-4 lg:grid-cols-2 xl:grid-cols-3'>
-        {pages.map((page) =>
-          page.data.map((event) => (
-            <EventCard
-              key={event.id}
-              event={event}
-              onDelete={() => deleteEvent(event.id)}
-            />
-          )),
-        )}
-      </div>
+      <EventList events={pages.flatMap((p) => p.data)} />
     </main>
   )
 }
