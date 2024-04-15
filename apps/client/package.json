@@ -42,7 +42,7 @@
     "react-dom": "^18.2.0",
     "react-error-boundary": "^4.0.13",
     "react-hook-form": "^7.51.3",
-    "remeda": "^1.58.1",
+    "remeda": "^1.59.0",
     "sonner": "^1.4.41",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
