@@ -148,8 +148,8 @@ importers:
         specifier: ^5.29.2
         version: 5.29.2(@tanstack/react-query@5.29.2)(react@18.2.0)
       '@tanstack/router-devtools':
-        specifier: ^1.28.1
-        version: 1.28.1(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.28.4
+        version: 1.28.4(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/router-vite-plugin':
         specifier: ^1.26.21
         version: 1.26.21(vite@5.2.9)
@@ -2454,6 +2454,23 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
+    dev: false
+
+  /@tanstack/react-router@1.28.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-rwPOVUZLxDiOFRAbeKlnhCvQuSrnKT6SbDJxPuWAxEMvSYMalpjAk6XEJWnEhvq/nFccJDZtoU3IOf12p2dyQA==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      '@tanstack/history': 1.26.10
+      '@tanstack/react-store': 0.2.1(react-dom@18.2.0)(react@18.2.0)
+      '@testing-library/react': 15.0.2(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      tiny-invariant: 1.3.3
+      tiny-warning: 1.0.3
+    dev: true
 
   /@tanstack/react-store@0.2.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-tEbMCQjbeVw9KOP/202LfqZMSNAVi6zYkkp1kBom8nFuMx/965Hzes3+6G6b/comCwVxoJU8Gg9IrcF8yRPthw==}
@@ -2466,14 +2483,14 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       use-sync-external-store: 1.2.0(react@18.2.0)
 
-  /@tanstack/router-devtools@1.28.1(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-f7unkDTK+F6jEe2283WVAbguWqxTPCGJkAw1ySqH4hfDfAdSjePVq099ad5TqTyk8gaa9bweS6DSfYpJRMPQRQ==}
+  /@tanstack/router-devtools@1.28.4(csstype@3.1.3)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-v8LKK4SUI9YpxgDhf6srI/MzewSXbbke8qb19EBKQMPxrhrR3iX4OocItBrUkmzGZtbnSSFxYbRT+/BZ/rdOwA==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
     dependencies:
-      '@tanstack/react-router': 1.28.1(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-router': 1.28.4(react-dom@18.2.0)(react@18.2.0)
       clsx: 2.1.0
       date-fns: 2.30.0
       goober: 2.1.14(csstype@3.1.3)
@@ -2523,12 +2540,44 @@ packages:
     resolution: {integrity: sha512-kGevOIbpMcIlCDeorKGpwZmdH7kHbqlk/Yj6dEpJMKEQw5lk0KVQY0OLXaCswy8GqlIVLd5625OB+rAntP9xVw==}
     dev: false
 
+  /@testing-library/dom@10.0.0:
+    resolution: {integrity: sha512-PmJPnogldqoVFf+EwbHvbBJ98MmqASV8kLrBYgsDNxQcFMeIS7JFL48sfyXvuMtgmWO/wMhh25odr+8VhDmn4g==}
+    engines: {node: '>=18'}
+    dependencies:
+      '@babel/code-frame': 7.24.2
+      '@babel/runtime': 7.24.0
+      '@types/aria-query': 5.0.4
+      aria-query: 5.3.0
+      chalk: 4.1.2
+      dom-accessibility-api: 0.5.16
+      lz-string: 1.5.0
+      pretty-format: 27.5.1
+    dev: true
+
+  /@testing-library/react@15.0.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-5mzIpuytB1ctpyywvyaY2TAAUQVCZIGqwiqFQf6u9lvj/SJQepGUzNV18Xpk+NLCaCE2j7CWrZE0tEf9xLZYiQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.24.0
+      '@testing-library/dom': 10.0.0
+      '@types/react-dom': 18.2.25
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: true
+
   /@total-typescript/ts-reset@0.5.1:
     resolution: {integrity: sha512-AqlrT8YA1o7Ff5wPfMOL0pvL+1X+sw60NN6CcOCqs658emD6RfiXhF7Gu9QcfKBH7ELY2nInLhKSCWVoNL70MQ==}
     dev: true
 
   /@tsconfig/node20@20.1.4:
     resolution: {integrity: sha512-sqgsT69YFeLWf5NtJ4Xq/xAF8p4ZQHlmGW74Nu2tD4+g5fAsposc4ZfaaPixVu4y01BEiDCWLRDCvDM5JOsRxg==}
+    dev: true
+
+  /@types/aria-query@5.0.4:
+    resolution: {integrity: sha512-rfT93uj5s0PRL7EzccGMs3brplhcrghnDoV26NqKhCAS1hVo+WdNsPvE/yb6ilfr5hi2MEk6d5EWJTKdxg8jVw==}
     dev: true
 
   /@types/babel__core@7.20.5:
@@ -2943,6 +2992,11 @@ packages:
     dependencies:
       color-convert: 2.0.1
 
+  /ansi-styles@5.2.0:
+    resolution: {integrity: sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==}
+    engines: {node: '>=10'}
+    dev: true
+
   /ansi-styles@6.2.1:
     resolution: {integrity: sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==}
     engines: {node: '>=12'}
@@ -2973,6 +3027,12 @@ packages:
     dependencies:
       tslib: 2.6.2
     dev: false
+
+  /aria-query@5.3.0:
+    resolution: {integrity: sha512-b0P0sZPKtyu8HkeRAfCq0IfURZK+SuwMjY1UXGBU27wpAiTwQAIlq56IbIO+ytk/JjS1fMR14ee5WBBfKi5J6A==}
+    dependencies:
+      dequal: 2.0.3
+    dev: true
 
   /array-union@2.1.0:
     resolution: {integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==}
@@ -3360,6 +3420,10 @@ packages:
     dependencies:
       esutils: 2.0.3
     dev: false
+
+  /dom-accessibility-api@0.5.16:
+    resolution: {integrity: sha512-X7BJ2yElsnOJ30pZF4uIIDfBEVgF4XEBxL9Bxhy6dnrm5hkzqmsWHGTiHqRiITNhMyFLyAiWndIJP7Z1NTteDg==}
+    dev: true
 
   /dotenv@16.4.5:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
@@ -4554,6 +4618,11 @@ packages:
       react: 18.2.0
     dev: false
 
+  /lz-string@1.5.0:
+    resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
+    hasBin: true
+    dev: true
+
   /memoizee@0.4.15:
     resolution: {integrity: sha512-UBWmJpLZd5STPm7PMUlOw/TSy972M+z8gcyQ5veOnSDRREz/0bmpyTfKt3/51DhEBqCZQn1udM/5flcSPYhkdQ==}
     dependencies:
@@ -5066,6 +5135,15 @@ packages:
     hasBin: true
     dev: true
 
+  /pretty-format@27.5.1:
+    resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
+    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
+    dependencies:
+      ansi-regex: 5.0.1
+      ansi-styles: 5.2.0
+      react-is: 17.0.2
+    dev: true
+
   /process-warning@3.0.0:
     resolution: {integrity: sha512-mqn0kFRl0EoqhnL0GQ0veqFHyIN1yig9RHh/InzORTUiZHFRAur+aMtRkELNwGs9aNwKS6tg/An4NYBPGwvtzQ==}
     dev: false
@@ -5141,6 +5219,10 @@ packages:
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+
+  /react-is@17.0.2:
+    resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
+    dev: true
 
   /react-refresh@0.14.0:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
