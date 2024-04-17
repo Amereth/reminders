@@ -8,7 +8,13 @@ export type Ctx = {
 }
 
 const callback: FastifyPluginCallback = (fastify, _opts, done) => {
-  fastify.decorateRequest('ctx', {} as Ctx)
+  fastify.decorateRequest('ctx', null)
+
+  fastify.addHook('onRequest', (request, _reply, done) => {
+    request.ctx = {} as Ctx
+
+    done()
+  })
 
   done()
 }
