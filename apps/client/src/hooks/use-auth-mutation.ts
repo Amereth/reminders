@@ -7,11 +7,16 @@ import {
 import { useSupabase } from './useSupabase'
 import { authFetch } from '../lib/auth-fetch'
 
+type CustomOptions<TVariables> = {
+  getRequestUrl: (variables: TVariables) => string
+}
+
 export const useAuthMutation = <
   TData = unknown,
   TVariables = void,
   TContext = unknown,
 >(
+  { getRequestUrl }: CustomOptions<TVariables>,
   options: UseMutationOptions<TData, DefaultError, TVariables, TContext>,
   request?: RequestInit,
   queryClient?: QueryClient,
@@ -24,13 +29,10 @@ export const useAuthMutation = <
       mutationFn: (variables) => {
         if (!session) throw new Error('No session found')
 
-        return authFetch<TData, DefaultError>(
-          options.mutationKey?.[0] as string,
-          {
-            ...request,
-            body: JSON.stringify(variables),
-          },
-        )
+        return authFetch<TData, DefaultError>(getRequestUrl(variables), {
+          ...request,
+          body: JSON.stringify(variables),
+        })
       },
     },
     queryClient,

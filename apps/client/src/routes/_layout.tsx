@@ -3,6 +3,7 @@ import { PageHeader } from '@/components/page-header/PageHeader'
 import { Button } from '@/components/ui/button'
 import { Link, Outlet, createFileRoute, redirect } from '@tanstack/react-router'
 import { HomeIcon, ScrollIcon } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const links = [
   {
@@ -39,9 +40,15 @@ export const LayoutComponent = () => {
             </ul>
           </nav>
 
-          <div className='mt-auto'>
-            <GlobalLoadingIndicator />
-          </div>
+          <motion.div
+            className='mt-auto'
+            initial={{ width: '0px', height: '0px' }}
+            animate={{ width: '36px', height: '36px' }}
+          >
+            <div className='mt-auto'>
+              <GlobalLoadingIndicator />
+            </div>
+          </motion.div>
         </aside>
 
         <Outlet />

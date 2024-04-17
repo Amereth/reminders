@@ -1,12 +1,29 @@
 export default {
   events: {
     _: '/events',
-    base() {
-      return [this._] as const
+
+    get base() {
+      const url = this._
+      return { url, key: [url] } as const
     },
-    paginated() {
-      return [`${this._}/paginated`] as const
+
+    withId(id: string) {
+      const url = `${this._}/${id}` as const
+      return { url, key: [url, id] } as const
+    },
+
+    get paginated() {
+      const url = `${this._}/paginated` as const
+      return { url, key: [...this.base.key] } as const
     },
   },
-  eventLabels: ['/events/labels'],
+
+  eventLabels: {
+    _: '/events/labels',
+
+    get base() {
+      const url = this._
+      return { url, key: [url] } as const
+    },
+  },
 } as const

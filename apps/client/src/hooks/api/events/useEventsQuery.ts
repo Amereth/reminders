@@ -1,4 +1,3 @@
-import { DefaultError, InfiniteData } from '@tanstack/react-query'
 import { Event } from '@reminders/schemas'
 import keys from '@query-keys'
 import {
@@ -14,19 +13,13 @@ export const eventsQueryOptions = <TData = Event[]>(
   { offset, limit }: PaginatedQueryOpts = { offset: 0, limit: 7 },
   select?: QuerySelect<Event[], TData>,
 ) =>
-  authInifiniteQueryOptions<
-    Paginated<Event[]>,
-    DefaultError,
-    InfiniteData<Paginated<TData>>,
-    ReturnType<typeof keys.events.paginated>,
-    number
-  >({
-    queryKey: keys.events.paginated(),
+  authInifiniteQueryOptions({
+    queryKey: keys.events.paginated.key,
     initialPageParam: offset,
     getNextPageParam: (lastPage) => lastPage.nextOffset,
     queryFn: ({ pageParam }) => {
       return authFetch<Paginated<Event[]>>(
-        `${keys.events.paginated()[0]}?offset=${pageParam}&limit=${limit}`,
+        `${keys.events.paginated.url}?offset=${pageParam}&limit=${limit}`,
       )
     },
     select,

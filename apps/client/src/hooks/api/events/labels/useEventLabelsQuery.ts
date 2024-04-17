@@ -9,7 +9,7 @@ export const eventLabelsQueryOptions = <TData = Label[]>(
   select?: Select<TData>,
 ) =>
   authQueryOptions<Label[], DefaultError, TData>({
-    queryKey: keys.eventLabels,
+    queryKey: keys.eventLabels.base.key,
     select,
   })
 
