@@ -73,16 +73,13 @@ export const eventsRepository: EventsRepository = {
         .where(eq(events.userId, userId))
     )[0]
 
-    const res = {
+    return {
       data: dbResponse.map(mapToEvent),
       total,
       offset,
       nextOffset: offset + limit >= total ? null : offset + limit,
       limit,
     }
-    console.log('findPaginated ~ res:', res)
-
-    return res
   },
 
   async findById({ userId, id: eventId }) {
