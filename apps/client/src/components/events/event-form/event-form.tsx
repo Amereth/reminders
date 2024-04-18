@@ -62,10 +62,7 @@ export const EventForm = ({
 
   return (
     <Form {...form}>
-      <form
-        className={cn(className, 'rounded-md border-[1px] p-4')}
-        onSubmit={onSubmit}
-      >
+      <form className={cn(className, 'flex grow flex-col')} onSubmit={onSubmit}>
         <DevTool control={form.control} />
 
         <div className='flex items-start gap-4'>
@@ -144,7 +141,7 @@ export const EventForm = ({
           <LabelsSelector />
         </div>
 
-        <div className='mt-4 flex gap-4'>
+        <div className='mt-8 flex gap-4'>
           <Button type='submit' variant='outline-success'>
             submit
           </Button>

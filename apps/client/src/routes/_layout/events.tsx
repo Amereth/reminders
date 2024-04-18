@@ -2,8 +2,8 @@ import { eventsQueryOptions, useEventsQuery } from '@api/events'
 import { createFileRoute } from '@tanstack/react-router'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { Loader } from '@/components/Loader'
-import { CreateEventForm } from '@/components/events/event-form/create-event-form'
 import { EventList } from '@/components/events/event-list'
+import { Controls } from '@/components/events/controls'
 
 const EventsList = () => {
   const [parent] = useAutoAnimate()
@@ -14,7 +14,7 @@ const EventsList = () => {
 
   return (
     <main ref={parent} className='flex grow flex-col pr-0'>
-      <CreateEventForm />
+      <Controls />
 
       <EventList events={pages.flatMap((p) => p.data)} />
     </main>

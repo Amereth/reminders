@@ -10,7 +10,7 @@ export const EventList = ({ events }: EventListProps) => {
   const { mutate: deleteEvent } = useDeleteEventMutation()
 
   return (
-    <div className='mt-4 grid min-h-0 grow auto-rows-min grid-cols-1 gap-4 overflow-auto pb-4 pr-4 lg:grid-cols-2 xl:grid-cols-3'>
+    <div className='grid min-h-0 grow auto-rows-min grid-cols-1 gap-4 overflow-auto pb-4 pr-4 pt-4 lg:grid-cols-2 xl:grid-cols-3'>
       {events.map((event) => (
         <EventCard
           key={event.id}
