@@ -4,15 +4,16 @@ import { Button } from '@/components/ui/button'
 import { Link, Outlet, createFileRoute, redirect } from '@tanstack/react-router'
 import { HomeIcon, ScrollIcon } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { Icon } from '@/components/icon'
 
 const links = [
   {
-    Icon: HomeIcon,
+    icon: HomeIcon,
     name: 'home',
     to: '/',
   },
   {
-    Icon: ScrollIcon,
+    icon: ScrollIcon,
     name: 'events',
     to: '/events',
   },
@@ -24,14 +25,14 @@ export const LayoutComponent = () => {
       <PageHeader />
 
       <div className='mt-4 flex grow items-stretch overflow-hidden pl-0'>
-        <aside className='flex max-w-[56px] flex-col overflow-hidden border-r-[1px] pb-2 transition-all duration-500 hover:max-w-40'>
+        <aside className='flex max-w-[56px] flex-col overflow-hidden border-r-[1px] pb-2 transition-all duration-500 hover:max-w-40 max-sm:max-w-[48px]'>
           <nav>
             <ul>
-              {links.map(({ to, Icon, name }) => (
+              {links.map(({ to, icon, name }) => (
                 <li key={to}>
                   <Button variant='link'>
                     <Link to={to} className='flex items-end gap-4'>
-                      <Icon strokeWidth={1.5} />
+                      <Icon icon={icon} />
                       <span>{name}</span>
                     </Link>
                   </Button>

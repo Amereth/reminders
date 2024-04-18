@@ -6,6 +6,7 @@ import { format } from 'date-fns'
 import { weekday_date_time } from '@reminders/date'
 import { Divider } from '../Divider'
 import { Badge } from '../ui/badge'
+import { Icon } from '../icon'
 
 type EventCardProps = {
   event: Event
@@ -19,7 +20,7 @@ export const EventCard = ({ event, onDelete }: EventCardProps) => (
         <DueDate dueDate={event.dueDate} />
 
         <Button size='icon' variant='link' className='ml-auto'>
-          <PenIcon strokeWidth={1.5} />
+          <Icon icon={PenIcon} />
         </Button>
 
         <Button
@@ -28,7 +29,7 @@ export const EventCard = ({ event, onDelete }: EventCardProps) => (
           className='hover:text-destructive'
           onClick={onDelete}
         >
-          <TrashIcon strokeWidth={1.5} />
+          <Icon icon={TrashIcon} />
         </Button>
       </div>
 
