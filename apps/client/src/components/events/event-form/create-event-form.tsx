@@ -10,6 +10,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 import { createEventFormControls, useControlsSnapshot } from '../state'
+import { Icon } from '@/components/icon'
 
 type CreateEventFormProps = {
   triggerClassName?: string
@@ -24,9 +25,9 @@ export const CreateEventForm = ({ triggerClassName }: CreateEventFormProps) => {
       open={createEventFormOpen}
       onOpenChange={createEventFormControls.toggle}
     >
-      <SheetTrigger className={triggerClassName}>
+      <SheetTrigger className={triggerClassName} asChild>
         <Button size='icon' variant='outline'>
-          <PlusIcon strokeWidth={1.5} />
+          <Icon icon={PlusIcon} />
         </Button>
       </SheetTrigger>
 

@@ -13,7 +13,7 @@ const EventsList = () => {
   } = useEventsQuery()
 
   return (
-    <main ref={parent} className='flex grow flex-col pr-0'>
+    <main ref={parent} className='grow pr-0 leading-none'>
       <Controls />
 
       <EventList events={pages.flatMap((p) => p.data)} />
