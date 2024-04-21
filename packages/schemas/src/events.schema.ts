@@ -1,5 +1,5 @@
 import { relations } from 'drizzle-orm'
-import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
+import { pgTable, serial, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import z from 'zod'
 import { eventsToLabels } from './events-labels.schema'
@@ -7,7 +7,7 @@ import { selectLabelsSchema } from './labels.schema'
 import { authUsers } from './users.schema'
 
 export const events = pgTable('events', {
-  id: uuid('id').primaryKey(),
+  id: serial('id').primaryKey(),
   userId: uuid('user_id')
     .notNull()
     .references(() => authUsers.id, { onDelete: 'cascade' }),

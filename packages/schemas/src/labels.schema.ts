@@ -1,12 +1,12 @@
 import { relations } from 'drizzle-orm'
-import { pgTable, text, uuid } from 'drizzle-orm/pg-core'
+import { pgTable, serial, text, uuid } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { eventsToLabels } from './events-labels.schema'
 import { authUsers } from './users.schema'
 
 export const labels = pgTable('labels', {
-  id: uuid('id').primaryKey(),
+  id: serial('id').primaryKey(),
   label: text('label').notNull(),
   description: text('description'),
   userId: uuid('user_id').references(() => authUsers.id, {
