@@ -30,11 +30,13 @@ export const insertEventsSchema = createInsertSchema(events, {
   createdAt: z.string().datetime().nullable(),
 })
   .required()
-  .extend({ labels: z.array(z.string()) })
+  .extend({ labels: z.array(z.coerce.number()).optional() })
+  .omit({ id: true })
 
 export type InsertEvent = z.infer<typeof insertEventsSchema>
 
 export const selectEventsSchema = createSelectSchema(events, {
+  id: z.coerce.string(),
   dueDate: z.date().nullable(),
   createdAt: z.date().nullable(),
 })

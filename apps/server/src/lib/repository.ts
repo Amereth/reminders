@@ -7,6 +7,10 @@ export type WithUId = {
 }
 
 export type WithId = {
+  id: number
+}
+
+export type WithStringId = {
   id: string
 }
 

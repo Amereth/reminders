@@ -34,7 +34,7 @@ export const eventsRoutes: FastifyPluginCallback<
 
   fastify.get('/events/:id', {
     schema: {
-      params: z.object({ id: z.string() }),
+      params: z.object({ id: z.coerce.number() }),
       response: { 200: selectEventsSchema },
     },
 
@@ -68,7 +68,7 @@ export const eventsRoutes: FastifyPluginCallback<
 
   fastify.patch('/events/:id', {
     schema: {
-      params: z.object({ id: z.string() }),
+      params: z.object({ id: z.coerce.number() }),
       body: updateSchema,
       response: { 200: selectEventsSchema },
     },
@@ -84,7 +84,7 @@ export const eventsRoutes: FastifyPluginCallback<
 
   fastify.delete('/events/:id', {
     schema: {
-      params: z.object({ id: z.string() }),
+      params: z.object({ id: z.coerce.number() }),
       response: {
         200: z.object({ id: z.string() }),
       },

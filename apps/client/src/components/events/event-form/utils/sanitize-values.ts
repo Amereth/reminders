@@ -11,7 +11,7 @@ export const sanitizeValues = (values: FormModel): CreateEventBody => {
     minutes,
   }).toISOString()
 
-  const labels = values.labels.map((label) => label.value)
+  const labels = values.labels?.map((label) => label.value)
 
   return { description: values.description, dueDate, labels }
 }

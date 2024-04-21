@@ -27,12 +27,14 @@ import { sanitizeValues } from './utils/sanitize-values'
 const formModel = insertEventsSchema.pick({ description: true }).extend({
   date: z.date(),
   time: z.string(),
-  labels: z.array(
-    z.object({
-      value: z.string(),
-      label: z.string(),
-    }),
-  ),
+  labels: z
+    .array(
+      z.object({
+        value: z.string(),
+        label: z.string(),
+      }),
+    )
+    .optional(),
 })
 
 export type FormModel = z.infer<typeof formModel>

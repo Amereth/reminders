@@ -13,21 +13,23 @@ import {
   Create,
   Delete,
   FindById,
-  WithId,
   WithIdAndUId,
   WithUId,
   Update,
   FindPaginated,
+  WithStringId,
 } from '@/lib/repository'
 import { differenceWith, isDeepEqual } from 'remeda'
 import z from 'zod'
 
-type DBEventResponse = Omit<Event, 'labels'> & {
+type DBEventResponse = Omit<Event, 'labels' | 'id'> & {
+  id: number
   labels: { label: Label }[]
 }
 
 const mapToEvent = (event: DBEventResponse): Event => ({
   ...event,
+  id: event.id.toString(),
   labels: event.labels.map(({ label }) => label),
 })
 
@@ -38,7 +40,7 @@ export const updateSchema = insertEventsSchema
   .partial()
 
 type UpdateSchema = {
-  id: Event['id']
+  id: number
   userId: User['id']
 } & z.infer<typeof updateSchema>
 
@@ -47,7 +49,7 @@ type EventsRepository = {
   findById: FindById<Event, WithIdAndUId>
   create: Create<Event, CreateSchema>
   update: Update<Event, UpdateSchema>
-  delete: Delete<WithId, WithIdAndUId>
+  delete: Delete<WithStringId, WithIdAndUId>
 }
 
 export const eventsRepository: EventsRepository = {
@@ -66,9 +68,7 @@ export const eventsRepository: EventsRepository = {
 
     const { total } = (
       await db
-        .select({
-          total: count(),
-        })
+        .select({ total: count() })
         .from(events)
         .where(eq(events.userId, userId))
     )[0]
@@ -103,18 +103,19 @@ export const eventsRepository: EventsRepository = {
       const [{ id }] = await tx
         .insert(events)
         .values({
-          id: crypto.randomUUID(),
           description,
           userId,
           dueDate: dueDate ? new Date(dueDate) : null,
         })
         .returning({ id: events.id })
 
-      await Promise.all(
-        labels.map((labelId) =>
-          tx.insert(eventsToLabels).values({ eventId: id, labelId }),
-        ),
-      )
+      if (labels?.length) {
+        await Promise.all(
+          labels.map((labelId) =>
+            tx.insert(eventsToLabels).values({ eventId: id, labelId }),
+          ),
+        )
+      }
 
       return id
     })
@@ -177,6 +178,6 @@ export const eventsRepository: EventsRepository = {
       .where(and(eq(events.userId, userId), eq(events.id, id)))
       .returning({ id: events.id })
 
-    return eventId
+    return { id: eventId.toString() }
   },
 }
