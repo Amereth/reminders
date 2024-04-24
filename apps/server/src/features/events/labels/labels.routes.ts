@@ -3,10 +3,10 @@ import {
   FastifyPluginOptions,
   RawServerDefault,
 } from 'fastify'
-import { insertLabelsSchema, selectLabelsSchema } from '@reminders/schemas'
+import { insertLabelSchema, labelSchema } from '@reminders/schemas'
 import z from 'zod'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
-import { labelsRepository } from './labels.repository'
+import { labelsRepo } from './labels.repository'
 
 export const labelsRoutes: FastifyPluginCallback<
   FastifyPluginOptions,
@@ -15,34 +15,37 @@ export const labelsRoutes: FastifyPluginCallback<
 > = (fastify, _options, done) => {
   fastify.get('/labels', {
     schema: {
-      response: { 200: z.array(selectLabelsSchema) },
+      response: { 200: z.array(labelSchema) },
     },
 
-    handler: async (req) => {
-      return labelsRepository.findAll({ userId: req.ctx.user.id })
+    handler: (req) => {
+      return labelsRepo.findAll({ userId: req.ctx.user.id })
     },
   })
 
   fastify.get('/labels/user', {
     schema: {
-      response: { 200: z.array(selectLabelsSchema) },
+      response: { 200: z.array(labelSchema) },
     },
 
-    handler: async (req) => {
-      return labelsRepository.findUsersLabels({ userId: req.ctx.user.id })
+    handler: (req) => {
+      return labelsRepo.findUsersLabels({ userId: req.ctx.user.id })
     },
   })
 
   fastify.post('/labels', {
     schema: {
-      body: insertLabelsSchema.pick({ description: true, label: true }),
-      response: { 201: z.array(selectLabelsSchema) },
+      body: insertLabelSchema.pick({
+        description: true,
+        label: true,
+      }),
+      response: { 201: labelSchema },
     },
 
-    handler: async (req, res) => {
+    handler: (req, res) => {
       res.status(201)
 
-      return labelsRepository.create({
+      return labelsRepo.create({
         ...req.body,
         userId: req.ctx.user.id,
       })
@@ -51,15 +54,15 @@ export const labelsRoutes: FastifyPluginCallback<
 
   fastify.patch('/labels/:id', {
     schema: {
-      params: z.object({ id: z.string() }),
-      body: insertLabelsSchema
+      params: z.object({ id: z.coerce.number() }),
+      body: insertLabelSchema
         .pick({ description: true, dueDate: true })
         .partial(),
-      response: { 200: z.array(selectLabelsSchema) },
+      response: { 200: labelSchema },
     },
 
     handler: (req) => {
-      return labelsRepository.update({
+      return labelsRepo.update({
         userId: req.ctx.user.id,
         id: req.params.id,
         ...req.body,
@@ -69,14 +72,14 @@ export const labelsRoutes: FastifyPluginCallback<
 
   fastify.delete('/labels/:id', {
     schema: {
-      params: z.object({ id: z.string() }),
+      params: z.object({ id: z.coerce.number() }),
       response: {
-        200: z.array(z.object({ id: z.string() })),
+        200: z.object({ id: z.coerce.string() }),
       },
     },
 
     handler: (req) => {
-      return labelsRepository.delete({
+      return labelsRepo.delete({
         userId: req.ctx.user.id,
         id: req.params.id,
       })

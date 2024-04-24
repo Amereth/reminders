@@ -3,10 +3,10 @@ import {
   FastifyPluginOptions,
   RawServerDefault,
 } from 'fastify'
-import { insertEventsSchema, selectEventsSchema } from '@reminders/schemas'
+import { insertEventSchema, eventSchema } from '@reminders/schemas'
 import z from 'zod'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
-import { eventsRepository, updateSchema } from './events.repository'
+import { eventsRepo, updateSchema } from './events.repository'
 import { paginatedArgsSchema, paginatedResponseSchema } from '@/lib/repository'
 
 export const eventsRoutes: FastifyPluginCallback<
@@ -19,13 +19,13 @@ export const eventsRoutes: FastifyPluginCallback<
       querystring: paginatedArgsSchema,
       response: {
         200: paginatedResponseSchema.extend({
-          data: z.array(selectEventsSchema),
+          data: z.array(eventSchema),
         }),
       },
     },
 
-    handler: async (req) => {
-      return eventsRepository.findPaginated({
+    handler: (req) => {
+      return eventsRepo.findPaginated({
         userId: req.ctx.user.id,
         ...req.query,
       })
@@ -35,11 +35,11 @@ export const eventsRoutes: FastifyPluginCallback<
   fastify.get('/events/:id', {
     schema: {
       params: z.object({ id: z.coerce.number() }),
-      response: { 200: selectEventsSchema },
+      response: { 200: eventSchema },
     },
 
     handler: (req) => {
-      return eventsRepository.findById({
+      return eventsRepo.findById({
         userId: req.ctx.user.id,
         id: req.params.id,
       })
@@ -48,18 +48,18 @@ export const eventsRoutes: FastifyPluginCallback<
 
   fastify.post('/events', {
     schema: {
-      body: insertEventsSchema.pick({
+      body: insertEventSchema.pick({
         description: true,
         dueDate: true,
         labels: true,
       }),
-      response: { 201: selectEventsSchema },
+      response: { 201: eventSchema },
     },
 
-    handler: async (req, res) => {
+    handler: (req, res) => {
       res.status(201)
 
-      return eventsRepository.create({
+      return eventsRepo.create({
         ...req.body,
         userId: req.ctx.user.id,
       })
@@ -70,11 +70,11 @@ export const eventsRoutes: FastifyPluginCallback<
     schema: {
       params: z.object({ id: z.coerce.number() }),
       body: updateSchema,
-      response: { 200: selectEventsSchema },
+      response: { 200: eventSchema },
     },
 
     handler: (req) => {
-      return eventsRepository.update({
+      return eventsRepo.update({
         userId: req.ctx.user.id,
         id: req.params.id,
         ...req.body,
@@ -91,7 +91,7 @@ export const eventsRoutes: FastifyPluginCallback<
     },
 
     handler: (req) => {
-      return eventsRepository.delete({
+      return eventsRepo.delete({
         userId: req.ctx.user.id,
         id: req.params.id,
       })

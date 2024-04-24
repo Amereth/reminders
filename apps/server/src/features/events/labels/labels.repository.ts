@@ -1,11 +1,6 @@
 import { db } from '@/lib/db'
 import { and, eq, isNull, or } from 'drizzle-orm'
-import {
-  labels,
-  Label,
-  selectLabelsSchema,
-  InsertLabel,
-} from '@reminders/schemas'
+import { labels, Label, labelSchema, InsertLabel } from '@reminders/schemas'
 import { pick } from 'remeda'
 import {
   Create,
@@ -13,9 +8,9 @@ import {
   FindMany,
   WithId,
   WithIdAndUId,
-  WithUId,
   Update,
 } from '@/lib/repository'
+import z from 'zod'
 
 type CreateSchema = Omit<InsertLabel, 'id' | 'createdAt'>
 
@@ -25,51 +20,58 @@ type UpdateSchema = WithIdAndUId & {
 }
 
 type LabelsRepository = {
-  findAll: FindMany<Label, WithUId>
-  findUsersLabels: FindMany<Label, WithUId>
-  create: Create<Label[], CreateSchema>
-  update: Update<Label[], UpdateSchema>
-  delete: Delete<WithId[], WithIdAndUId>
+  findAll: FindMany<Label>
+  findUsersLabels: FindMany<Label>
+  create: Create<Label, CreateSchema>
+  update: Update<Label, UpdateSchema>
+  delete: Delete<WithId<string>>
 }
 
-export const labelsRepository: LabelsRepository = {
+export const labelsRepo: LabelsRepository = {
   async findAll({ userId }) {
-    return db.query.labels.findMany({
+    const resp = await db.query.labels.findMany({
       where: or(eq(labels.userId, userId), isNull(labels.userId)),
     })
+
+    return z.array(labelSchema).parse(resp)
   },
 
   async findUsersLabels({ userId }) {
-    return db.query.labels.findMany({
+    const resp = db.query.labels.findMany({
       where: and(eq(labels.userId, userId)),
     })
+
+    return z.array(labelSchema).parse(resp)
   },
 
   async create(data) {
-    return db
+    const resp = await db
       .insert(labels)
-      .values({
-        id: crypto.randomUUID(),
-        ...data,
-      })
-      .returning(pick(labels, selectLabelsSchema.keyof().options))
+      .values(data)
+      .returning(pick(labels, labelSchema.keyof().options))
+
+    return labelSchema.parse(resp)
   },
 
   async update({ userId, id, description, label }) {
-    return db
+    const resp = await db
       .update(labels)
       .set({
         label,
         ...(description ? { description } : {}),
       })
       .where(and(eq(labels.id, id), eq(labels.userId, userId ?? '')))
-      .returning(pick(labels, selectLabelsSchema.keyof().options))
+      .returning(pick(labels, labelSchema.keyof().options))
+
+    return labelSchema.parse(resp)
   },
 
   async delete({ userId, id }) {
-    return db
+    const resp = await db
       .delete(labels)
       .where(and(eq(labels.userId, userId), eq(labels.id, id)))
       .returning({ id: labels.id })
+
+    return z.object({ id: z.string() }).parse(resp[0])
   },
 }

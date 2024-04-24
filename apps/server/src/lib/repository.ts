@@ -6,13 +6,12 @@ export type WithUId = {
   userId: User['id']
 }
 
-export type WithId = {
-  id: number
+export type WithId<T extends string | number> = {
+  id: T
 }
 
-export type WithStringId = {
-  id: string
-}
+export type WithIdAndUId<T extends string | number = number> = WithId<T> &
+  WithUId
 
 export const paginatedArgsSchema = z.object({
   limit: z.coerce.number().optional().default(10),
@@ -28,15 +27,13 @@ export const paginatedResponseSchema = z.object({
 
 export type PaginatedArgs = z.infer<typeof paginatedArgsSchema>
 
-export type WithIdAndUId = WithId & WithUId
-
 export type FindMany<Return, Arg = WithUId> = (arg: Arg) => Promise<Return[]>
 
 export type FindPaginated<Return, Arg = WithUId> = (
   arg: Arg & PaginatedArgs,
 ) => Promise<Paginated<Return[]>>
 
-export type FindById<Return, Arg = WithId> = (
+export type FindById<Return, Arg = WithIdAndUId> = (
   arg: Arg,
 ) => Promise<Return | undefined>
 

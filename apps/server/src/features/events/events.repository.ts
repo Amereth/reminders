@@ -5,37 +5,25 @@ import {
   Event,
   InsertEvent,
   User,
-  Label,
   eventsToLabels,
-  insertEventsSchema,
+  insertEventSchema,
+  eventSchema,
 } from '@reminders/schemas'
 import {
   Create,
   Delete,
   FindById,
-  WithIdAndUId,
-  WithUId,
   Update,
   FindPaginated,
-  WithStringId,
+  WithId,
 } from '@/lib/repository'
 import { differenceWith, isDeepEqual } from 'remeda'
 import z from 'zod'
-
-type DBEventResponse = Omit<Event, 'labels' | 'id'> & {
-  id: number
-  labels: { label: Label }[]
-}
-
-const mapToEvent = (event: DBEventResponse): Event => ({
-  ...event,
-  id: event.id.toString(),
-  labels: event.labels.map(({ label }) => label),
-})
+import createHttpError from 'http-errors'
 
 type CreateSchema = Omit<InsertEvent, 'id' | 'createdAt'>
 
-export const updateSchema = insertEventsSchema
+export const updateSchema = insertEventSchema
   .pick({ description: true, dueDate: true, labels: true })
   .partial()
 
@@ -45,16 +33,16 @@ type UpdateSchema = {
 } & z.infer<typeof updateSchema>
 
 type EventsRepository = {
-  findPaginated: FindPaginated<Event, WithUId>
-  findById: FindById<Event, WithIdAndUId>
+  findPaginated: FindPaginated<Event>
+  findById: FindById<Event>
   create: Create<Event, CreateSchema>
   update: Update<Event, UpdateSchema>
-  delete: Delete<WithStringId, WithIdAndUId>
+  delete: Delete<WithId<string>>
 }
 
-export const eventsRepository: EventsRepository = {
+export const eventsRepo: EventsRepository = {
   async findPaginated({ userId, offset, limit }) {
-    const dbResponse = await db.query.events.findMany({
+    const dbResp = await db.query.events.findMany({
       where: eq(events.userId, userId),
       with: {
         labels: {
@@ -74,7 +62,7 @@ export const eventsRepository: EventsRepository = {
     )[0]
 
     return {
-      data: dbResponse.map(mapToEvent),
+      data: z.array(eventSchema).parse(dbResp),
       total,
       offset,
       nextOffset: offset + limit >= total ? null : offset + limit,
@@ -83,7 +71,7 @@ export const eventsRepository: EventsRepository = {
   },
 
   async findById({ userId, id: eventId }) {
-    const event = await db.query.events.findFirst({
+    const dbResp = await db.query.events.findFirst({
       where: and(eq(events.id, eventId), eq(events.userId, userId)),
       with: {
         labels: {
@@ -93,9 +81,9 @@ export const eventsRepository: EventsRepository = {
       },
     })
 
-    if (event) {
-      return mapToEvent(event)
-    }
+    if (!dbResp) throw createHttpError(404, 'Event not found')
+
+    return eventSchema.parse(dbResp)
   },
 
   async create({ userId, description, dueDate, labels }) {

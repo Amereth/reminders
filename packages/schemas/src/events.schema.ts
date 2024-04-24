@@ -3,7 +3,7 @@ import { pgTable, serial, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import z from 'zod'
 import { eventsToLabels } from './events-labels.schema'
-import { selectLabelsSchema } from './labels.schema'
+import { labelSchema } from './labels.schema'
 import { authUsers } from './users.schema'
 
 export const events = pgTable('events', {
@@ -16,7 +16,7 @@ export const events = pgTable('events', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
 })
 
-export const insertEventsSchema = createInsertSchema(events, {
+export const insertEventSchema = createInsertSchema(events, {
   description: z.string().min(1).max(1000),
   dueDate: z
     .string()
@@ -33,20 +33,18 @@ export const insertEventsSchema = createInsertSchema(events, {
   .extend({ labels: z.array(z.coerce.number()).optional() })
   .omit({ id: true })
 
-export type InsertEvent = z.infer<typeof insertEventsSchema>
+export type InsertEvent = z.infer<typeof insertEventSchema>
 
-export const selectEventsSchema = createSelectSchema(events, {
+export const eventSchema = createSelectSchema(events, {
   id: z.coerce.string(),
   dueDate: z.date().nullable(),
   createdAt: z.date().nullable(),
 })
   .required()
   .omit({ userId: true })
-  .extend({
-    labels: z.array(selectLabelsSchema),
-  })
+  .extend({ labels: z.array(labelSchema) })
 
-export type Event = z.infer<typeof selectEventsSchema>
+export type Event = z.infer<typeof eventSchema>
 
 export const eventsRelations = relations(events, ({ many }) => ({
   labels: many(eventsToLabels),
