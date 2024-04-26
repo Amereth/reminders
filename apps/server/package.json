@@ -55,7 +55,7 @@
     "concurrently": "^8.2.2",
     "drizzle-kit": "^0.20.14",
     "tslib": "^2.6.2",
-    "tsx": "^4.7.2",
+    "tsx": "^4.7.3",
     "typescript": "^5.4.5"
   }
 }
