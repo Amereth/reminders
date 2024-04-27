@@ -3,7 +3,7 @@ import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { cn } from '@lib/utils'
 import { weekday_date_time } from '@reminders/date'
-import { insertEventsSchema } from '@reminders/schemas'
+import { insertEventSchema } from '@reminders/schemas'
 import { Button } from '@ui/button'
 import { Calendar } from '@ui/calendar'
 import {
@@ -24,7 +24,7 @@ import { z } from 'zod'
 import { LabelsSelector } from './labels-selector'
 import { sanitizeValues } from './utils/sanitize-values'
 
-const formModel = insertEventsSchema.pick({ description: true }).extend({
+const formModel = insertEventSchema.pick({ description: true }).extend({
   date: z.date(),
   time: z.string(),
   labels: z
