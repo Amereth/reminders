@@ -2,8 +2,8 @@ import { PenIcon, TrashIcon } from 'lucide-react'
 import { Event, Label } from '@reminders/schemas'
 import { Button } from '@ui/button'
 import { Card, CardHeader, CardContent, CardFooter } from '@ui/card'
-import { format } from 'date-fns'
-import { weekday_date_time } from '@reminders/date'
+import { format } from '@formkit/tempo'
+import { full_date_time } from '@reminders/date'
 import { Divider } from '../Divider'
 import { Badge } from '../ui/badge'
 import { Icon } from '../icon'
@@ -13,43 +13,46 @@ type EventCardProps = {
   onDelete: () => void
 }
 
-export const EventCard = ({ event, onDelete }: EventCardProps) => (
-  <Card className='max-sm:p-2' key={event.id}>
-    <CardHeader>
-      <div className='flex flex-row items-end'>
-        <DueDate dueDate={event.dueDate} />
+export const EventCard = ({ event, onDelete }: EventCardProps) => {
+  console.log('EventCard ~ event:', event)
+  return (
+    <Card className='max-sm:p-2' key={event.id}>
+      <CardHeader>
+        <div className='flex flex-row items-end'>
+          <DueDate dueDate={event.dueDate} />
 
-        <Button size='icon' variant='link' className='ml-auto'>
-          <Icon icon={PenIcon} />
-        </Button>
+          <Button size='icon' variant='link' className='ml-auto'>
+            <Icon icon={PenIcon} />
+          </Button>
 
-        <Button
-          size='icon'
-          variant='link'
-          className='hover:text-destructive'
-          onClick={onDelete}
-        >
-          <Icon icon={TrashIcon} />
-        </Button>
-      </div>
+          <Button
+            size='icon'
+            variant='link'
+            className='hover:text-destructive'
+            onClick={onDelete}
+          >
+            <Icon icon={TrashIcon} />
+          </Button>
+        </div>
 
-      <Divider position='horizontal' />
-    </CardHeader>
+        <Divider position='horizontal' />
+      </CardHeader>
 
-    <CardContent className='!pt-0'>
-      <p>{event.description}</p>
-    </CardContent>
+      <CardContent className='!pt-0'>
+        <p>{event.description}</p>
+      </CardContent>
 
-    <EventLabels labels={event.labels} />
-  </Card>
-)
+      <EventLabels labels={event.labels} />
+    </Card>
+  )
+}
 
 const DueDate = ({ dueDate }: { dueDate: Event['dueDate'] }) => {
   if (!dueDate) return null
 
   return (
     <div className='mb-2 text-sm tracking-wider'>
-      {format(dueDate, weekday_date_time)}
+      {format(dueDate, full_date_time)}
     </div>
   )
 }

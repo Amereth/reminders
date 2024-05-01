@@ -1,4 +1,4 @@
-import { format } from 'date-fns'
+import { format } from '@formkit/tempo'
 import { CalendarIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/popover'
 import { TimePicker, TimePickerProps } from './time-picker/time-picker'
 import { DayPickerSingleProps } from 'react-day-picker'
+import { full_date_time } from '@reminders/date'
 
 export type DateTimePickerProps = {
   value: Date
@@ -38,7 +39,7 @@ export function DateTimePicker({
           )}
         >
           <CalendarIcon className='mr-2 h-4 w-4' />
-          {value ? format(value, 'PPP HH:mm:ss') : <span>pick a date</span>}
+          {value ? format(value, full_date_time) : <span>pick a date</span>}
         </Button>
       </PopoverTrigger>
 
