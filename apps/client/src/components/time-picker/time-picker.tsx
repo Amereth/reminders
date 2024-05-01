@@ -3,7 +3,7 @@ import { Clock } from 'lucide-react'
 import { Label } from '@/components/ui/label'
 import { TimePickerInput } from './time-picker-input'
 
-interface TimePickerProps {
+export interface TimePickerProps {
   date: Date | undefined
   setDate: (date: Date | undefined) => void
   seconds?: boolean

@@ -8,6 +8,7 @@ import {
   eventsToLabels,
   insertEventSchema,
   eventSchema,
+  Label,
 } from '@reminders/schemas'
 import {
   Create,
@@ -22,6 +23,15 @@ import z from 'zod'
 import createHttpError from 'http-errors'
 
 type CreateSchema = Omit<InsertEvent, 'id' | 'createdAt'>
+
+type DBEventResponse = Omit<Event, 'labels'> & {
+  labels: { label: Label }[]
+}
+
+const mapToEvent = (event: DBEventResponse): Event => ({
+  ...event,
+  labels: event.labels.map(({ label }) => label),
+})
 
 export const updateSchema = insertEventSchema
   .pick({ description: true, dueDate: true, labels: true })
@@ -62,7 +72,8 @@ export const eventsRepo: EventsRepository = {
     )[0]
 
     return {
-      data: z.array(eventSchema).parse(dbResp),
+      // @ts-expect-error
+      data: z.array(eventSchema).parse(dbResp.map(mapToEvent)),
       total,
       offset,
       nextOffset: offset + limit >= total ? null : offset + limit,

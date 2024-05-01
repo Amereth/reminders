@@ -54,6 +54,6 @@ export const authFetch = async <TData = unknown, TError = Error>(
     })
     .catch((error: TError) => {
       if (error instanceof Error) toast.error(error.message)
-      throw error
+      return error
     })
 }

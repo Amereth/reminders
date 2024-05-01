@@ -1,4 +1,4 @@
-import { pgTable, primaryKey, serial } from 'drizzle-orm/pg-core'
+import { pgTable, primaryKey, integer } from 'drizzle-orm/pg-core'
 import { events } from './events.schema'
 import { labels } from './labels.schema'
 import { relations } from 'drizzle-orm'
@@ -6,11 +6,11 @@ import { relations } from 'drizzle-orm'
 export const eventsToLabels = pgTable(
   'event_label',
   {
-    eventId: serial('event_id')
+    eventId: integer('event_id')
       .notNull()
       .references(() => events.id, { onDelete: 'cascade' }),
 
-    labelId: serial('label_id')
+    labelId: integer('label_id')
       .notNull()
       .references(() => labels.id, { onDelete: 'cascade' }),
   },

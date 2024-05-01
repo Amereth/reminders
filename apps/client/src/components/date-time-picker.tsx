@@ -8,18 +8,23 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
-import { TimePicker } from './time-picker/time-picker'
+import { TimePicker, TimePickerProps } from './time-picker/time-picker'
+import { DayPickerSingleProps } from 'react-day-picker'
 
 export type DateTimePickerProps = {
   value: Date
   onChange: (date: Date | undefined) => void
   className?: string
+  calendarProps?: Omit<DayPickerSingleProps, 'selected' | 'onSelect'>
+  timePickerProps?: TimePickerProps
 }
 
 export function DateTimePicker({
   value,
   onChange,
   className,
+  calendarProps,
+  timePickerProps,
 }: DateTimePickerProps) {
   return (
     <Popover>
@@ -40,12 +45,13 @@ export function DateTimePicker({
       <PopoverContent className='w-auto p-0'>
         <Calendar
           mode='single'
+          {...calendarProps}
           selected={value}
           onSelect={onChange}
           initialFocus
         />
         <div className='border-border border-t p-3'>
-          <TimePicker setDate={onChange} date={value} />
+          <TimePicker setDate={onChange} date={value} {...timePickerProps} />
         </div>
       </PopoverContent>
     </Popover>

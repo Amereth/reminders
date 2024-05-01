@@ -1,7 +1,6 @@
 import { useAuthMutation } from '@/hooks/use-auth-mutation'
 import { InfiniteData, useQueryClient } from '@tanstack/react-query'
 import { Event } from '@reminders/schemas'
-import { toast } from 'sonner'
 import keys from '@query-keys'
 import { Paginated } from '@reminders/utils'
 
@@ -48,8 +47,8 @@ export const useDeleteEventMutation = () => {
       },
 
       onError: (error, _, context) => {
-        toast.error(error.message)
         queryClient.setQueryData(keys.events.base.key, context)
+        return error
       },
     },
 

@@ -1,24 +1,24 @@
 import { proxy, useSnapshot } from 'valtio'
 
 type ControlsProxy = {
-  createEventFormOpen: boolean
+  isCreateEventFormOpen: boolean
 }
 
 export const controlsProxy = proxy<ControlsProxy>({
-  createEventFormOpen: false,
+  isCreateEventFormOpen: false,
 })
 
 export const createEventFormControls = {
   open: (): void => {
-    controlsProxy.createEventFormOpen = true
+    controlsProxy.isCreateEventFormOpen = true
   },
 
   close: (): void => {
-    controlsProxy.createEventFormOpen = false
+    controlsProxy.isCreateEventFormOpen = false
   },
 
   toggle: (): void => {
-    controlsProxy.createEventFormOpen = !controlsProxy.createEventFormOpen
+    controlsProxy.isCreateEventFormOpen = !controlsProxy.isCreateEventFormOpen
   },
 }
 

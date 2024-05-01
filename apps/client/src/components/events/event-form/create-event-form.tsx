@@ -17,12 +17,12 @@ type CreateEventFormProps = {
 }
 
 export const CreateEventForm = ({ triggerClassName }: CreateEventFormProps) => {
-  const { mutate: createEvent } = useCreateEventMutation()
-  const { createEventFormOpen } = useControlsSnapshot()
+  const { mutateAsync: createEvent } = useCreateEventMutation()
+  const { isCreateEventFormOpen } = useControlsSnapshot()
 
   return (
     <Sheet
-      open={createEventFormOpen}
+      open={isCreateEventFormOpen}
       onOpenChange={createEventFormControls.toggle}
     >
       <SheetTrigger className={triggerClassName} asChild>
@@ -37,7 +37,7 @@ export const CreateEventForm = ({ triggerClassName }: CreateEventFormProps) => {
         </SheetHeader>
 
         <EventForm
-          formVisible={createEventFormOpen}
+          formVisible={isCreateEventFormOpen}
           className='mt-4'
           onSubmit={createEvent}
           onClose={createEventFormControls.close}

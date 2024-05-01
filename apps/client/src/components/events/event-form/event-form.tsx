@@ -18,10 +18,10 @@ import { z } from 'zod'
 import { LabelsSelector } from './labels-selector'
 import { sanitizeValues } from './utils/sanitize-values'
 import { DateTimePicker } from '@/components/date-time-picker'
+import { isError } from 'remeda'
 
 const formModel = insertEventSchema.pick({ description: true }).extend({
-  date: z.date(),
-  time: z.string(),
+  date: z.date().min(new Date()),
   labels: z
     .array(
       z.object({
@@ -36,7 +36,7 @@ export type FormModel = z.infer<typeof formModel>
 
 export type EventFormProps = {
   formVisible: boolean
-  onSubmit: (data: CreateEventBody) => void
+  onSubmit: (data: CreateEventBody) => Promise<Error>
   onClose: () => void
   className?: string
 }
@@ -49,10 +49,13 @@ export const EventForm = ({
 }: EventFormProps) => {
   const form = useForm<FormModel>({ resolver: zodResolver(formModel) })
 
-  const onSubmit = form.handleSubmit((formValues) => {
-    _onSubmit(sanitizeValues(formValues))
+  const onSubmit = form.handleSubmit(async (formValues) => {
+    const resp = await _onSubmit(sanitizeValues(formValues))
+
+    if (isError(resp)) return
 
     form.reset()
+    onClose()
   })
 
   if (!formVisible) return null
