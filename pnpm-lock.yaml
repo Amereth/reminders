@@ -141,8 +141,8 @@ importers:
         specifier: ^4.3.2
         version: 4.3.2(typescript@5.4.5)(vite@5.2.11)
       zod:
-        specifier: ^3.23.7
-        version: 3.23.7
+        specifier: ^3.23.8
+        version: 3.23.8
     devDependencies:
       '@hookform/devtools':
         specifier: ^4.3.1
@@ -230,7 +230,7 @@ importers:
         version: 0.30.10(@types/pg@8.11.6)(pg@8.11.5)(postgres@3.4.4)
       drizzle-zod:
         specifier: ^0.5.1
-        version: 0.5.1(drizzle-orm@0.30.10)(zod@3.23.7)
+        version: 0.5.1(drizzle-orm@0.30.10)(zod@3.23.8)
       eslint-plugin-drizzle:
         specifier: ^0.2.3
         version: 0.2.3(eslint@8.57.0)
@@ -242,7 +242,7 @@ importers:
         version: 4.5.1
       fastify-type-provider-zod:
         specifier: ^1.1.9
-        version: 1.1.9(fastify@4.27.0)(zod@3.23.7)
+        version: 1.1.9(fastify@4.27.0)(zod@3.23.8)
       http-errors:
         specifier: ^2.0.0
         version: 2.0.0
@@ -262,8 +262,8 @@ importers:
         specifier: ^4.16.3
         version: 4.16.3
       zod:
-        specifier: ^3.23.7
-        version: 3.23.7
+        specifier: ^3.23.8
+        version: 3.23.8
     devDependencies:
       '@tsconfig/node20':
         specifier: ^20.1.4
@@ -305,10 +305,10 @@ importers:
         version: 0.30.10(@types/pg@8.11.6)(pg@8.11.5)(postgres@3.4.4)
       drizzle-zod:
         specifier: ^0.5.1
-        version: 0.5.1(drizzle-orm@0.30.10)(zod@3.23.7)
+        version: 0.5.1(drizzle-orm@0.30.10)(zod@3.23.8)
       zod:
-        specifier: ^3.23.7
-        version: 3.23.7
+        specifier: ^3.23.8
+        version: 3.23.8
 
   packages/utils: {}
 
@@ -1524,14 +1524,14 @@ packages:
     engines: {node: '>=18.14.1'}
     dev: true
 
-  /@hono/zod-validator@0.2.1(hono@4.2.5)(zod@3.23.7):
+  /@hono/zod-validator@0.2.1(hono@4.2.5)(zod@3.23.8):
     resolution: {integrity: sha512-HFoxln7Q6JsE64qz2WBS28SD33UB2alp3aRKmcWnNLDzEL1BLsWfbdX6e1HIiUprHYTIXf5y7ax8eYidKUwyaA==}
     peerDependencies:
       hono: '>=3.9.0'
       zod: ^3.19.1
     dependencies:
       hono: 4.2.5
-      zod: 3.23.7
+      zod: 3.23.8
     dev: true
 
   /@hookform/devtools@4.3.1(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1):
@@ -2533,7 +2533,7 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       prettier: 3.2.5
-      zod: 3.23.7
+      zod: 3.23.8
     dev: true
 
   /@tanstack/router-vite-plugin@1.31.18(vite@5.2.11):
@@ -2555,7 +2555,7 @@ packages:
       '@types/babel__template': 7.4.4
       '@types/babel__traverse': 7.20.5
       '@vitejs/plugin-react': 4.2.1(vite@5.2.11)
-      zod: 3.23.7
+      zod: 3.23.8
     transitivePeerDependencies:
       - supports-color
       - vite
@@ -3443,7 +3443,7 @@ packages:
     dependencies:
       '@esbuild-kit/esm-loader': 2.6.5
       '@hono/node-server': 1.11.0
-      '@hono/zod-validator': 0.2.1(hono@4.2.5)(zod@3.23.7)
+      '@hono/zod-validator': 0.2.1(hono@4.2.5)(zod@3.23.8)
       camelcase: 7.0.1
       chalk: 5.3.0
       commander: 9.5.0
@@ -3457,7 +3457,7 @@ packages:
       minimatch: 7.4.6
       semver: 7.6.0
       superjson: 2.2.1
-      zod: 3.23.7
+      zod: 3.23.8
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3547,14 +3547,14 @@ packages:
       postgres: 3.4.4
     dev: false
 
-  /drizzle-zod@0.5.1(drizzle-orm@0.30.10)(zod@3.23.7):
+  /drizzle-zod@0.5.1(drizzle-orm@0.30.10)(zod@3.23.8):
     resolution: {integrity: sha512-C/8bvzUH/zSnVfwdSibOgFjLhtDtbKYmkbPbUCq46QZyZCH6kODIMSOgZ8R7rVjoI+tCj3k06MRJMDqsIeoS4A==}
     peerDependencies:
       drizzle-orm: '>=0.23.13'
       zod: '*'
     dependencies:
       drizzle-orm: 0.30.10(@types/pg@8.11.6)(pg@8.11.5)(postgres@3.4.4)
-      zod: 3.23.7
+      zod: 3.23.8
     dev: false
 
   /eastasianwidth@0.2.0:
@@ -4008,15 +4008,15 @@ packages:
     resolution: {integrity: sha512-stRHYGeuqpEZTL1Ef0Ovr2ltazUT9g844X5z/zEBFLG8RYlpDiOCIG+ATvYEp+/zmc7sN29mcIMp8gvYplYPIQ==}
     dev: false
 
-  /fastify-type-provider-zod@1.1.9(fastify@4.27.0)(zod@3.23.7):
+  /fastify-type-provider-zod@1.1.9(fastify@4.27.0)(zod@3.23.8):
     resolution: {integrity: sha512-Ztnu1ZWJEKJouZvdTyfgjuVqS+A4JLoCbWBvFqFhfnrg6YQvEvW+5cJvP98kNbuV5gjfpWmHSOTi3BpkidJPQg==}
     peerDependencies:
       fastify: ^4.0.0
       zod: ^3.14.2
     dependencies:
       fastify: 4.27.0
-      zod: 3.23.7
-      zod-to-json-schema: 3.22.5(zod@3.23.7)
+      zod: 3.23.8
+      zod-to-json-schema: 3.22.5(zod@3.23.8)
     dev: false
 
   /fastify@4.27.0:
@@ -6059,13 +6059,13 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  /zod-to-json-schema@3.22.5(zod@3.23.7):
+  /zod-to-json-schema@3.22.5(zod@3.23.8):
     resolution: {integrity: sha512-+akaPo6a0zpVCCseDed504KBJUQpEW5QZw7RMneNmKw+fGaML1Z9tUNLnHHAC8x6dzVRO1eB2oEMyZRnuBZg7Q==}
     peerDependencies:
       zod: ^3.22.4
     dependencies:
-      zod: 3.23.7
+      zod: 3.23.8
     dev: false
 
-  /zod@3.23.7:
-    resolution: {integrity: sha512-NBeIoqbtOiUMomACV/y+V3Qfs9+Okr18vR5c/5pHClPpufWOrsx8TENboDPe265lFdfewX2yBtNTLPvnmCxwog==}
+  /zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
