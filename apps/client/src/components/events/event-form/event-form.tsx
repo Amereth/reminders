@@ -2,7 +2,7 @@ import { CreateEventBody } from '@/hooks/api/events'
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { cn } from '@lib/utils'
-import { insertEventSchema } from '@reminders/schemas'
+import { Event, insertEventWithUidSchema } from '@reminders/schemas'
 import { Button } from '@ui/button'
 import {
   Form,
@@ -20,7 +20,7 @@ import { sanitizeValues } from './utils/sanitize-values'
 import { DateTimePicker } from '@/components/date-time-picker'
 import { isError } from 'remeda'
 
-const formModel = insertEventSchema.pick({ description: true }).extend({
+const formModel = insertEventWithUidSchema.pick({ description: true }).extend({
   date: z.date().min(new Date()).nullish(),
   labels: z
     .array(z.object({ value: z.string(), label: z.string() }))
@@ -31,7 +31,7 @@ export type FormModel = z.infer<typeof formModel>
 
 export type EventFormProps = {
   formVisible: boolean
-  onSubmit: (data: CreateEventBody) => Promise<Error>
+  onSubmit: (data: CreateEventBody) => Promise<Event>
   onClose: () => void
   className?: string
 }

@@ -16,7 +16,7 @@ export const events = pgTable('events', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
 })
 
-export const insertEventSchema = createInsertSchema(events, {
+export const insertEventWithUidSchema = createInsertSchema(events, {
   description: z.string().min(1).max(1000),
   dueDate: z
     .string()
@@ -31,12 +31,15 @@ export const insertEventSchema = createInsertSchema(events, {
 })
   .required()
   .extend({ labels: z.array(z.coerce.number()).optional() })
-  .omit({ id: true })
+  .omit({ id: true, createdAt: true })
+
+export type InsertEventWithUid = z.infer<typeof insertEventWithUidSchema>
+
+export const insertEventSchema = insertEventWithUidSchema.omit({ userId: true })
 
 export type InsertEvent = z.infer<typeof insertEventSchema>
 
 export const eventSchema = createSelectSchema(events, {
-  id: z.coerce.string(),
   dueDate: z.date().nullable(),
   createdAt: z.date().nullable(),
 })

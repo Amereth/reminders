@@ -26,9 +26,7 @@ export const labelFullSchema = createSelectSchema(labels)
 
 export type LabelFull = z.infer<typeof labelFullSchema>
 
-export const labelSchema = labelFullSchema
-  .omit({ userId: true })
-  .extend({ id: z.coerce.string() })
+export const labelSchema = labelFullSchema.omit({ userId: true })
 
 export type Label = z.infer<typeof labelSchema>
 

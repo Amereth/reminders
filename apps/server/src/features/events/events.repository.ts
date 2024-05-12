@@ -3,12 +3,12 @@ import { and, count, eq, gte, isNull, or } from 'drizzle-orm'
 import {
   events,
   Event,
-  InsertEvent,
   User,
   eventsToLabels,
   insertEventSchema,
   eventSchema,
   Label,
+  InsertEventWithUid,
 } from '@reminders/schemas'
 import {
   Create,
@@ -23,7 +23,7 @@ import { differenceWith, isDeepEqual } from 'remeda'
 import z from 'zod'
 import createHttpError from 'http-errors'
 
-type CreateSchema = Omit<InsertEvent, 'id' | 'createdAt'>
+type CreateSchema = Omit<InsertEventWithUid, 'id' | 'createdAt'>
 
 type DBEventResponse = Omit<Event, 'labels'> & {
   labels: { label: Label }[]
@@ -76,7 +76,6 @@ export const eventsRepo: EventsRepository = {
     )[0]
 
     return {
-      // @ts-expect-error
       data: z.array(eventSchema).parse(dbResp.map(mapToEvent)),
       total,
       offset,

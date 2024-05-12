@@ -14,7 +14,6 @@ type EventCardProps = {
 }
 
 export const EventCard = ({ event, onDelete }: EventCardProps) => {
-  console.log('EventCard ~ event:', event)
   return (
     <Card className='max-sm:p-2' key={event.id}>
       <CardHeader>

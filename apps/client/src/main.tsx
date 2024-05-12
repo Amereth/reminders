@@ -11,7 +11,7 @@ validateEnv()
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Providers>
-      <Toaster richColors duration={10_000} />
+      <Toaster richColors duration={10_000} closeButton />
       <App />
     </Providers>
   </React.StrictMode>,

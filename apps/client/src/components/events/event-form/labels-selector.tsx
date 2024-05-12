@@ -19,7 +19,7 @@ type LabelsSelectorProps = {
 export const LabelsSelector = withSuspenseLoader(
   ({ className }: LabelsSelectorProps) => {
     const { data } = useEventLabelsQuery(
-      map(({ id, label }) => ({ value: id, label })),
+      map(({ id, label }) => ({ value: id.toString(), label })),
     )
 
     const { control } = useFormContext<FormModel>()

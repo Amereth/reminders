@@ -26,7 +26,6 @@ export const useAuthMutation = <
   return useMutation<TData, DefaultError, TVariables, TContext>(
     {
       ...options,
-      // FIXME
       mutationFn: (variables) => {
         if (!session) throw new Error('No session found')
 

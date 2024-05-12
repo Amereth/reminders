@@ -3,7 +3,7 @@ import {
   FastifyPluginOptions,
   RawServerDefault,
 } from 'fastify'
-import { insertEventSchema, eventSchema } from '@reminders/schemas'
+import { insertEventWithUidSchema, eventSchema } from '@reminders/schemas'
 import z from 'zod'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
 import { eventsRepo, updateSchema } from './events.repository'
@@ -48,7 +48,7 @@ export const eventsRoutes: FastifyPluginCallback<
 
   fastify.post('/events', {
     schema: {
-      body: insertEventSchema.pick({
+      body: insertEventWithUidSchema.pick({
         description: true,
         dueDate: true,
         labels: true,
