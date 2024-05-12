@@ -21,14 +21,9 @@ import { DateTimePicker } from '@/components/date-time-picker'
 import { isError } from 'remeda'
 
 const formModel = insertEventSchema.pick({ description: true }).extend({
-  date: z.date().min(new Date()),
+  date: z.date().min(new Date()).nullish(),
   labels: z
-    .array(
-      z.object({
-        value: z.string(),
-        label: z.string(),
-      }),
-    )
+    .array(z.object({ value: z.string(), label: z.string() }))
     .optional(),
 })
 
@@ -65,17 +60,20 @@ export const EventForm = ({
       <form className={cn(className, 'space-y-4')} onSubmit={onSubmit}>
         <DevTool control={form.control} />
 
-        <FormField
-          control={form.control}
-          name='date'
-          render={({ field }) => (
-            <FormItem className='flex flex-col'>
-              <FormLabel className='pb-2'>due date</FormLabel>
-              <DateTimePicker className='w-full' {...field} />
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div>
+          <FormField
+            control={form.control}
+            name='date'
+            render={({ field }) => (
+              <FormItem className='flex flex-col'>
+                <FormLabel className='pb-2'>due date</FormLabel>
+                {/* @ts-expect-error */}
+                <DateTimePicker className='w-full' {...field} />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
         <FormField
           control={form.control}

@@ -1,5 +1,5 @@
 import { db } from '@/lib/db'
-import { and, count, eq } from 'drizzle-orm'
+import { and, count, eq, gte, isNull, or } from 'drizzle-orm'
 import {
   events,
   Event,
@@ -17,6 +17,7 @@ import {
   Update,
   FindPaginated,
   WithId,
+  WithUId,
 } from '@/lib/repository'
 import { differenceWith, isDeepEqual } from 'remeda'
 import z from 'zod'
@@ -43,7 +44,7 @@ type UpdateSchema = {
 } & z.infer<typeof updateSchema>
 
 type EventsRepository = {
-  findPaginated: FindPaginated<Event>
+  findPaginated: FindPaginated<Event, WithUId & { from: string }>
   findById: FindById<Event>
   create: Create<Event, CreateSchema>
   update: Update<Event, UpdateSchema>
@@ -51,9 +52,12 @@ type EventsRepository = {
 }
 
 export const eventsRepo: EventsRepository = {
-  async findPaginated({ userId, offset, limit }) {
+  async findPaginated({ userId, offset, limit, from }) {
     const dbResp = await db.query.events.findMany({
-      where: eq(events.userId, userId),
+      where: and(
+        eq(events.userId, userId),
+        or(gte(events.dueDate, new Date(from)), isNull(events.dueDate)),
+      ),
       with: {
         labels: {
           with: { label: true },
@@ -82,7 +86,7 @@ export const eventsRepo: EventsRepository = {
   },
 
   async findById({ userId, id: eventId }) {
-    const dbResp = await db.query.events.findFirst({
+    const dbResp = (await db.query.events.findFirst({
       where: and(eq(events.id, eventId), eq(events.userId, userId)),
       with: {
         labels: {
@@ -90,11 +94,11 @@ export const eventsRepo: EventsRepository = {
           columns: { eventId: false, labelId: false },
         },
       },
-    })
+    })) as DBEventResponse | undefined
 
     if (!dbResp) throw createHttpError(404, 'Event not found')
 
-    return eventSchema.parse(dbResp)
+    return eventSchema.parse(mapToEvent(dbResp))
   },
 
   async create({ userId, description, dueDate, labels }) {

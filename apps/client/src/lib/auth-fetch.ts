@@ -1,6 +1,7 @@
 import { getApiUrl } from '@/lib/getApiUrl'
 import { toast } from 'sonner'
 import { supabaseClient } from '@/lib/supabase'
+import { isString } from 'remeda'
 
 const methodsWithBody = ['POST', 'PUT', 'PATCH']
 
@@ -9,7 +10,7 @@ type ErrorResponse = {
 }
 
 export const authFetch = async <TData = unknown, TError = Error>(
-  input: string,
+  input: string | URL,
   request: RequestInit | undefined = {},
 ) => {
   const {
@@ -38,7 +39,9 @@ export const authFetch = async <TData = unknown, TError = Error>(
 
   request.headers = headers
 
-  return fetch(getApiUrl(input), request)
+  const url = isString(input) ? getApiUrl(input) : input
+
+  return fetch(url, request)
     .then(async (response) => {
       const data = (await response.json()) as TData | ErrorResponse
 
@@ -54,6 +57,6 @@ export const authFetch = async <TData = unknown, TError = Error>(
     })
     .catch((error: TError) => {
       if (error instanceof Error) toast.error(error.message)
-      return error
+      throw error
     })
 }

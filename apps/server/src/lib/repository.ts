@@ -16,6 +16,7 @@ export type WithIdAndUId<T extends string | number = number> = WithId<T> &
 export const paginatedArgsSchema = z.object({
   limit: z.coerce.number().optional().default(10),
   offset: z.coerce.number().default(0),
+  from: z.string().datetime().default(new Date().toISOString()),
 })
 
 export const paginatedResponseSchema = z.object({
