@@ -64,7 +64,7 @@ export const EventForm = ({
           <FormField
             control={form.control}
             name='date'
-            render={({ field }) => (
+            render={({ field: { ref, ...field } }) => (
               <FormItem className='flex flex-col'>
                 <FormLabel className='pb-2'>due date</FormLabel>
                 {/* @ts-expect-error */}
