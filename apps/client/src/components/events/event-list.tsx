@@ -7,7 +7,6 @@ type EventListProps = {
 }
 
 export const EventList = ({ events }: EventListProps) => {
-  console.log('EventList ~ events:', events)
   const { mutate: deleteEvent } = useDeleteEventMutation()
 
   return (
