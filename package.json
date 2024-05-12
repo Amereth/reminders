@@ -7,6 +7,7 @@
     "dev:server": "pnpm --filter ./apps/server dev",
     "dev:client": "pnpm --filter ./apps/client dev",
     "dev:client:host": "pnpm --filter ./apps/client dev:host",
+    "dev:astro": "pnpm --filter ./apps/astro dev",
     "format": "pnpm prettier --write ."
   },
   "repository": {
