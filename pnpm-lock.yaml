@@ -98,6 +98,9 @@ importers:
       '@tanstack/react-router':
         specifier: ^1.32.0
         version: 1.32.0(react-dom@18.3.1)(react@18.3.1)
+      '@types/validator':
+        specifier: ^13.11.10
+        version: 13.11.10
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -146,6 +149,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.3)
+      validator:
+        specifier: ^13.12.0
+        version: 13.12.0
       valtio:
         specifier: ^1.13.2
         version: 1.13.2(@types/react@18.3.2)(react@18.3.1)
@@ -3359,6 +3365,10 @@ packages:
 
   /@types/unist@3.0.2:
     resolution: {integrity: sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==}
+    dev: false
+
+  /@types/validator@13.11.10:
+    resolution: {integrity: sha512-e2PNXoXLr6Z+dbfx5zSh9TRlXJrELycxiaXznp4S5+D2M3b9bqJEitNHA5923jhnB2zzFiZHa2f0SI1HoIahpg==}
     dev: false
 
   /@types/ws@8.5.10:
@@ -8178,6 +8188,11 @@ packages:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
     dev: true
+
+  /validator@13.12.0:
+    resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
+    engines: {node: '>= 0.10'}
+    dev: false
 
   /valtio@1.13.2(@types/react@18.3.2)(react@18.3.1):
     resolution: {integrity: sha512-Qik0o+DSy741TmkqmRfjq+0xpZBXi/Y6+fXZLn0xNF1z/waFMbE3rkivv5Zcf9RrMUp6zswf2J7sbh2KBlba5A==}

@@ -19,6 +19,6 @@ export const LayoutComponent = () => {
 export const Route = createFileRoute('/_layout')({
   component: LayoutComponent,
   beforeLoad: ({ context }) => {
-    if (!context.session) throw redirect({ to: '/login' })
+    if (!context.session) throw redirect({ to: '/auth/login' })
   },
 })

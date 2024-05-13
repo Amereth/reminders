@@ -11,17 +11,13 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as LoginImport } from './routes/login'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutIndexImport } from './routes/_layout/index'
+import { Route as AuthUpdatePasswordImport } from './routes/auth/update-password'
+import { Route as AuthLoginImport } from './routes/auth/login'
 import { Route as LayoutEventsImport } from './routes/_layout/events'
 
 // Create/Update Routes
-
-const LoginRoute = LoginImport.update({
-  path: '/login',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const LayoutRoute = LayoutImport.update({
   id: '/_layout',
@@ -31,6 +27,16 @@ const LayoutRoute = LayoutImport.update({
 const LayoutIndexRoute = LayoutIndexImport.update({
   path: '/',
   getParentRoute: () => LayoutRoute,
+} as any)
+
+const AuthUpdatePasswordRoute = AuthUpdatePasswordImport.update({
+  path: '/auth/update-password',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AuthLoginRoute = AuthLoginImport.update({
+  path: '/auth/login',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const LayoutEventsRoute = LayoutEventsImport.update({
@@ -46,13 +52,17 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutImport
       parentRoute: typeof rootRoute
     }
-    '/login': {
-      preLoaderRoute: typeof LoginImport
-      parentRoute: typeof rootRoute
-    }
     '/_layout/events': {
       preLoaderRoute: typeof LayoutEventsImport
       parentRoute: typeof LayoutImport
+    }
+    '/auth/login': {
+      preLoaderRoute: typeof AuthLoginImport
+      parentRoute: typeof rootRoute
+    }
+    '/auth/update-password': {
+      preLoaderRoute: typeof AuthUpdatePasswordImport
+      parentRoute: typeof rootRoute
     }
     '/_layout/': {
       preLoaderRoute: typeof LayoutIndexImport
@@ -65,7 +75,8 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   LayoutRoute.addChildren([LayoutEventsRoute, LayoutIndexRoute]),
-  LoginRoute,
+  AuthLoginRoute,
+  AuthUpdatePasswordRoute,
 ])
 
 /* prettier-ignore-end */

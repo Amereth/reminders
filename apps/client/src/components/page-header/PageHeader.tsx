@@ -20,7 +20,7 @@ export const PageHeader = () => {
       return
     }
 
-    navigate({ to: '/login' })
+    navigate({ to: '/auth/login' })
   }
 
   return (

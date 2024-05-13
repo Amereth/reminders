@@ -20,12 +20,13 @@ const LoginComponent = () => {
           supabaseClient={supabaseClient}
           appearance={{ theme: ThemeSupa }}
           providers={[]}
+          theme='dark'
         />
       </div>
     </div>
   )
 }
 
-export const Route = createFileRoute('/login')({
+export const Route = createFileRoute('/auth/login')({
   component: LoginComponent,
 })
