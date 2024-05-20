@@ -29,7 +29,7 @@
     "@tanstack/query-sync-storage-persister": "^5.36.1",
     "@tanstack/react-query": "^5.36.2",
     "@tanstack/react-query-persist-client": "^5.36.2",
-    "@tanstack/react-router": "^1.32.13",
+    "@tanstack/react-router": "^1.33.4",
     "@types/validator": "^13.11.10",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
