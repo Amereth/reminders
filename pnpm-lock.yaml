@@ -138,8 +138,8 @@ importers:
         specifier: ^7.51.5
         version: 7.51.5(react@18.3.1)
       remeda:
-        specifier: ^2.0.5
-        version: 2.0.5
+        specifier: ^2.0.8
+        version: 2.0.8
       sonner:
         specifier: ^1.5.0
         version: 1.5.0(react-dom@18.3.1)(react@18.3.1)
@@ -274,8 +274,8 @@ importers:
         specifier: ^3.4.4
         version: 3.4.4
       remeda:
-        specifier: ^2.0.5
-        version: 2.0.5
+        specifier: ^2.0.8
+        version: 2.0.8
       telegraf:
         specifier: ^4.16.3
         version: 4.16.3
@@ -7282,8 +7282,8 @@ packages:
       unified: 11.0.4
     dev: false
 
-  /remeda@2.0.5:
-    resolution: {integrity: sha512-2+6w6XBjWk0Lysfss4QFo4LKjQ1SAW0wIEjQfp2MJjBs6BbiGQKzNli1xmUk/bHK7CBCdPS1KqjrWojgdruv0A==}
+  /remeda@2.0.8:
+    resolution: {integrity: sha512-9jf9Kn4Zy0yhhceXCe9HJo7iQ46lSjdMgmszsYMRUk72YxLHTHBPOfIw20sBvFew/Of8o+dvakvLAZeWaRVSQw==}
     dependencies:
       type-fest: 4.18.3
     dev: false
