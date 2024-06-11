@@ -308,8 +308,8 @@ importers:
         specifier: ^2.6.3
         version: 2.6.3
       tsx:
-        specifier: ^4.15.1
-        version: 4.15.1
+        specifier: ^4.15.2
+        version: 4.15.2
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -2122,6 +2122,7 @@ packages:
   /@humanwhocodes/config-array@0.11.14:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
+    deprecated: Use @eslint/config-array instead
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
       debug: 4.3.4
@@ -2136,6 +2137,7 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.3:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
+    deprecated: Use @eslint/object-schema instead
     dev: false
 
   /@humanwhocodes/retry@0.3.0:
@@ -7883,8 +7885,8 @@ packages:
   /tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
 
-  /tsx@4.15.1:
-    resolution: {integrity: sha512-k/6h17jA1KfUR7SpcteOa880zGmF56s8gMIcSqUR5avyNFi9nlCEKpMiHLrzrqyARGr52A/JablmGey1DEWbCA==}
+  /tsx@4.15.2:
+    resolution: {integrity: sha512-kIZTOCmR37nEw0qxQks2dR+eZWSXydhTGmz7yx94vEiJtJGBTkUl0D/jt/5fey+CNdm6i3Cp+29WKRay9ScQUw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     dependencies:
