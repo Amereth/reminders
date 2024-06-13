@@ -93,8 +93,8 @@ importers:
         specifier: ^5.44.0
         version: 5.44.0(react@18.3.1)
       '@tanstack/react-query-persist-client':
-        specifier: ^5.44.0
-        version: 5.44.0(@tanstack/react-query@5.44.0)(react@18.3.1)
+        specifier: ^5.45.0
+        version: 5.45.0(@tanstack/react-query@5.44.0)(react@18.3.1)
       '@tanstack/react-router':
         specifier: ^1.35.6
         version: 1.35.6(react-dom@18.3.1)(react@18.3.1)
@@ -3189,6 +3189,10 @@ packages:
   /@tanstack/query-core@5.44.0:
     resolution: {integrity: sha512-Fa1J7iEEyJnjXG1N4+Fz4OXNH/INve3XSn0Htms3X4wgRsXHxMDwqBE2XtDCts7swkwSIs4izEtaFqWVFr/eLQ==}
 
+  /@tanstack/query-core@5.45.0:
+    resolution: {integrity: sha512-RVfIZQmFUTdjhSAAblvueimfngYyfN6HlwaJUPK71PKd7yi43Vs1S/rdimmZedPWX/WGppcq/U1HOj7O7FwYxw==}
+    dev: false
+
   /@tanstack/query-devtools@5.37.1:
     resolution: {integrity: sha512-XcG4IIHIv0YQKrexTqo2zogQWR1Sz672tX2KsfE9kzB+9zhx44vRKH5si4WDILE1PIWQpStFs/NnrDQrBAUQpg==}
     dev: true
@@ -3197,6 +3201,12 @@ packages:
     resolution: {integrity: sha512-S9JvOsIWC/lXKBHBw7pHHMHdKecFEmZs7Znik5+YtukasniF7glXdGGmvFcoqweeqneAVyPX0gtoMvf1Dz71dw==}
     dependencies:
       '@tanstack/query-core': 5.44.0
+    dev: false
+
+  /@tanstack/query-persist-client-core@5.45.0:
+    resolution: {integrity: sha512-iAETglkRB6FR1//185TcWGnMxkisJPnCrlvIhLpHzT4eKLmh4n4vq1Cys42YIJzM2il4YWf8P4refzdq4D5Vdw==}
+    dependencies:
+      '@tanstack/query-core': 5.45.0
     dev: false
 
   /@tanstack/query-sync-storage-persister@5.44.0:
@@ -3217,13 +3227,13 @@ packages:
       react: 18.3.1
     dev: true
 
-  /@tanstack/react-query-persist-client@5.44.0(@tanstack/react-query@5.44.0)(react@18.3.1):
-    resolution: {integrity: sha512-ZZuPCw7qv+/tRteXMvBj1xcIAc3yfyy5bhejIOEilKLPhNa3M6T5wEZ9RSAmNgfckb4U5CQCfy8ZfiN5gXgI3A==}
+  /@tanstack/react-query-persist-client@5.45.0(@tanstack/react-query@5.44.0)(react@18.3.1):
+    resolution: {integrity: sha512-nz6jLmVclFYfjB2LhsCcHuo15eDCWs/y9/dPelFJFVwmQE+05HJr9RbqV7BYDJu/3cCyVQv14q/ZyiX/guLtCA==}
     peerDependencies:
-      '@tanstack/react-query': ^5.44.0
+      '@tanstack/react-query': ^5.45.0
       react: ^18 || ^19
     dependencies:
-      '@tanstack/query-persist-client-core': 5.44.0
+      '@tanstack/query-persist-client-core': 5.45.0
       '@tanstack/react-query': 5.44.0(react@18.3.1)
       react: 18.3.1
     dev: false
