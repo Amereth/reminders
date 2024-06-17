@@ -99,8 +99,8 @@ importers:
         specifier: ^1.38.1
         version: 1.38.1(react-dom@18.3.1)(react@18.3.1)
       '@types/validator':
-        specifier: ^13.11.10
-        version: 13.11.10
+        specifier: ^13.12.0
+        version: 13.12.0
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -3443,8 +3443,8 @@ packages:
     resolution: {integrity: sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==}
     dev: false
 
-  /@types/validator@13.11.10:
-    resolution: {integrity: sha512-e2PNXoXLr6Z+dbfx5zSh9TRlXJrELycxiaXznp4S5+D2M3b9bqJEitNHA5923jhnB2zzFiZHa2f0SI1HoIahpg==}
+  /@types/validator@13.12.0:
+    resolution: {integrity: sha512-nH45Lk7oPIJ1RVOF6JgFI6Dy0QpHEzq4QecZhvguxYPDwT8c93prCMqAtiIttm39voZ+DDR+qkNnMpJmMBRqag==}
     dev: false
 
   /@types/ws@8.5.10:
