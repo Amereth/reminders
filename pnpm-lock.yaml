@@ -172,8 +172,8 @@ importers:
         specifier: ^1.39.8
         version: 1.39.8(@tanstack/react-router@1.39.8)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1)
       '@tanstack/router-vite-plugin':
-        specifier: ^1.39.5
-        version: 1.39.5(vite@5.3.1)
+        specifier: ^1.39.9
+        version: 1.39.9(vite@5.3.1)
       '@types/react':
         specifier: ^18.3.3
         version: 18.3.3
@@ -2818,26 +2818,6 @@ packages:
       react-dom: 18.3.1(react@18.3.1)
     dev: false
 
-  /@radix-ui/react-portal@1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-0tXZ5O6qAVvuN9SWP0X+zadHf9hzHiMf/vxOU+kXO+fbtS8lS57MXa6EmikDxk9s/Bmkk80+dcxgbvisIyeqxg==}
-    peerDependencies:
-      '@types/react': '*'
-      '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
-      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-dom':
-        optional: true
-    dependencies:
-      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
-      '@types/react': 18.3.3
-      '@types/react-dom': 18.3.0
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-    dev: false
-
   /@radix-ui/react-portal@1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-A3UtLk85UtqhzFqtoC8Q0KvR2GbXF3mtPgACSazajqq6A41mEQgo53iPzY4i6BwDxlIFqWIhiQ2G729n+2aw/g==}
     peerDependencies:
@@ -3544,12 +3524,15 @@ packages:
       zod: 3.23.8
     dev: true
 
-  /@tanstack/router-plugin@1.39.5(vite@5.3.1):
-    resolution: {integrity: sha512-PGe7cdPRCnsv526wdu24DJdHMlDDCPuT+SZ4/v94UjpW3iN7/x+WcflJAaMJYWbNC4J2i+COwJrqoYheRrvbMw==}
+  /@tanstack/router-plugin@1.39.9(vite@5.3.1):
+    resolution: {integrity: sha512-ilMvb3J6aQ/HeEuEZdXscdU5xltUkQHzEl7dqtf0jDCsqzcxdSHrTNTinicicq8cqiyEiyanJ5oZ9236fP8bZA==}
     engines: {node: '>=12'}
     peerDependencies:
+      '@rsbuild/core': '>=0.7.9'
       vite: '>=5'
     peerDependenciesMeta:
+      '@rsbuild/core':
+        optional: true
       vite:
         optional: true
     dependencies:
@@ -3574,12 +3557,13 @@ packages:
       - supports-color
     dev: true
 
-  /@tanstack/router-vite-plugin@1.39.5(vite@5.3.1):
-    resolution: {integrity: sha512-HDRkWc8H3WW6wQn2aXITSFg4klj4TUQ9+PLgZjwElZy41jHp+z1iQ6p3lesc1fcj2uLTbWcgACqcSFX2jgZx/g==}
+  /@tanstack/router-vite-plugin@1.39.9(vite@5.3.1):
+    resolution: {integrity: sha512-4DDzNrS+k3PZPbIghi3h6grH68rxg96QYTn2LH8jpXQnEaJqFt8sboy6VYNjR/dc+HoGkP317RJCEkIEPUix1g==}
     engines: {node: '>=12'}
     dependencies:
-      '@tanstack/router-plugin': 1.39.5(vite@5.3.1)
+      '@tanstack/router-plugin': 1.39.9(vite@5.3.1)
     transitivePeerDependencies:
+      - '@rsbuild/core'
       - supports-color
       - vite
     dev: true
