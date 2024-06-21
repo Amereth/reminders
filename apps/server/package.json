@@ -57,6 +57,6 @@
     "drizzle-kit": "^0.22.7",
     "tslib": "^2.6.3",
     "tsx": "^4.15.6",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.2"
   }
 }
