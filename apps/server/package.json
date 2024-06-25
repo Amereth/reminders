@@ -29,7 +29,7 @@
     "@reminders/date": "workspace:*",
     "@reminders/schemas": "workspace:*",
     "@reminders/utils": "workspace:*",
-    "@supabase/supabase-js": "^2.43.5",
+    "@supabase/supabase-js": "^2.43.6",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",
     "dotenv": "^16.4.5",
