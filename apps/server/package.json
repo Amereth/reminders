@@ -31,7 +31,7 @@
     "@reminders/utils": "workspace:*",
     "@supabase/supabase-js": "^2.44.2",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
-    "@typescript-eslint/parser": "^7.14.1",
+    "@typescript-eslint/parser": "^7.15.0",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.31.2",
     "drizzle-zod": "^0.5.1",
