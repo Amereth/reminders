@@ -93,8 +93,8 @@ importers:
         specifier: ^5.50.1
         version: 5.50.1(react@18.3.1)
       '@tanstack/react-query-persist-client':
-        specifier: ^5.50.1
-        version: 5.50.1(@tanstack/react-query@5.50.1)(react@18.3.1)
+        specifier: ^5.51.1
+        version: 5.51.1(@tanstack/react-query@5.50.1)(react@18.3.1)
       '@tanstack/react-router':
         specifier: ^1.44.2
         version: 1.44.2(react-dom@18.3.1)(react@18.3.1)
@@ -3275,12 +3275,6 @@ packages:
     resolution: {integrity: sha512-rehG0WmL3EXER6MAI2uHQia/n0b5c3ZROohpYm7u3G7yg4q+HsfQy6nuAo6uy40NzHUe3FmnfWCZQ0Vb/3lE6g==}
     dev: true
 
-  /@tanstack/query-persist-client-core@5.50.1:
-    resolution: {integrity: sha512-nSiEjTJtvcOlHN/GuAI0ph7ZqpGlSNjnOhv0SPl3Liuhw7sjk0VnBqWZMEM5p+Vmbtn1qi7Wbdr8Fgk7qjmaUA==}
-    dependencies:
-      '@tanstack/query-core': 5.50.1
-    dev: false
-
   /@tanstack/query-persist-client-core@5.51.1:
     resolution: {integrity: sha512-sEaZbqO5mdaJCymLAOUsf4DkVLSUcuKvhHC4pbL1Q/GbYs+r7vQkh2AeS5aRORyuhdL2jqOAs554ldee58e5sQ==}
     dependencies:
@@ -3305,13 +3299,13 @@ packages:
       react: 18.3.1
     dev: true
 
-  /@tanstack/react-query-persist-client@5.50.1(@tanstack/react-query@5.50.1)(react@18.3.1):
-    resolution: {integrity: sha512-BnCKv3rIkmgOZgSXrxZEfkc3fAZpuTQI+2N/XNBYkkIiuKAaxAYLkXwVpAJDlzU7+LzVX5eG4IwLle1kvKVUtQ==}
+  /@tanstack/react-query-persist-client@5.51.1(@tanstack/react-query@5.50.1)(react@18.3.1):
+    resolution: {integrity: sha512-8sqMCsF6jpxdhuIQAt1z9PJjCPRlFuAFD/Tk5oXXWq5KjqVg/TP1XB/THtclw5KjNsGomkHSGPySNGY2zK1mJQ==}
     peerDependencies:
-      '@tanstack/react-query': ^5.50.1
+      '@tanstack/react-query': ^5.51.1
       react: ^18 || ^19
     dependencies:
-      '@tanstack/query-persist-client-core': 5.50.1
+      '@tanstack/query-persist-client-core': 5.51.1
       '@tanstack/react-query': 5.50.1(react@18.3.1)
       react: 18.3.1
     dev: false
