@@ -244,11 +244,11 @@ importers:
         specifier: ^16.4.5
         version: 16.4.5
       drizzle-orm:
-        specifier: ^0.31.4
-        version: 0.31.4(@types/pg@8.11.6)(pg@8.12.0)(postgres@3.4.4)
+        specifier: ^0.32.0
+        version: 0.32.0(@types/pg@8.11.6)(pg@8.12.0)(postgres@3.4.4)
       drizzle-zod:
         specifier: ^0.5.1
-        version: 0.5.1(drizzle-orm@0.31.4)(zod@3.23.8)
+        version: 0.5.1(drizzle-orm@0.32.0)(zod@3.23.8)
       eslint-plugin-drizzle:
         specifier: ^0.2.3
         version: 0.2.3(eslint@8.57.0)
@@ -319,11 +319,11 @@ importers:
   packages/schemas:
     dependencies:
       drizzle-orm:
-        specifier: ^0.31.4
-        version: 0.31.4(@types/pg@8.11.6)(pg@8.12.0)(postgres@3.4.4)
+        specifier: ^0.32.0
+        version: 0.32.0(@types/pg@8.11.6)(pg@8.12.0)(postgres@3.4.4)
       drizzle-zod:
         specifier: ^0.5.1
-        version: 0.5.1(drizzle-orm@0.31.4)(zod@3.23.8)
+        version: 0.5.1(drizzle-orm@0.32.0)(zod@3.23.8)
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -4581,8 +4581,8 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.31.4(@types/pg@8.11.6)(pg@8.12.0)(postgres@3.4.4):
-    resolution: {integrity: sha512-VGD9SH9aStF2z4QOTnVlVX/WghV/EnuEzTmsH3fSVp2E4fFgc8jl3viQrS/XUJx1ekW4rVVLJMH42SfGQdjX3Q==}
+  /drizzle-orm@0.32.0(@types/pg@8.11.6)(pg@8.12.0)(postgres@3.4.4):
+    resolution: {integrity: sha512-99IlfVGPNHzOFEXo9Phyu5At5TALLsY2t6WxFFy68rYd9Ej4cHX/7WjdPOn7JNRW69MNeNtP8XrDQg43SppuAA==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
@@ -4675,13 +4675,13 @@ packages:
       postgres: 3.4.4
     dev: false
 
-  /drizzle-zod@0.5.1(drizzle-orm@0.31.4)(zod@3.23.8):
+  /drizzle-zod@0.5.1(drizzle-orm@0.32.0)(zod@3.23.8):
     resolution: {integrity: sha512-C/8bvzUH/zSnVfwdSibOgFjLhtDtbKYmkbPbUCq46QZyZCH6kODIMSOgZ8R7rVjoI+tCj3k06MRJMDqsIeoS4A==}
     peerDependencies:
       drizzle-orm: '>=0.23.13'
       zod: '*'
     dependencies:
-      drizzle-orm: 0.31.4(@types/pg@8.11.6)(pg@8.12.0)(postgres@3.4.4)
+      drizzle-orm: 0.32.0(@types/pg@8.11.6)(pg@8.12.0)(postgres@3.4.4)
       zod: 3.23.8
     dev: false
 
