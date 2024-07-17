@@ -172,8 +172,8 @@ importers:
         specifier: ^1.45.2
         version: 1.45.2(@tanstack/react-router@1.45.4)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1)
       '@tanstack/router-vite-plugin':
-        specifier: ^1.45.2
-        version: 1.45.2(vite@5.3.4)
+        specifier: ^1.45.3
+        version: 1.45.3(vite@5.3.4)
       '@types/react':
         specifier: ^18.3.3
         version: 18.3.3
@@ -3438,8 +3438,8 @@ packages:
       zod: 3.23.8
     dev: true
 
-  /@tanstack/router-plugin@1.45.2(vite@5.3.4):
-    resolution: {integrity: sha512-vlbcKZMAO5zarXXJAV3APBwMfxoWLi5TKIvwQ20YdUqiHK3c+KEz5z3LU9H1P4SEVcFMdSk65H4q7lAoGX1Hog==}
+  /@tanstack/router-plugin@1.45.3(vite@5.3.4):
+    resolution: {integrity: sha512-W2LIvYVc8Vus5FRXbQ0MXJi5i6/EenP9RQrqFSKLZv12uih06avxcMXtFS40cFVLxqC9WIG+DQ30hwkiPyWICw==}
     engines: {node: '>=12'}
     peerDependencies:
       '@rsbuild/core': '>=0.7.9'
@@ -3475,11 +3475,11 @@ packages:
       - supports-color
     dev: true
 
-  /@tanstack/router-vite-plugin@1.45.2(vite@5.3.4):
-    resolution: {integrity: sha512-iGi+mZqimzfGN7y7IP1fEjMTJB/WZZlz5Bv17hXBGcGRvpN3S8cNrtX6q3nfEjrgibrAFC4+Le579R9OnAPYLQ==}
+  /@tanstack/router-vite-plugin@1.45.3(vite@5.3.4):
+    resolution: {integrity: sha512-HAZ5F7wtQNBM8MubjEGS8lD+s8bqCVpHgfZuYcWxLmvHlDBJeaw5EAP8AXOt3PXWKwipipghLJ3O7JO3qh5NSg==}
     engines: {node: '>=12'}
     dependencies:
-      '@tanstack/router-plugin': 1.45.2(vite@5.3.4)
+      '@tanstack/router-plugin': 1.45.3(vite@5.3.4)
     transitivePeerDependencies:
       - '@rsbuild/core'
       - supports-color
