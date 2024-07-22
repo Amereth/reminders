@@ -93,8 +93,8 @@ importers:
         specifier: ^5.51.11
         version: 5.51.11(react@18.3.1)
       '@tanstack/react-query-persist-client':
-        specifier: ^5.51.9
-        version: 5.51.9(@tanstack/react-query@5.51.11)(react@18.3.1)
+        specifier: ^5.51.11
+        version: 5.51.11(@tanstack/react-query@5.51.11)(react@18.3.1)
       '@tanstack/react-router':
         specifier: ^1.45.7
         version: 1.45.7(react-dom@18.3.1)(react@18.3.1)
@@ -3320,10 +3320,10 @@ packages:
       react: 18.3.1
     dev: true
 
-  /@tanstack/react-query-persist-client@5.51.9(@tanstack/react-query@5.51.11)(react@18.3.1):
-    resolution: {integrity: sha512-M8zT/Lej53h36ILFX1dnZHoDlqhmT54SQjVha9RrEq+O0HXg4r93TrNKw8QfNbvAJYCwmNYJ1Q+GW6RN+37VcQ==}
+  /@tanstack/react-query-persist-client@5.51.11(@tanstack/react-query@5.51.11)(react@18.3.1):
+    resolution: {integrity: sha512-yx8i+QvMKRzdbCrlAjNXj5TwWXrhujiYwea1BG2AEMMAxCa6IIIwsXI96F5xtkoZnN/HYY3B6t9zCJu93yVDmg==}
     peerDependencies:
-      '@tanstack/react-query': ^5.51.9
+      '@tanstack/react-query': ^5.51.11
       react: ^18 || ^19
     dependencies:
       '@tanstack/query-persist-client-core': 5.51.9
