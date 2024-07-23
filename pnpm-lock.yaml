@@ -172,8 +172,8 @@ importers:
         specifier: ^1.45.7
         version: 1.45.7(@tanstack/react-router@1.45.7)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1)
       '@tanstack/router-vite-plugin':
-        specifier: ^1.45.7
-        version: 1.45.7(vite@5.3.4)
+        specifier: ^1.45.8
+        version: 1.45.8(vite@5.3.4)
       '@types/react':
         specifier: ^18.3.3
         version: 18.3.3
@@ -474,7 +474,7 @@ packages:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@babel/code-frame': 7.24.7
-      '@babel/generator': 7.24.9
+      '@babel/generator': 7.24.10
       '@babel/helper-compilation-targets': 7.24.7
       '@babel/helper-module-transforms': 7.24.7(@babel/core@7.24.5)
       '@babel/helpers': 7.24.7
@@ -497,7 +497,7 @@ packages:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@babel/code-frame': 7.24.7
-      '@babel/generator': 7.24.9
+      '@babel/generator': 7.24.10
       '@babel/helper-compilation-targets': 7.24.8
       '@babel/helper-module-transforms': 7.24.9(@babel/core@7.24.9)
       '@babel/helpers': 7.24.8
@@ -514,6 +514,15 @@ packages:
       - supports-color
     dev: true
 
+  /@babel/generator@7.24.10:
+    resolution: {integrity: sha512-o9HBZL1G2129luEUlG1hB4N/nlYNWHnpwlND9eOMclRqqu1YDy2sSYVCFUZwl8I1Gxh+QSRrP2vD7EpUmFVXxg==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      '@babel/types': 7.24.9
+      '@jridgewell/gen-mapping': 0.3.5
+      '@jridgewell/trace-mapping': 0.3.25
+      jsesc: 2.5.2
+
   /@babel/generator@7.24.5:
     resolution: {integrity: sha512-x32i4hEXvr+iI0NEoEfDKzlemF8AmtOP8CcrRaEcpzysWuoEb1KknpcvMsHKPONoKZiDuItklgWhB18xEhr9PA==}
     engines: {node: '>=6.9.0'}
@@ -523,15 +532,6 @@ packages:
       '@jridgewell/trace-mapping': 0.3.25
       jsesc: 2.5.2
     dev: false
-
-  /@babel/generator@7.24.9:
-    resolution: {integrity: sha512-G8v3jRg+z8IwY1jHFxvCNhOPYPterE4XljNgdGTYfSTtzzwjIswIzIaSPSLs3R7yFuqnqNeay5rjICfqVr+/6A==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/types': 7.24.9
-      '@jridgewell/gen-mapping': 0.3.5
-      '@jridgewell/trace-mapping': 0.3.25
-      jsesc: 2.5.2
 
   /@babel/helper-annotate-as-pure@7.22.5:
     resolution: {integrity: sha512-LvBTxu8bQSQkcyKOU+a1btnNFQ1dMAd0R6PyW3arXes06F6QLWLIrd681bxRPIXlrMGR3XYnW9JyML7dP3qgxg==}
@@ -763,7 +763,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.24.7
-      '@babel/generator': 7.24.9
+      '@babel/generator': 7.24.10
       '@babel/helper-environment-visitor': 7.24.7
       '@babel/helper-function-name': 7.24.7
       '@babel/helper-hoist-variables': 7.24.7
@@ -781,7 +781,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.24.7
-      '@babel/generator': 7.24.9
+      '@babel/generator': 7.24.10
       '@babel/helper-environment-visitor': 7.24.7
       '@babel/helper-function-name': 7.24.7
       '@babel/helper-hoist-variables': 7.24.7
@@ -3389,8 +3389,8 @@ packages:
       zod: 3.23.8
     dev: true
 
-  /@tanstack/router-plugin@1.45.7(vite@5.3.4):
-    resolution: {integrity: sha512-6nfils2t24phZPh2aj5gpnhka8prlSuMDmpPbvEHgyfXo7wQH7bljWKFj5+IsruAQVqJE79WIJGQiXQcM4lvNw==}
+  /@tanstack/router-plugin@1.45.8(vite@5.3.4):
+    resolution: {integrity: sha512-mncDu49pBEivRHWVOdCl9fHwtyUT3QLZ0X+gYIsm7o6LhT6i7BzC++BZqOOSrjDcyXy3dx2Nf/FMrB06qlXx9Q==}
     engines: {node: '>=12'}
     peerDependencies:
       '@rsbuild/core': '>=0.7.9'
@@ -3405,7 +3405,7 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.24.9
-      '@babel/generator': 7.24.9
+      '@babel/generator': 7.24.10
       '@babel/parser': 7.24.8
       '@babel/plugin-syntax-jsx': 7.24.7(@babel/core@7.24.9)
       '@babel/plugin-syntax-typescript': 7.24.7(@babel/core@7.24.9)
@@ -3426,11 +3426,11 @@ packages:
       - supports-color
     dev: true
 
-  /@tanstack/router-vite-plugin@1.45.7(vite@5.3.4):
-    resolution: {integrity: sha512-kzvZEZ6mLLio9huG9Vb1e95XXS2tYCgnjwosNxVvGtVAA7c7uu5fSyDPfr4Kxkklu2YeHsgrRE+9+XBudIhNRA==}
+  /@tanstack/router-vite-plugin@1.45.8(vite@5.3.4):
+    resolution: {integrity: sha512-gIblg5X+7xl2/QT3UpD5opv6hYCwD6eaHJ4Ko63pV7Z5hdKH7vzlfoG2fZlf3QC+wYg47nTV1bxvFyEnQ8+YAA==}
     engines: {node: '>=12'}
     dependencies:
-      '@tanstack/router-plugin': 1.45.7(vite@5.3.4)
+      '@tanstack/router-plugin': 1.45.8(vite@5.3.4)
     transitivePeerDependencies:
       - '@rsbuild/core'
       - supports-color
