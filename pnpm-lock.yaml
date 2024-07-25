@@ -96,8 +96,8 @@ importers:
         specifier: ^5.51.11
         version: 5.51.11(@tanstack/react-query@5.51.11)(react@18.3.1)
       '@tanstack/react-router':
-        specifier: ^1.45.8
-        version: 1.45.8(react-dom@18.3.1)(react@18.3.1)
+        specifier: ^1.45.10
+        version: 1.45.10(react-dom@18.3.1)(react@18.3.1)
       '@types/validator':
         specifier: ^13.12.0
         version: 13.12.0
@@ -170,7 +170,7 @@ importers:
         version: 5.51.11(@tanstack/react-query@5.51.11)(react@18.3.1)
       '@tanstack/router-devtools':
         specifier: ^1.45.10
-        version: 1.45.10(@tanstack/react-router@1.45.8)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1)
+        version: 1.45.10(@tanstack/react-router@1.45.10)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1)
       '@tanstack/router-vite-plugin':
         specifier: ^1.45.8
         version: 1.45.8(vite@5.3.5)
@@ -3339,32 +3339,32 @@ packages:
       '@tanstack/query-core': 5.51.9
       react: 18.3.1
 
-  /@tanstack/react-router@1.45.8(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-hLJOKDK5lGHteoMjpF6COQrlhsl4C6GyBCzmSJHFcoh26GBa7tv/94li0H1a3deJpzMNpSvmSXrQDpxj9h9bNA==}
+  /@tanstack/react-router@1.45.10(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-U+HayRjf8BE34GYNDxVp8BWOxbdLkcJ/Yn8bzecR4xO0naBgu4AiCDhfPEIH5LIWfnpm9QhEeohxjpYVM4BjpQ==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
     dependencies:
       '@tanstack/history': 1.45.3
-      '@tanstack/react-store': 0.5.4(react-dom@18.3.1)(react@18.3.1)
+      '@tanstack/react-store': 0.5.5(react-dom@18.3.1)(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
 
-  /@tanstack/react-store@0.5.4(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-N4fhM+2knUN7t7kIa7lP4Df9vN/DxD8qfmsFgGKis0J/OoeQaEdG6fINjrMME2hOXszObZLXIxBcOvIIcOhGMw==}
+  /@tanstack/react-store@0.5.5(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-1orYXGatBqXCYKuroFwV8Ll/6aDa5E3pU6RR4h7RvRk7TmxF1+zLCsWALZaeijXkySNMGmvawSbUXRypivg2XA==}
     peerDependencies:
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
     dependencies:
-      '@tanstack/store': 0.5.4
+      '@tanstack/store': 0.5.5
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      use-sync-external-store: 1.2.0(react@18.3.1)
+      use-sync-external-store: 1.2.2(react@18.3.1)
 
-  /@tanstack/router-devtools@1.45.10(@tanstack/react-router@1.45.8)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1):
+  /@tanstack/router-devtools@1.45.10(@tanstack/react-router@1.45.10)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-bIjORDCe6rbqzVrJjkPBWNJn2jbNK6JBY7Ut5nqIj3Fl7+MNqIROvTPYGmtvdNNecdRU6hXtUgcVOu6Ly+X74A==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -3372,7 +3372,7 @@ packages:
       react: '>=18'
       react-dom: '>=18'
     dependencies:
-      '@tanstack/react-router': 1.45.8(react-dom@18.3.1)(react@18.3.1)
+      '@tanstack/react-router': 1.45.10(react-dom@18.3.1)(react@18.3.1)
       clsx: 2.1.1
       goober: 2.1.14(csstype@3.1.3)
       react: 18.3.1
@@ -3438,8 +3438,8 @@ packages:
       - webpack
     dev: true
 
-  /@tanstack/store@0.5.4:
-    resolution: {integrity: sha512-EG/aGAK/yUJz0JxPaY9wOr1Sjz9Uc//BX7uY9SAo5M0GkCEz7DOSxixBq2afn/reLMGqTIGYq7TkMGgyNQgdcA==}
+  /@tanstack/store@0.5.5:
+    resolution: {integrity: sha512-EOSrgdDAJExbvRZEQ/Xhh9iZchXpMN+ga1Bnk8Nmygzs8TfiE6hbzThF+Pr2G19uHL6+DTDTHhJ8VQiOd7l4tA==}
 
   /@telegraf/types@7.1.0:
     resolution: {integrity: sha512-kGevOIbpMcIlCDeorKGpwZmdH7kHbqlk/Yj6dEpJMKEQw5lk0KVQY0OLXaCswy8GqlIVLd5625OB+rAntP9xVw==}
@@ -8256,6 +8256,14 @@ packages:
 
   /use-sync-external-store@1.2.0(react@18.3.1):
     resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.3.1
+    dev: false
+
+  /use-sync-external-store@1.2.2(react@18.3.1):
+    resolution: {integrity: sha512-PElTlVMwpblvbNqQ82d2n6RjStvdSoNe9FG28kNfz3WiXilJm4DdNkEzRhCZuIDwY8U08WVihhGR5iRqAwfDiw==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
