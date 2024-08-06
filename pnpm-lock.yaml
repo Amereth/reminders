@@ -138,8 +138,8 @@ importers:
         specifier: ^7.52.2
         version: 7.52.2(react@18.3.1)
       remeda:
-        specifier: ^2.7.0
-        version: 2.7.0
+        specifier: ^2.9.1
+        version: 2.9.1
       sonner:
         specifier: ^1.5.0
         version: 1.5.0(react-dom@18.3.1)(react@18.3.1)
@@ -274,8 +274,8 @@ importers:
         specifier: ^3.4.4
         version: 3.4.4
       remeda:
-        specifier: ^2.7.0
-        version: 2.7.0
+        specifier: ^2.9.1
+        version: 2.9.1
       telegraf:
         specifier: ^4.16.3
         version: 4.16.3
@@ -7111,10 +7111,10 @@ packages:
       unified: 11.0.4
     dev: false
 
-  /remeda@2.7.0:
-    resolution: {integrity: sha512-7q7Xthw/C6uZBk8W5BfXpp/8IjaP51IPUrBVRfSZ3GB9dZMZJEAwYmVxA+TptDmhwlGRw8jUqoo4hL5zU0aV5Q==}
+  /remeda@2.9.1:
+    resolution: {integrity: sha512-RA2Nqh35LPmihtZVketWJTY11wakLEghgnGrtVNdb1qAJI5BOKxbIdN1Fq7b9q1jBLP8uzlbx8uVq6bd5IYFew==}
     dependencies:
-      type-fest: 4.22.0
+      type-fest: 4.23.0
     dev: false
 
   /request-light@0.7.0:
@@ -7726,8 +7726,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: false
 
-  /type-fest@4.22.0:
-    resolution: {integrity: sha512-hxMO1k4ip1uTVGgPbs1hVpYyhz2P91A6tQyH2H9POx3U6T3MdhIcfY8L2hRu/LRmzPFdfduOS0RIDjFlP2urPw==}
+  /type-fest@4.23.0:
+    resolution: {integrity: sha512-ZiBujro2ohr5+Z/hZWHESLz3g08BBdrdLMieYFULJO+tWc437sn8kQsWLJoZErY8alNhxre9K4p3GURAG11n+w==}
     engines: {node: '>=16'}
     dev: false
 
