@@ -96,8 +96,8 @@ importers:
         specifier: ^5.51.21
         version: 5.51.21(@tanstack/react-query@5.51.21)(react@18.3.1)
       '@tanstack/react-router':
-        specifier: ^1.46.7
-        version: 1.46.7(react-dom@18.3.1)(react@18.3.1)
+        specifier: ^1.46.8
+        version: 1.46.8(react-dom@18.3.1)(react@18.3.1)
       '@types/validator':
         specifier: ^13.12.0
         version: 13.12.0
@@ -170,7 +170,7 @@ importers:
         version: 5.51.21(@tanstack/react-query@5.51.21)(react@18.3.1)
       '@tanstack/router-devtools':
         specifier: ^1.46.8
-        version: 1.46.8(@tanstack/react-router@1.46.7)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1)
+        version: 1.46.8(@tanstack/react-router@1.46.8)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1)
       '@tanstack/router-vite-plugin':
         specifier: ^1.46.6
         version: 1.46.6(vite@5.3.5)
@@ -3288,8 +3288,8 @@ packages:
       '@tanstack/query-core': 5.51.21
       react: 18.3.1
 
-  /@tanstack/react-router@1.46.7(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-3xjvbLMi7VqlbE8Wi1AaSl6CqdDWIiGDIyrf/FF7mDEYXPo52i/a2DNEEMIuG14fsYfDKmBMtZEkVbUKHS3mEg==}
+  /@tanstack/react-router@1.46.8(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-9hQ2c/641tI2658iE+yNIHSRAjfuV9KWEP9siueP0PuMVU34Jnb8+26OazvOQTOa8yXC3VCQUMK+q8ZlCCw7BQ==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=18'
@@ -3313,7 +3313,7 @@ packages:
       react-dom: 18.3.1(react@18.3.1)
       use-sync-external-store: 1.2.2(react@18.3.1)
 
-  /@tanstack/router-devtools@1.46.8(@tanstack/react-router@1.46.7)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1):
+  /@tanstack/router-devtools@1.46.8(@tanstack/react-router@1.46.8)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-3JQn3Rxqh5dahwqKL8E4tAb15zfUKeTBOHGeVjJiWT7Qf5EXikFpYtW7gArlDscWU8hWNU2eV7l0dJ6SvhT9sQ==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -3321,7 +3321,7 @@ packages:
       react: '>=18'
       react-dom: '>=18'
     dependencies:
-      '@tanstack/react-router': 1.46.7(react-dom@18.3.1)(react@18.3.1)
+      '@tanstack/react-router': 1.46.8(react-dom@18.3.1)(react@18.3.1)
       clsx: 2.1.1
       goober: 2.1.14(csstype@3.1.3)
       react: 18.3.1
