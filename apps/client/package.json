@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
-    "@tanstack/react-query-devtools": "^5.51.21",
+    "@tanstack/react-query-devtools": "^5.51.23",
     "@tanstack/router-devtools": "^1.46.8",
     "@tanstack/router-vite-plugin": "^1.47.0",
     "@types/react": "^18.3.3",
