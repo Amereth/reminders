@@ -54,7 +54,7 @@
     "@types/node": "^22.1.0",
     "@types/pg": "^8.11.6",
     "concurrently": "^8.2.2",
-    "drizzle-kit": "^0.23.2",
+    "drizzle-kit": "^0.24.0",
     "tslib": "^2.6.3",
     "tsx": "^4.17.0",
     "typescript": "^5.5.4"
