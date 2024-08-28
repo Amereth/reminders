@@ -51,7 +51,7 @@
     "@tsconfig/node20": "^20.1.4",
     "@types/http-errors": "^2.0.4",
     "@types/jsonwebtoken": "^9.0.6",
-    "@types/node": "^22.5.0",
+    "@types/node": "^22.5.1",
     "@types/pg": "^8.11.7",
     "concurrently": "^8.2.2",
     "drizzle-kit": "^0.24.2",
