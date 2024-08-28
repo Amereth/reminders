@@ -52,7 +52,7 @@
     "@types/http-errors": "^2.0.4",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^22.5.0",
-    "@types/pg": "^8.11.6",
+    "@types/pg": "^8.11.7",
     "concurrently": "^8.2.2",
     "drizzle-kit": "^0.24.2",
     "tslib": "^2.7.0",
