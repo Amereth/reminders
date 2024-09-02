@@ -172,8 +172,8 @@ importers:
         specifier: ^1.52.3
         version: 1.52.3(@tanstack/react-router@1.51.6)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1)
       '@tanstack/router-vite-plugin':
-        specifier: ^1.51.6
-        version: 1.51.6(vite@5.4.2)
+        specifier: ^1.52.0
+        version: 1.52.0(vite@5.4.2)
       '@types/react':
         specifier: ^18.3.5
         version: 18.3.5
@@ -3568,16 +3568,16 @@ packages:
       - csstype
     dev: true
 
-  /@tanstack/router-generator@1.51.6:
-    resolution: {integrity: sha512-iAzan/Z5pF/CAX1g6Ouc4QixRK77nlvSJECqeqzpYMkAzz07m2IybVN/piQzw4Vje0UMKfkO3GgBAHc1CG18vg==}
+  /@tanstack/router-generator@1.52.0:
+    resolution: {integrity: sha512-p1q+pGt5kh9a2d0I3inoRCEaqL1NXPOKarcvNrwn8wP4K6IXXSipZiXIsC4bribVdzBlBwhiyCkDjAUVV0l0xg==}
     engines: {node: '>=12'}
     dependencies:
       prettier: 3.3.3
       zod: 3.23.8
     dev: true
 
-  /@tanstack/router-plugin@1.51.6(vite@5.4.2):
-    resolution: {integrity: sha512-wKtgsofslYDm4WCy9x7Fwm91Qtkznwvf1lAWvhO3115J6J3RXssf5Df28gW6HVeNxVLlK3yn32DBp6pIO24A/A==}
+  /@tanstack/router-plugin@1.52.0(vite@5.4.2):
+    resolution: {integrity: sha512-CfZL2MeNquohnSuUUvfYNl3QGl1jD1JH/3lTnlx8TY4JMdz1tWuDhNfuJuPh32mNAT0ueFzgUnrEHDEjMRxq7Q==}
     engines: {node: '>=12'}
     peerDependencies:
       '@rsbuild/core': '>=1.0.0'
@@ -3599,7 +3599,7 @@ packages:
       '@babel/template': 7.25.0
       '@babel/traverse': 7.25.3
       '@babel/types': 7.25.2
-      '@tanstack/router-generator': 1.51.6
+      '@tanstack/router-generator': 1.52.0
       '@types/babel__core': 7.20.5
       '@types/babel__generator': 7.6.8
       '@types/babel__template': 7.4.4
@@ -3613,11 +3613,11 @@ packages:
       - supports-color
     dev: true
 
-  /@tanstack/router-vite-plugin@1.51.6(vite@5.4.2):
-    resolution: {integrity: sha512-na/gsJZWqcfm12z7TAxmCZ3vyqPnAc4YX3ZD/OYGtRhqB1rbB7mm9bCrkXwxleI5yfxKgvHA/a9fyplYguqsGQ==}
+  /@tanstack/router-vite-plugin@1.52.0(vite@5.4.2):
+    resolution: {integrity: sha512-TI8R3WX6s7qgcU58zg73hovypqcOPGC9HGwE/5dcmleRLDzJnoDZQPMhVM30WKPT6qdKOZI7pZLmhCp/zd8hSQ==}
     engines: {node: '>=12'}
     dependencies:
-      '@tanstack/router-plugin': 1.51.6(vite@5.4.2)
+      '@tanstack/router-plugin': 1.52.0(vite@5.4.2)
     transitivePeerDependencies:
       - '@rsbuild/core'
       - supports-color
