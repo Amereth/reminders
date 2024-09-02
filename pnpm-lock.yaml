@@ -169,8 +169,8 @@ importers:
         specifier: ^5.53.1
         version: 5.53.1(@tanstack/react-query@5.53.1)(react@18.3.1)
       '@tanstack/router-devtools':
-        specifier: ^1.51.6
-        version: 1.51.6(@tanstack/react-router@1.51.6)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1)
+        specifier: ^1.52.3
+        version: 1.52.3(@tanstack/react-router@1.51.6)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1)
       '@tanstack/router-vite-plugin':
         specifier: ^1.51.6
         version: 1.51.6(vite@5.4.2)
@@ -3547,11 +3547,11 @@ packages:
       react-dom: 18.3.1(react@18.3.1)
       use-sync-external-store: 1.2.2(react@18.3.1)
 
-  /@tanstack/router-devtools@1.51.6(@tanstack/react-router@1.51.6)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-YWE5lpnkXqM1t8846rwOu1OpfUwO1uayvUgTCeAmlDX0OpBWVFupHjlRP0GZ3HMZpzPGmYOwqbd+QorWraYMMQ==}
+  /@tanstack/router-devtools@1.52.3(@tanstack/react-router@1.51.6)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-A67H6BaCgLmLo/ug/DAXQn3F4KBXEzcMqch/2gLiaI5vu8rtAiubwGWyTtRzVfL4qnDbd/SWEMKEwnlM6rk3OQ==}
     engines: {node: '>=12'}
     peerDependencies:
-      '@tanstack/react-router': ^1.51.6
+      '@tanstack/react-router': ^1.52.3
       react: '>=18'
       react-dom: '>=18'
     dependencies:
