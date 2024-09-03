@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@total-typescript/ts-reset':
-        specifier: ^0.6.0
-        version: 0.6.0
+        specifier: ^0.6.1
+        version: 0.6.1
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
@@ -3618,8 +3618,8 @@ packages:
     resolution: {integrity: sha512-kGevOIbpMcIlCDeorKGpwZmdH7kHbqlk/Yj6dEpJMKEQw5lk0KVQY0OLXaCswy8GqlIVLd5625OB+rAntP9xVw==}
     dev: false
 
-  /@total-typescript/ts-reset@0.6.0:
-    resolution: {integrity: sha512-HWZnkM+5z3INAUZMohVXvX8/vm9sjmfmV2NRAswvv5WsU2m+OZsHAVZ0fl8xf2QH9kyPkinghVW6g3DOQ2xt5Q==}
+  /@total-typescript/ts-reset@0.6.1:
+    resolution: {integrity: sha512-cka47fVSo6lfQDIATYqb/vO1nvFfbPw7uWLayIXIhGETj0wcOOlrlkobOMDNQOFr9QOafegUPq13V2+6vtD7yg==}
     dev: true
 
   /@tsconfig/node20@20.1.4:
