@@ -157,7 +157,7 @@ importers:
         version: 2.0.0(@types/react@18.3.5)(react@18.3.1)
       vite-tsconfig-paths:
         specifier: ^5.0.1
-        version: 5.0.1(typescript@5.5.4)(vite@5.4.2)
+        version: 5.0.1(typescript@5.5.4)(vite@5.4.3)
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -173,7 +173,7 @@ importers:
         version: 1.52.5(@tanstack/react-router@1.52.5)(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1)
       '@tanstack/router-vite-plugin':
         specifier: ^1.52.0
-        version: 1.52.0(vite@5.4.2)
+        version: 1.52.0(vite@5.4.3)
       '@types/react':
         specifier: ^18.3.5
         version: 18.3.5
@@ -188,7 +188,7 @@ importers:
         version: 8.4.0(eslint@9.9.1)(typescript@5.5.4)
       '@vitejs/plugin-react-swc':
         specifier: ^3.7.0
-        version: 3.7.0(vite@5.4.2)
+        version: 3.7.0(vite@5.4.3)
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.44)
@@ -208,8 +208,8 @@ importers:
         specifier: ^3.4.10
         version: 3.4.10
       vite:
-        specifier: ^5.4.2
-        version: 5.4.2
+        specifier: ^5.4.3
+        version: 5.4.3
 
   apps/server:
     dependencies:
@@ -3562,7 +3562,7 @@ packages:
       zod: 3.23.8
     dev: true
 
-  /@tanstack/router-plugin@1.52.0(vite@5.4.2):
+  /@tanstack/router-plugin@1.52.0(vite@5.4.3):
     resolution: {integrity: sha512-CfZL2MeNquohnSuUUvfYNl3QGl1jD1JH/3lTnlx8TY4JMdz1tWuDhNfuJuPh32mNAT0ueFzgUnrEHDEjMRxq7Q==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -3593,17 +3593,17 @@ packages:
       babel-dead-code-elimination: 1.0.6
       chokidar: 3.6.0
       unplugin: 1.12.2
-      vite: 5.4.2
+      vite: 5.4.3
       zod: 3.23.8
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@tanstack/router-vite-plugin@1.52.0(vite@5.4.2):
+  /@tanstack/router-vite-plugin@1.52.0(vite@5.4.3):
     resolution: {integrity: sha512-TI8R3WX6s7qgcU58zg73hovypqcOPGC9HGwE/5dcmleRLDzJnoDZQPMhVM30WKPT6qdKOZI7pZLmhCp/zd8hSQ==}
     engines: {node: '>=12'}
     dependencies:
-      '@tanstack/router-plugin': 1.52.0(vite@5.4.2)
+      '@tanstack/router-plugin': 1.52.0(vite@5.4.3)
     transitivePeerDependencies:
       - '@rsbuild/core'
       - supports-color
@@ -3874,13 +3874,13 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: false
 
-  /@vitejs/plugin-react-swc@3.7.0(vite@5.4.2):
+  /@vitejs/plugin-react-swc@3.7.0(vite@5.4.3):
     resolution: {integrity: sha512-yrknSb3Dci6svCd/qhHqhFPDSw0QtjumcqdKMoNNzmOl5lMXTTiqzjWtG4Qask2HdvvzaNgSunbQGet8/GrKdA==}
     peerDependencies:
       vite: ^4 || ^5
     dependencies:
       '@swc/core': 1.5.7
-      vite: 5.4.2
+      vite: 5.4.3
     transitivePeerDependencies:
       - '@swc/helpers'
     dev: true
@@ -4156,8 +4156,8 @@ packages:
       tsconfck: 3.0.3(typescript@5.5.4)
       unist-util-visit: 5.0.0
       vfile: 6.0.1
-      vite: 5.4.1
-      vitefu: 0.2.5(vite@5.4.1)
+      vite: 5.4.2
+      vitefu: 0.2.5(vite@5.4.2)
       which-pm: 2.1.1
       yargs-parser: 21.1.1
       zod: 3.23.8
@@ -8247,7 +8247,7 @@ packages:
       vfile-message: 4.0.2
     dev: false
 
-  /vite-tsconfig-paths@5.0.1(typescript@5.5.4)(vite@5.4.2):
+  /vite-tsconfig-paths@5.0.1(typescript@5.5.4)(vite@5.4.3):
     resolution: {integrity: sha512-yqwv+LstU7NwPeNqajZzLEBVpUFU6Dugtb2P84FXuvaoYA+/70l9MHE+GYfYAycVyPSDYZ7mjOFuYBRqlEpTig==}
     peerDependencies:
       vite: '*'
@@ -8258,48 +8258,10 @@ packages:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 3.0.3(typescript@5.5.4)
-      vite: 5.4.2
+      vite: 5.4.3
     transitivePeerDependencies:
       - supports-color
       - typescript
-    dev: false
-
-  /vite@5.4.1:
-    resolution: {integrity: sha512-1oE6yuNXssjrZdblI9AfBbHCC41nnyoVoEZxQnID6yvQZAFBzxxkqoFLtHUMkYunL8hwOLEjgTuxpkRxvba3kA==}
-    engines: {node: ^18.0.0 || >=20.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': ^18.0.0 || >=20.0.0
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      sass-embedded: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      sass-embedded:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      esbuild: 0.21.5
-      postcss: 8.4.44
-      rollup: 4.21.0
-    optionalDependencies:
-      fsevents: 2.3.3
     dev: false
 
   /vite@5.4.2:
@@ -8338,8 +8300,46 @@ packages:
       rollup: 4.21.0
     optionalDependencies:
       fsevents: 2.3.3
+    dev: false
 
-  /vitefu@0.2.5(vite@5.4.1):
+  /vite@5.4.3:
+    resolution: {integrity: sha512-IH+nl64eq9lJjFqU+/yrRnrHPVTlgy42/+IzbOdaFDVlyLgI/wDlf+FCobXLX1cT0X5+7LMyH1mIy2xJdLfo8Q==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': ^18.0.0 || >=20.0.0
+      less: '*'
+      lightningcss: ^1.21.0
+      sass: '*'
+      sass-embedded: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      lightningcss:
+        optional: true
+      sass:
+        optional: true
+      sass-embedded:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      esbuild: 0.21.5
+      postcss: 8.4.44
+      rollup: 4.21.0
+    optionalDependencies:
+      fsevents: 2.3.3
+
+  /vitefu@0.2.5(vite@5.4.2):
     resolution: {integrity: sha512-SgHtMLoqaeeGnd2evZ849ZbACbnwQCIwRH57t18FxcXoZop0uQu0uzlIhJBlF/eWVzuce0sHeqPcDo+evVcg8Q==}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0 || ^5.0.0
@@ -8347,7 +8347,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 5.4.1
+      vite: 5.4.2
     dev: false
 
   /volar-service-css@0.0.61(@volar/language-service@2.4.0):
